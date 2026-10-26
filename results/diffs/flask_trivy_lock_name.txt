@@ -1,0 +1,16 @@
+FP pkg:pypi/amqp
+FP pkg:pypi/asgiref
+FP pkg:pypi/async-timeout
+FP pkg:pypi/billiard
+FP pkg:pypi/celery
+FP pkg:pypi/click-didyoumean
+FP pkg:pypi/click-plugins
+FP pkg:pypi/click-repl
+FP pkg:pypi/kombu
+FP pkg:pypi/prompt-toolkit
+FP pkg:pypi/python-dotenv
+FP pkg:pypi/pytz
+FP pkg:pypi/redis
+FP pkg:pypi/six
+FP pkg:pypi/vine
+FP pkg:pypi/wcwidth

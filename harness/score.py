@@ -7,7 +7,7 @@ root = Path(__file__).resolve().parent.parent
 diffs = root / "results" / "diffs"
 diffs.mkdir(parents=True, exist_ok=True)
 KINDS = {"go": ["declared", "modgraph", "runtime_multi"], "maven": ["all", "shipped"],
-         "npm": ["all", "shipped", "tree_all", "tree_shipped"], "pypi": ["shipped"], "rust": ["lock", "all", "shipped", "tree_lock"]}
+         "npm": ["all", "shipped", "tree_all", "tree_shipped"], "pypi": ["shipped", "lock"], "rust": ["lock", "all", "shipped", "tree_lock"]}
 TYPE = {"go": "golang", "maven": "maven", "npm": "npm", "pypi": "pypi", "rust": "cargo"}
 
 def norm(purl):

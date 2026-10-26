@@ -26,3 +26,24 @@ Scoring: purl normalized, root project and workspace members excluded, GitHub Ac
 1. (Partly answered) Syft reports klauspost/compress and go.yaml.in/yaml/v3 with location /go.mod and an h1 digest matching go.sum, although neither module is in go.mod text. They are in the resolved graph, so they are true components, but the recorded location evidence is wrong. Mechanism not verified.
 2. Why Trivy misses 25 to 30 percent of Cargo.lock entries (not examined).
 3. Whether Trivy limits uv.lock to runtime packages (inferred from counts only).
+
+## Vulnerability side (frozen databases, snapshot 20261026, checksums in tools/dbsnap_20261026.txt)
+
+Verified:
+1. cdxgen 12.9.0 writes CycloneDX 1.7 by default. Trivy 0.69.3 and Grype 0.114.0 both reject it (Trivy: invalid specification version, Grype: sbom format not recognized). Regenerated at 1.6 with identical component counts for all 11 SBOMs, originals kept in results/raw_cdx17.
+2. With GHSA and CVE aliases resolved, Grype and Trivy agree on every finding for the same SBOM, except cdxgen axios (Grype 72, Trivy 41). Exact identifier matching without aliases gave an overlap of 2 of 42 on flask, so alias handling is required for any scanner comparison.
+3. Reference SBOMs built from ground truth give 19 findings across 4 projects (spring_petclinic 16, node_exporter 1, express 1, flask 1), identical in Grype and Trivy.
+4. Across all SBOMs, 18 reference findings were missed (Grype). All trace to the SBOM: 17 components absent, 1 component present without a version, 0 scanner misses. Syft finds 3 of 19, cdxgen and Trivy 19 of 19.
+5. Findings outside the shipped set: flask 14 to 42 extra against 1 shipped, axios 8 to 72 against 0, express via cdxgen 8 extra.
+6. Without a lockfile, Syft and Trivy lose the express finding.
+7. Tree level shipped set for axios (206 packages): all three tools have full recall after the scorer fix, with 755 extras for cdxgen, 5 for Syft and 1 for Trivy.
+
+Method corrections made during the pilot:
+1. The reference builder shortened Go module names and scoped npm names, which hid real findings (node_exporter showed 0 instead of 1). Fixed.
+2. The component scorer excluded the root project by name only and dropped a real dependency (axios 1.20.0). Fixed to name and version.
+
+Open questions:
+1. Why Trivy reports nothing on axios 1.0.0 in the cdxgen SBOM while Grype reports 31 findings. The component is in the tree truth.
+2. Where cdxgen's six components outside the axios lockfiles come from (bun and jsr packages).
+3. The 13 flask findings on older versions that I attribute to examples/celery/requirements.txt (not checked).
+4. The pilot has too few findings for rates. The full dataset should pin release tags one to two years back.

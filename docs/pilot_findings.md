@@ -23,6 +23,6 @@ Scoring: purl normalized, root project and workspace members excluded, GitHub Ac
 
 ## Open questions
 
-1. How Syft finds klauspost/compress and go.yaml.in/yaml/v3 for node_exporter when neither is in go.mod text.
+1. (Partly answered) Syft reports klauspost/compress and go.yaml.in/yaml/v3 with location /go.mod and an h1 digest matching go.sum, although neither module is in go.mod text. They are in the resolved graph, so they are true components, but the recorded location evidence is wrong. Mechanism not verified.
 2. Why Trivy misses 25 to 30 percent of Cargo.lock entries (not examined).
 3. Whether Trivy limits uv.lock to runtime packages (inferred from counts only).

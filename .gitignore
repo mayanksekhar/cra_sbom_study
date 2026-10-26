@@ -4,3 +4,4 @@ dataset/src/
 results/raw/
 dataset/src_nolock/
 vulndb/
+results/vulns/

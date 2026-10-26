@@ -1,0 +1,15 @@
+frozen_at_utc: 20261026T210054Z
+== grype db status
+Path:      ~/.cache/grype/db/6/vulnerability.db
+Schema:    v6.1.10
+Built:     2026-10-26T06:38:44Z
+From:      https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.10_2026-10-26T00:32:02Z_1792996724.tar.zst?checksum=sha256%3A214b59fbe13608346ee1b22583ec0531083d6088c33891f3520d0fbdedb1b308
+Status:    valid
+== trivy db metadata
+{"Version":2,"NextUpdate":"2026-10-27T19:14:50.196573697Z","UpdatedAt":"2026-10-26T19:14:50.196574068Z","DownloadedAt":"2026-10-26T20:53:49.643120723Z"}
+== trivy java db metadata
+{"Version":1,"NextUpdate":"2026-10-29T00:59:12.44483502Z","UpdatedAt":"2026-10-26T00:59:12.444835411Z","DownloadedAt":"2026-10-26T21:00:53.68406491Z"}
+== sha256
+ebcae7e4f6a61026262879a9b626ba452d8688e3a48d630545ede6d15680b6dd  ./vulndb/20261026/grype/6/vulnerability.db
+f6435dc19b17290dc50e74823f4da086ee99662076febdd134aede5779b0f6fe  ./vulndb/20261026/trivy/db/trivy.db
+148a3e77d8a7df1c28ad261c4f72085fe0eb9d1354c4cf400e9abe963825a2c4  ./vulndb/20261026/trivy/java-db/trivy-java.db

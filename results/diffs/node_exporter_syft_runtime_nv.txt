@@ -1,0 +1,13 @@
+FP pkg:golang/cyphar.com/go-pathrs@v0.2.2
+FP pkg:golang/github.com/google/go-cmp@v0.7.0
+FP pkg:golang/github.com/illumos/go-kstat@v0.0.0-20210513183136-173c9b0a9973
+FP pkg:golang/github.com/klauspost/compress@v1.20.1
+FP pkg:golang/github.com/kylelemons/godebug@v1.1.0
+FP pkg:golang/github.com/lufia/iostat@v1.2.1
+FP pkg:golang/github.com/power-devops/perfstat@v0.0.0-20240221224432-82ca36839d55
+FP pkg:golang/github.com/prometheus/node_exporter@
+FP pkg:golang/github.com/siebenmann/go-kstat@v0.0.0-20210513183136-173c9b0a9973
+FP pkg:golang/github.com/stretchr/testify@v1.12.1
+FP pkg:golang/go.uber.org/goleak@v1.3.0
+FP pkg:golang/go.yaml.in/yaml/v3@v3.0.5
+FP pkg:golang/howett.net/plist@v1.0.1

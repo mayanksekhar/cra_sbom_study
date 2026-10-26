@@ -1,0 +1,13 @@
+project,tool,truth,sbom_go,other,dupes,name_tp,name_fp,name_fn,name_p,name_r,name_f1,nv_tp,nv_fp,nv_fn,nv_p,nv_r,nv_f1
+cobra,cdxgen,modgraph,4,0,0,4,0,2,1.0,0.667,0.8,4,0,2,1.0,0.667,0.8
+cobra,cdxgen,runtime,4,0,0,4,0,0,1.0,1.0,1.0,4,0,0,1.0,1.0,1.0
+cobra,syft,modgraph,7,6,0,6,1,0,0.857,1.0,0.923,6,1,0,0.857,1.0,0.923
+cobra,syft,runtime,7,6,0,4,3,0,0.571,1.0,0.727,4,3,0,0.571,1.0,0.727
+cobra,trivy,modgraph,7,0,0,6,1,0,0.857,1.0,0.923,6,1,0,0.857,1.0,0.923
+cobra,trivy,runtime,7,0,0,4,3,0,0.571,1.0,0.727,4,3,0,0.571,1.0,0.727
+node_exporter,cdxgen,modgraph,46,0,0,46,0,30,1.0,0.605,0.754,46,0,30,1.0,0.605,0.754
+node_exporter,cdxgen,runtime,46,0,0,46,0,0,1.0,1.0,1.0,46,0,0,1.0,1.0,1.0
+node_exporter,syft,modgraph,59,20,0,58,1,18,0.983,0.763,0.859,58,1,18,0.983,0.763,0.859
+node_exporter,syft,runtime,59,20,0,46,13,0,0.78,1.0,0.876,46,13,0,0.78,1.0,0.876
+node_exporter,trivy,modgraph,55,0,0,54,1,22,0.982,0.711,0.824,54,1,22,0.982,0.711,0.824
+node_exporter,trivy,runtime,55,0,0,46,9,0,0.836,1.0,0.911,46,9,0,0.836,1.0,0.911

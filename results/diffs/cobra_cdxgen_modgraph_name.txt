@@ -1,0 +1,2 @@
+FN pkg:golang/github.com/inconshreveable/mousetrap
+FN pkg:golang/gopkg.in/check.v1

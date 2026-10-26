@@ -1,0 +1,8 @@
+FN pkg:cargo/aho-corasick@1.1.2
+FN pkg:cargo/bstr@1.9.0
+FN pkg:cargo/log@0.4.20
+FN pkg:cargo/memchr@2.7.1
+FN pkg:cargo/regex-automata@0.4.4
+FN pkg:cargo/regex-syntax@0.8.2
+FN pkg:cargo/serde@1.0.195
+FN pkg:cargo/serde_derive@1.0.195

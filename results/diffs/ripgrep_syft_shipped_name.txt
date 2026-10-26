@@ -3,7 +3,6 @@ FP pkg:cargo/cc
 FP pkg:cargo/crossbeam-channel
 FP pkg:cargo/derive_arbitrary
 FP pkg:cargo/find-msvc-tools
-FP pkg:cargo/fuzz
 FP pkg:cargo/getrandom
 FP pkg:cargo/glob
 FP pkg:cargo/jobserver

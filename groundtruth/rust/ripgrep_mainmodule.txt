@@ -8,3 +8,4 @@ grep-regex
 grep-searcher
 ignore
 ripgrep
+fuzz

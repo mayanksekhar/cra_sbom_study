@@ -1,0 +1,5 @@
+FP pkg:npm/@axios/cjs-module-tests
+FP pkg:npm/@axios/cjs-smoke-tests
+FP pkg:npm/@axios/esm-module-tests
+FP pkg:npm/@axios/esm-smoke-tests
+FN pkg:npm/axios

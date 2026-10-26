@@ -1,0 +1,2 @@
+FP pkg:npm/typescript
+FN pkg:npm/axios

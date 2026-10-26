@@ -3,7 +3,6 @@ FP pkg:cargo/arbitrary@1.3.2
 FP pkg:cargo/bstr@1.9.0
 FP pkg:cargo/cc@1.0.83
 FP pkg:cargo/derive_arbitrary@1.3.2
-FP pkg:cargo/fuzz@0.0.1
 FP pkg:cargo/jobserver@0.1.27
 FP pkg:cargo/libc@0.2.152
 FP pkg:cargo/libfuzzer-sys@0.4.7

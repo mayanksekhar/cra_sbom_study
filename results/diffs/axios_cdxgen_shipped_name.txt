@@ -329,6 +329,7 @@ FP pkg:npm/asn1js
 FP pkg:npm/assertion-error
 FP pkg:npm/async-done
 FP pkg:npm/async-settle
+FP pkg:npm/axios
 FP pkg:npm/b4a
 FP pkg:npm/babel-plugin-polyfill-corejs2
 FP pkg:npm/babel-plugin-polyfill-corejs3

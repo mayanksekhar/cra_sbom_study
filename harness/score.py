@@ -53,7 +53,9 @@ for eco, kinds in KINDS.items():
         mm = {l.strip().lower() for l in (gt / f"{base}_mainmodule.txt").read_text().split()}
         normed = [n for n in (norm(x) for x in sbom_purls(sbom)) if n]
         eco_all = [n for n in normed if n[0] == TYPE[eco]]
-        comps = [n for n in eco_all if n[1] not in mm]
+        mvf = gt / f"{base}_mainversion.txt"
+        mv = mvf.read_text().strip().lower() if mvf.exists() else None
+        comps = [n for n in eco_all if not (n[1] in mm and (mv is None or n[2] in ("", mv)))]
         for kind in kinds:
             tf = gt / f"{base}_{kind}.txt"
             if not tf.exists():

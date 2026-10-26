@@ -620,4 +620,3 @@ FP pkg:npm/yargs
 FP pkg:npm/yargs-parser
 FP pkg:npm/yargs-unparser
 FP pkg:npm/yocto-queue
-FN pkg:npm/axios

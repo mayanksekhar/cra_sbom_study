@@ -2,7 +2,6 @@ FP pkg:npm/@jsr/std__assert
 FP pkg:npm/@jsr/std__internal
 FP pkg:npm/@types/bun
 FP pkg:npm/bun-types
-FN pkg:npm/axios
 FN pkg:npm/string-width-cjs
 FN pkg:npm/strip-ansi-cjs
 FN pkg:npm/wrap-ansi-cjs

@@ -2,6 +2,7 @@ FP pkg:npm/@axios/cjs-module-tests@1.0.0
 FP pkg:npm/@axios/cjs-smoke-tests@1.0.0
 FP pkg:npm/@axios/esm-module-tests@1.0.0
 FP pkg:npm/@axios/esm-smoke-tests@1.0.0
+FP pkg:npm/axios@1.0.0
 FN pkg:npm/@babel/code-frame@7.29.7
 FN pkg:npm/@babel/compat-data@7.29.7
 FN pkg:npm/@babel/core@7.29.7
@@ -267,7 +268,6 @@ FN pkg:npm/assertion-error@1.1.0
 FN pkg:npm/assertion-error@2.0.1
 FN pkg:npm/async-done@2.0.0
 FN pkg:npm/async-settle@2.0.0
-FN pkg:npm/axios@1.20.0
 FN pkg:npm/b4a@1.8.1
 FN pkg:npm/babel-plugin-polyfill-corejs2@0.4.17
 FN pkg:npm/babel-plugin-polyfill-corejs3@0.14.2

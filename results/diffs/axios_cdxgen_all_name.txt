@@ -90,6 +90,7 @@ FP pkg:npm/@vueuse/shared
 FP pkg:npm/@yarnpkg/lockfile
 FP pkg:npm/algoliasearch
 FP pkg:npm/ansi-colors
+FP pkg:npm/axios
 FP pkg:npm/birpc
 FP pkg:npm/browser-stdout
 FP pkg:npm/bun-types

@@ -215,7 +215,6 @@ FN pkg:npm/asn1js
 FN pkg:npm/assertion-error
 FN pkg:npm/async-done
 FN pkg:npm/async-settle
-FN pkg:npm/axios
 FN pkg:npm/b4a
 FN pkg:npm/babel-plugin-polyfill-corejs2
 FN pkg:npm/babel-plugin-polyfill-corejs3

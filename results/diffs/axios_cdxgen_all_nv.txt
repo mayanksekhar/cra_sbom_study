@@ -137,6 +137,7 @@ FP pkg:npm/@yarnpkg/lockfile@1.1.0
 FP pkg:npm/algoliasearch@5.50.1
 FP pkg:npm/ansi-colors@4.1.1
 FP pkg:npm/assertion-error@1.1.0
+FP pkg:npm/axios@1.20.0
 FP pkg:npm/balanced-match@1.0.2
 FP pkg:npm/birpc@2.9.0
 FP pkg:npm/brace-expansion@1.1.21

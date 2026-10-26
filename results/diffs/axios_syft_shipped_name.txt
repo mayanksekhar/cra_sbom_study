@@ -117,6 +117,7 @@ FP pkg:npm/@vueuse/integrations
 FP pkg:npm/@vueuse/metadata
 FP pkg:npm/@vueuse/shared
 FP pkg:npm/algoliasearch
+FP pkg:npm/axios
 FP pkg:npm/birpc
 FP pkg:npm/ccount
 FP pkg:npm/character-entities-html4

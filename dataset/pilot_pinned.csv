@@ -1,0 +1,11 @@
+name,ecosystem,repo_url,kind,commit_sha
+spring_petclinic,maven,https://github.com/spring-projects/spring-petclinic,application,500158f732419217507c7656904b8e6aa1bcc0d6
+commons_text,maven,https://github.com/apache/commons-text,library,aeab8401bbdb1a98d458c10f4ef6d77a86e5b4ba
+express,npm,https://github.com/expressjs/express,library,1c6f1b0fe4000977b9a7b4f34097e4d527dd9824
+axios,npm,https://github.com/axios/axios,library,790b5ba1d95a95e93d59b76995595c37f2b90a66
+requests,pypi,https://github.com/psf/requests,library,3c7baaa05ab4aa49cc819ce3a819d260de19c157
+flask,pypi,https://github.com/pallets/flask,library,d086db856be187255b8ec61ef409357393020f32
+cobra,go,https://github.com/spf13/cobra,library,adbc8813901bba65827259daa8e22ff94ec1f30e
+node_exporter,go,https://github.com/prometheus/node_exporter,application,32d5bccdaff4ede0b0412af4536ce83ee7ab5f6e
+ripgrep,rust,https://github.com/BurntSushi/ripgrep,application,6892bc2b7efe5909cbbeec8f757ed2c4c76b1d30
+fd,rust,https://github.com/sharkdp/fd,application,c44735ec0f130c2486afe9c976937c03b57a8c62

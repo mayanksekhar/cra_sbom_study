@@ -1,0 +1,2 @@
+pkg:maven/org.apache.commons/commons-lang3@3.21.0
+pkg:maven/org.apache.commons/commons-secure-xml@1.1.0

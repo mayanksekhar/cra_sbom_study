@@ -1,4 +1,3 @@
-FP pkg:golang/github.com/prometheus/node_exporter
 FN pkg:golang/cloud.google.com/go/compute/metadata
 FN pkg:golang/github.com/cilium/ebpf
 FN pkg:golang/github.com/davecgh/go-spew

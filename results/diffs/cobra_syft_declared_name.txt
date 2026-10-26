@@ -1,0 +1,2 @@
+FP pkg:golang/github.com/russross/blackfriday/v2
+FP pkg:golang/gopkg.in/check.v1

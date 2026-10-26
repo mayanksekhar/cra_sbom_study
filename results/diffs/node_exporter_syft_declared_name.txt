@@ -1,0 +1,4 @@
+FP pkg:golang/github.com/klauspost/compress
+FP pkg:golang/github.com/stretchr/testify
+FP pkg:golang/go.uber.org/goleak
+FP pkg:golang/go.yaml.in/yaml/v3

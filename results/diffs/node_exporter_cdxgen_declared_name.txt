@@ -1,0 +1,8 @@
+FN pkg:golang/cyphar.com/go-pathrs
+FN pkg:golang/github.com/google/go-cmp
+FN pkg:golang/github.com/illumos/go-kstat
+FN pkg:golang/github.com/kylelemons/godebug
+FN pkg:golang/github.com/lufia/iostat
+FN pkg:golang/github.com/power-devops/perfstat
+FN pkg:golang/github.com/siebenmann/go-kstat
+FN pkg:golang/howett.net/plist

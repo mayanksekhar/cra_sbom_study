@@ -4,12 +4,13 @@ from pathlib import Path
 from urllib.parse import unquote
 
 root = Path(__file__).resolve().parent.parent
+gt = root / "groundtruth" / "go"
 diffs = root / "results" / "diffs"
 diffs.mkdir(parents=True, exist_ok=True)
+KINDS = ("declared", "modgraph", "runtime_multi")
 
 def norm(purl):
-    p = purl.strip().split("#")[0].split("?")[0]
-    p = unquote(p)
+    p = unquote(purl.strip().split("#")[0].split("?")[0])
     if not p.startswith("pkg:"):
         return None
     ptype, _, rest = p[4:].partition("/")
@@ -41,15 +42,16 @@ rows = []
 for sbom in sorted((root / "results" / "raw" / "go").glob("*.cdx.json")):
     stem = sbom.name[: -len(".cdx.json")]
     project, tool = stem.rsplit("_", 1)
+    main = (gt / f"{project}_mainmodule.txt").read_text().strip().lower()
     normed = [n for n in (norm(x) for x in sbom_purls(sbom)) if n]
-    go = [n for n in normed if n[0] == "golang"]
-    for kind in ("modgraph", "runtime"):
-        tfile = root / "groundtruth" / "go" / f"{project}_{kind}.txt"
-        truth = {norm(l) for l in tfile.read_text().split()}
+    go_all = [n for n in normed if n[0] == "golang"]
+    go = [n for n in go_all if n[1] != main]
+    for kind in KINDS:
+        truth = {norm(l) for l in (gt / f"{project}_{kind}.txt").read_text().split()}
         truth.discard(None)
         r = {"project": project, "tool": tool, "truth": kind,
-             "sbom_go": len(go), "other": len(normed) - len(go),
-             "dupes": len(go) - len(set(go))}
+             "sbom_go": len(go), "self": len(go_all) - len(go),
+             "other": len(normed) - len(go_all), "dupes": len(go) - len(set(go))}
         for level, key in levels:
             got = {key(n) for n in go}
             exp = {key(n) for n in truth}
@@ -66,8 +68,7 @@ with open(root / "results" / "metrics_go.csv", "w", newline="") as fh:
     w.writeheader()
     w.writerows(rows)
 
-print(f"{'project':<14}{'tool':<8}{'truth':<9}{'n':>4}{'oth':>4}{'dup':>4} | name P/R/F1       | name+ver tp/fp/fn  P/R/F1")
+print(f"{'project':<14}{'tool':<8}{'truth':<14}{'n':>4}{'self':>5}{'oth':>4}{'dup':>4} | nameF1 | tp/fp/fn   P/R/F1 (name+ver)")
 for r in rows:
-    print(f"{r['project']:<14}{r['tool']:<8}{r['truth']:<9}{r['sbom_go']:>4}{r['other']:>4}{r['dupes']:>4} | "
-          f"{r['name_p']:.2f}/{r['name_r']:.2f}/{r['name_f1']:.2f} | "
+    print(f"{r['project']:<14}{r['tool']:<8}{r['truth']:<14}{r['sbom_go']:>4}{r['self']:>5}{r['other']:>4}{r['dupes']:>4} | {r['name_f1']:.2f}   | "
           f"{r['nv_tp']:>3}/{r['nv_fp']:>3}/{r['nv_fn']:>3}  {r['nv_p']:.2f}/{r['nv_r']:.2f}/{r['nv_f1']:.2f}")

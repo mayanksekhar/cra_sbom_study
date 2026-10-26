@@ -1,0 +1,2 @@
+FP pkg:golang/github.com/russross/blackfriday/v2@v2.1.0
+FN pkg:golang/github.com/inconshreveable/mousetrap@v1.1.0

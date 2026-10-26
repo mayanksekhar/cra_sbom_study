@@ -2,3 +2,4 @@
 tools/node_modules/
 dataset/src/
 results/raw/
+dataset/src_nolock/

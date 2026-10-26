@@ -1,0 +1,1 @@
+FN pkg:maven/org.springframework.boot/spring-boot-devtools@4.1.0

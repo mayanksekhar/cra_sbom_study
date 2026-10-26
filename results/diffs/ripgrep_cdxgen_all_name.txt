@@ -1,0 +1,5 @@
+FP pkg:cargo/arbitrary
+FP pkg:cargo/derive_arbitrary
+FP pkg:cargo/fuzz
+FP pkg:cargo/libfuzzer-sys
+FP pkg:cargo/once_cell

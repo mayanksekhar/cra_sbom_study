@@ -1,0 +1,5 @@
+FP pkg:pypi/sphinx@7.2.6
+FN pkg:pypi/certifi@2026.10.23
+FN pkg:pypi/charset-normalizer@3.5.2
+FN pkg:pypi/idna@3.20
+FN pkg:pypi/urllib3@2.8.0

@@ -1,0 +1,15 @@
+FP pkg:maven/commons-io/commons-io
+FP pkg:maven/net.bytebuddy/byte-buddy
+FP pkg:maven/net.bytebuddy/byte-buddy-agent
+FP pkg:maven/org.apache.commons/commons-collections4
+FP pkg:maven/org.apache.commons/commons-csv
+FP pkg:maven/org.apache.commons/commons-rng-simple
+FP pkg:maven/org.graalvm.js/js
+FP pkg:maven/org.graalvm.js/js-language
+FP pkg:maven/org.graalvm.js/js-scriptengine
+FP pkg:maven/org.graalvm.truffle/truffle-runtime
+FP pkg:maven/org.junit-pioneer/junit-pioneer
+FP pkg:maven/org.junit.jupiter/junit-jupiter
+FP pkg:maven/org.mockito/mockito-inline
+FP pkg:maven/org.openjdk.jmh/jmh-core
+FP pkg:maven/org.openjdk.jmh/jmh-generator-annprocess

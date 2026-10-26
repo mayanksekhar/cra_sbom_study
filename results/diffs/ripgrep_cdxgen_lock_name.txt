@@ -1,0 +1,3 @@
+FP pkg:cargo/fuzz
+FP pkg:cargo/libfuzzer-sys
+FP pkg:cargo/once_cell

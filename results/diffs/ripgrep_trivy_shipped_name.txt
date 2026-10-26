@@ -1,0 +1,15 @@
+FP pkg:cargo/arbitrary
+FP pkg:cargo/cc
+FP pkg:cargo/crossbeam-channel
+FP pkg:cargo/derive_arbitrary
+FP pkg:cargo/find-msvc-tools
+FP pkg:cargo/fuzz
+FP pkg:cargo/getrandom
+FP pkg:cargo/glob
+FP pkg:cargo/jobserver
+FP pkg:cargo/libfuzzer-sys
+FP pkg:cargo/once_cell
+FP pkg:cargo/pkg-config
+FP pkg:cargo/r-efi
+FP pkg:cargo/regex
+FP pkg:cargo/shlex

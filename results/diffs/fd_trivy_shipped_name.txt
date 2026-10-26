@@ -1,0 +1,14 @@
+FP pkg:cargo/cc
+FP pkg:cargo/cfg_aliases
+FP pkg:cargo/defmt
+FP pkg:cargo/defmt-macros
+FP pkg:cargo/defmt-parser
+FP pkg:cargo/find-msvc-tools
+FP pkg:cargo/proc-macro-error-attr2
+FP pkg:cargo/proc-macro-error2
+FP pkg:cargo/serde
+FP pkg:cargo/serde_core
+FP pkg:cargo/serde_derive
+FP pkg:cargo/shlex
+FP pkg:cargo/thiserror
+FP pkg:cargo/thiserror-impl

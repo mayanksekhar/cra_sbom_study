@@ -18,7 +18,7 @@ for (eco, name), kind in REF.items():
             purl = "pkg:npm/" + path.replace("@", "%40", 1) + "@" + ver
         else:
             purl = "pkg:" + ptype + "/" + path + "@" + ver
-        c = {"type": "library", "name": nm if ptype in ("maven","golang","npm") else path, "version": ver, "purl": purl}
+        c = {"type": "library", "name": nm if ptype == "maven" else path, "version": ver, "purl": purl}
         if ptype == "maven": c["group"] = grp
         comps.append(c)
     out = root/"results"/"reference"/eco; out.mkdir(parents=True, exist_ok=True)

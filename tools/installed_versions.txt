@@ -1,0 +1,30 @@
+Application:   syft
+Version:       1.45.1
+BuildDate:     2026-06-05T14:21:36Z
+Version: 0.69.3
+Vulnerability DB:
+  Version: 2
+  UpdatedAt: 2026-07-07 13:19:50.563872996 +0000 UTC
+  NextUpdate: 2026-07-08 13:19:50.56387269 +0000 UTC
+  DownloadedAt: 2026-07-07 19:14:01.224806373 +0000 UTC
+Java DB:
+  Version: 1
+  UpdatedAt: 2026-07-02 02:04:37.356061531 +0000 UTC
+  NextUpdate: 2026-07-05 02:04:37.356061161 +0000 UTC
+  DownloadedAt: 2026-07-02 12:06:24.510027015 +0000 UTC
+Check Bundle:
+  Digest: sha256:1583562f8b90ed2a071b99f0e5ffff6b57e4ceb6ca3e4796577b4e6a339eb74c
+  DownloadedAt: 2026-09-29 18:44:51.820056161 +0000 UTC
+Application:         grype
+Version:             0.114.0
+BuildDate:           2026-06-05T16:10:04Z
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
+1.165.0
+go version go1.26.8-X:nodwarf5 linux/amd64
+Python 3.14.7
+bash: node: command not found...
+Packages providing this file are:
+'nodejs20-bin'
+'nodejs22-bin'
+'nodejs24-bin'

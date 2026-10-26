@@ -1,0 +1,11 @@
+name,ecosystem,repo_url,kind
+spring_petclinic,maven,https://github.com/spring-projects/spring-petclinic,application
+commons_text,maven,https://github.com/apache/commons-text,library
+express,npm,https://github.com/expressjs/express,library
+axios,npm,https://github.com/axios/axios,library
+requests,pypi,https://github.com/psf/requests,library
+flask,pypi,https://github.com/pallets/flask,library
+cobra,go,https://github.com/spf13/cobra,library
+node_exporter,go,https://github.com/prometheus/node_exporter,application
+ripgrep,rust,https://github.com/BurntSushi/ripgrep,application
+fd,rust,https://github.com/sharkdp/fd,application

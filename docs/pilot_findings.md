@@ -48,3 +48,15 @@ Open questions:
 2. The six cdxgen components outside the axios lockfiles (bun and jsr packages) most likely come from tests/smoke/bun/package.json, which has no lockfile, so cdxgen resolved them itself. Not yet confirmed against the SBOM.
 3. The 13 flask findings on older versions that I attribute to examples/celery/requirements.txt (not checked).
 4. The pilot has too few findings for rates. The full dataset should pin release tags one to two years back.
+
+## VEX experiment (node_exporter, 3 findings that govulncheck says are not called, frozen DBs 20261030)
+
+Setup: reference SBOM of node_exporter (root component, dependency graph added) and a second SBOM other_app containing the same two modules. OpenVEX form A: product is the application, subcomponent is the vulnerable module. Form B: product is the vulnerable module. Grype 0.114.0, Trivy 0.69.3.
+
+Verified:
+1. Without a dependency graph in the SBOM, Trivy did not apply form A. With root to component edges, Trivy applied form A to node_exporter only (0 left, other_app 3 left). The first flat SBOM result was an artifact of my SBOM, not Trivy behaviour.
+2. Grype ignored form A in both runs (3 left, 0 ignored on both SBOMs).
+3. Form B suppressed all 3 findings in both scanners on both SBOMs. By the OpenVEX spec the statement is about the module as product, so this is an authoring hazard, not proven false suppression. It becomes false suppression only if a product containing the module calls the vulnerable code (control program pending).
+4. The same correct VEX file leaves different residual findings depending on the scanner (Trivy 0, Grype 3) and on whether the SBOM carries a dependency graph.
+
+Not tested: an intermediate library as product (the scenario in Hidden Dependencies), OSV Scanner VEX support, other VEX formats.

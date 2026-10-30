@@ -43,7 +43,7 @@ Method corrections made during the pilot:
 2. The component scorer excluded the root project by name only and dropped a real dependency (axios 1.20.0). Fixed to name and version.
 
 Open questions:
-1. Why Trivy reports nothing on axios 1.0.0 in the cdxgen SBOM while Grype reports 31 findings. The component is in the tree truth.
-2. Where cdxgen's six components outside the axios lockfiles come from (bun and jsr packages).
+1. Why Trivy reports 41 findings and Grype 72 on the cdxgen axios SBOM. The 31 extra Grype findings are all on axios 1.0.0. Both scanners report 31 on a minimal SBOM holding only that component, with or without a root named axios, so a name collision with the root is ruled out. axios 1.0.0 is not a top level entry of the cdxgen components and no lockfile entry with that version was found by grep. Untested hypothesis: it is a nested test project under metadata.component that Grype scans and Trivy ignores, which would make those 31 findings false matches against published axios advisories.
+2. The six cdxgen components outside the axios lockfiles (bun and jsr packages) most likely come from tests/smoke/bun/package.json, which has no lockfile, so cdxgen resolved them itself. Not yet confirmed against the SBOM.
 3. The 13 flask findings on older versions that I attribute to examples/celery/requirements.txt (not checked).
 4. The pilot has too few findings for rates. The full dataset should pin release tags one to two years back.

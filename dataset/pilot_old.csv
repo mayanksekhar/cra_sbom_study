@@ -1,0 +1,7 @@
+name,ecosystem,repo_url,kind,tag
+node_exporter,go,https://github.com/prometheus/node_exporter,application,v1.9.1
+cobra,go,https://github.com/spf13/cobra,library,v1.9.1
+axios,npm,https://github.com/axios/axios,library,v1.9.0
+fd,rust,https://github.com/sharkdp/fd,application,v10.2.0
+ripgrep,rust,https://github.com/BurntSushi/ripgrep,application,14.1.1
+commons_text,maven,https://github.com/apache/commons-text,library,rel/commons-text-1.9

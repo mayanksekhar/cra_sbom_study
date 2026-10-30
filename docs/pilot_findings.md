@@ -114,3 +114,11 @@ Grype: none 43, form A 43 (0 removed), form B 9 (34 of 34 removed), form A on fl
 No called finding was suppressed (same product). Cross product false suppression was shown by the control app with form B.
 Verified: correct product scoped VEX works only in Trivy and only with a dependency graph. Grype honours only the module level form.
 Not tested: real generator SBOMs (root identifier and graph differ by generator), why Grype ignores form A, fewer aliases per statement, other VEX formats.
+
+## VEX on real generator SBOMs (node_exporter v1.9.1, form A, product id taken from each SBOM's root)
+
+Result: removed of 34 not called findings (9 called kept in every case). Syft: Grype 0, Trivy 0. Trivy SBOM: Grype 0, Trivy 0. cdxgen: Grype 0, Trivy 1. On the handmade reference SBOM (versioned root purl, flat edges) Trivy removed 34 of 34. The earlier headline holds only for that construction.
+Root components: Syft type file, name is the local scan path, no version, no purl, bom-ref is a hash. Trivy type application, name is the local scan path, no version, no purl, bom-ref is a UUID. cdxgen has purl pkg:golang/github.com/prometheus/node_exporter without a version. No generator emits a versioned purl for the product.
+Graph shape: dependency entries with edges, of total: Syft 31 of 31, Trivy 29 of 55, cdxgen 17 of 46.
+Local paths leak into Syft and Trivy SBOMs because the scan target was a temporary copy. Possibly avoidable with options (unverified).
+Unverified: whether root identifier or graph shape causes the failure (2x2 test pending), whether Syft and Trivy root references are stable across runs.

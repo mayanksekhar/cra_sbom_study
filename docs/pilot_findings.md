@@ -191,3 +191,11 @@ Not called findings removed, then called findings removed: Trivy form A 353 of 3
 Verified: product scoped VEX is applied by Trivy and ignored by Grype, now over 10 projects and 356 findings. Grype honours only the module scoped form. Trivy lacks 3 not called findings that only Grype reports (counts match the 3 caddy Grype only findings, not traced).
 Caveats: SBOMs are hand built in the favourable shape (real generator SBOMs gave 0 to 1 of 34 on node_exporter). Each VEX file covers only its own project, so zero false suppression is expected and not informative. Denominators are raw scanner matches (Grype 232 called, reach.json 230).
 Anomaly (unverified): the corrected SBOMs show 75 (Grype) and 74 (Trivy) findings with no match in the reference classification. Hypothesis: advisories on the product's own module, now that the root has a versioned purl.
+
+## Cross project VEX suppression (Go set, 10 applications, module scoped form B, frozen DBs 20261030)
+
+Static prediction: a called finding of project Q is covered if another project P's module level file marks the same module version and advisory not called. 5 of 90 ordered pairs overlap; 42 of 230 called findings (18 percent) are covered by some other project's file (cli 14, hugo 15, k9s 13). Mostly golang.org/x/crypto v0.22.0 advisories.
+Scans of the 5 pairs: the prediction matched exactly in both scanners (hugo to cli 14, nats-server to cli 14, blackbox_exporter to k9s 13, cli to hugo 13, helm to hugo 2 called findings removed by Trivy and Grype). Product scoped form A removed 0 in all pairs (Trivy).
+Verified: module scoped VEX statements from one product silently suppress reachable findings in another product that shares the module version and advisory. This is the form Grype requires.
+Caveat: exposure depends on shared module versions across products (several projects here share Prometheus and other dependencies). A more varied set could show less.
+Unclassified findings on the corrected SBOMs: Trivy 74 (52 on the product's own module, 22 elsewhere), Grype 75 (53 and 22). Correction: with a versioned root purl Trivy does report advisories on the product's own module. The 22 elsewhere are caddy findings on go-chi/chi and go-jose with CVE aliases only, so reach.json gave no verdict.

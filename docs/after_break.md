@@ -14,3 +14,5 @@ Open: axios 1.0.0 is a nested docs package (Grype 31 findings, Trivy and OSV 0).
 Update 2026-10-30: step 1 (VEX experiment on node_exporter) done, see docs/pilot_findings.md. Next is step 2, older pins.
 
 Update 2026-10-30 evening: VEX line has a method and a result (see docs/pilot_findings.md). Next: explain Trivy anchor case, then scale the oracle (more Go projects at older pins) to get rates.
+
+Update 2026-10-30 night: VEX has 10 project rate, cross project suppression measured. Remaining: second ecosystem at scale, manual labelling of a finding sample, containers, write up. Roughly half done by my weights.

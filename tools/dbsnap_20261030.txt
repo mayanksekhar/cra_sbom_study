@@ -1,0 +1,30 @@
+frozen_at_utc: 20261030T110915Z
+== grype db status
+Path:      ./vulndb/20261030/grype/6/vulnerability.db
+Schema:    v6.1.10
+Built:     2026-10-30T06:23:28Z
+From:      https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.10_2026-10-30T00:25:15Z_1793341408.tar.zst?checksum=sha256%3A1e1b9cf2cbfaf16b770e4d75d7beb4840dc4254ca2281682fe5ec3700a4251a8
+Status:    valid
+== trivy db metadata
+{"Version":2,"NextUpdate":"2026-10-31T07:16:25.05417423Z","UpdatedAt":"2026-10-30T07:16:25.054174501Z","DownloadedAt":"2026-10-30T11:01:06.258243648Z"}
+
+== trivy java db metadata
+{"Version":1,"NextUpdate":"2026-11-02T00:58:38.959786014Z","UpdatedAt":"2026-10-30T00:58:38.959786515Z","DownloadedAt":"2026-10-30T11:06:44.034691493Z"}
+
+== osv databases
+./vulndb/20261030/osv/osv-scalibr/crates.io/all.zip
+./vulndb/20261030/osv/osv-scalibr/GitHub Actions/all.zip
+./vulndb/20261030/osv/osv-scalibr/Go/all.zip
+./vulndb/20261030/osv/osv-scalibr/Maven/all.zip
+./vulndb/20261030/osv/osv-scalibr/npm/all.zip
+./vulndb/20261030/osv/osv-scalibr/PyPI/all.zip
+== sha256
+742a8c3ced7bdbbd86b136a02eb2c4f7ba50e2e56d5935f2cff855346baf2a57  ./vulndb/20261030/grype/6/vulnerability.db
+ed3be3de4f440d6f8c068be57b69210bed6a3015aa4930a01100c3ef4d46d836  ./vulndb/20261030/trivy/db/trivy.db
+13c23e19cabee4f59629b1ba7ea8d1f34e8c0114331ae4d4016e7154acdcf03a  ./vulndb/20261030/trivy/java-db/trivy-java.db
+b87c474043a8fcb8b26d07397d9a1d36a810b751dd03552a2a1b47e05a9d69c8  ./vulndb/20261030/osv/osv-scalibr/Go/all.zip
+a961af29b08df7a5c918a74473da251cb97330394a9a152c4d65b8acea5978b7  ./vulndb/20261030/osv/osv-scalibr/Maven/all.zip
+d482a3941cec6fe870a50ffa911765912f875f05ad5c7ebdfe9736dfd5ee4f68  ./vulndb/20261030/osv/osv-scalibr/npm/all.zip
+a32e26d7dd60c84d8887b37e96e27851b14a33d324547acf273d3034abc963a7  ./vulndb/20261030/osv/osv-scalibr/PyPI/all.zip
+102c7302ba34369aa03ec4d239d4482579eb84a550310bc57cc6b335a9de4832  ./vulndb/20261030/osv/osv-scalibr/crates.io/all.zip
+2a8cf8f515a14708015aff9f99c2cf0754da9ec415ade5ec916cfd35dedb5e38  ./vulndb/20261030/osv/osv-scalibr/GitHub Actions/all.zip

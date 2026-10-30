@@ -17,7 +17,11 @@ def write_sbom(name, purl, comps):
            "metadata": {"component": {"type": "application", "name": name, "version": purl.rsplit("@", 1)[1],
                                       "purl": purl, "bom-ref": "root"}},
            "components": comps}
-    p = out / (name + ".cdx.json")
+    if os.environ.get("GRAPH"):
+        for c in comps:
+            c["bom-ref"] = c["purl"]
+        doc["dependencies"] = [{"ref": "root", "dependsOn": [c["purl"] for c in comps]}] + [{"ref": c["purl"], "dependsOn": []} for c in comps]
+    p = out / (name + ("_graph" if os.environ.get("GRAPH") else "") + ".cdx.json")
     p.write_text(json.dumps(doc))
     return p
 
@@ -97,7 +101,7 @@ for sname, sb in sboms.items():
                      "grype_ignored": len(gd.get("ignoredMatches") or []) if gd else "ERR",
                      "trivy_left": sum(len(r.get("Vulnerabilities") or []) for r in (td.get("Results") or [])) if td else "ERR",
                      "err": (ge + te).strip()[:120]})
-with open(out / "vex_matrix.csv", "w", newline="") as fh:
+with open(out / ("vex_matrix_graph.csv" if os.environ.get("GRAPH") else "vex_matrix.csv"), "w", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 print(f"{'sbom':<15}{'vex':<6}{'grype_left':>11}{'grype_ign':>10}{'trivy_left':>11}  err")
 for r in rows:

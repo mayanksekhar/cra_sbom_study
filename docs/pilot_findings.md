@@ -122,3 +122,12 @@ Root components: Syft type file, name is the local scan path, no version, no pur
 Graph shape: dependency entries with edges, of total: Syft 31 of 31, Trivy 29 of 55, cdxgen 17 of 46.
 Local paths leak into Syft and Trivy SBOMs because the scan target was a temporary copy. Possibly avoidable with options (unverified).
 Unverified: whether root identifier or graph shape causes the failure (2x2 test pending), whether Syft and Trivy root references are stable across runs.
+
+## VEX 2x2 on real generator SBOMs (node_exporter v1.9.1, form A, 34 not called findings, 9 called)
+
+Trivy, findings removed of 34 (9 called kept in all runs): Syft: orig 0, corrected root 0, flat graph 0, both 34. Trivy SBOM: same pattern as Syft. cdxgen: orig 1, corrected root 1, flat graph 34, both 34.
+Corrected root means type application, versioned purl. Flat graph means root depends directly on every component.
+Verified: Syft and Trivy SBOMs need both a purl on the root and a flat graph. cdxgen needs only the flat graph (its original root has an unversioned purl, which is enough). Correction: my earlier claim that a versioned product identifier is required was wrong, the factor is a purl on the product.
+Grype: 0 of 34 removed in all three generators with both fixes. It never applied a product scoped statement here. Cause unverified.
+Unverified: whether Trivy needs the vulnerable module to be a direct child of the root or reachable at any depth (graph analysis pending).
+Limits: one project, one oracle (govulncheck, static), one VEX format (OpenVEX), Go only.

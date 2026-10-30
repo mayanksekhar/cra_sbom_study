@@ -207,3 +207,5 @@ Result: no plausible use of a vulnerable function in the 18 testable cases. Matc
 Not testable: GO-2026-5006 and GO-2026-5005 (x/crypto) have no symbols in the Go DB record.
 Corrections: the earlier count of 8 of 20 came from substring matching without word boundaries. The label sample script printed all 20 rows because the CSV stores the match count as text and "0" is truthy. Empty symbol lists produced an empty alternation pattern.
 Not yet reviewed: the 20 called findings in the sample, and all 40 manual labels (results_go/label_sample.csv).
+
+Hugo lead closed (GO-2026-6112, getkin/kin-openapi): h.ServeHTTP at commands/server.go:381 is a standard net/http handler wrapper inside an http.HandlerFunc closure (checked by reading the surrounding code). hugo imports kin-openapi only in tpl/openapi/openapi3/openapi3.go (package openapi3). Advisory package paths: ['github.com/getkin/kin-openapi/openapi3filter']. Check: hugo does not import any vulnerable package of the advisory.

@@ -16,3 +16,5 @@ Update 2026-10-30: step 1 (VEX experiment on node_exporter) done, see docs/pilot
 Update 2026-10-30 evening: VEX line has a method and a result (see docs/pilot_findings.md). Next: explain Trivy anchor case, then scale the oracle (more Go projects at older pins) to get rates.
 
 Update 2026-10-30 night: VEX has 10 project rate, cross project suppression measured. Remaining: second ecosystem at scale, manual labelling of a finding sample, containers, write up. Roughly half done by my weights.
+
+Next after labelling: (1) fill results_go/label_sample.csv (40 rows, independent verdict first, then compare to govulncheck), (2) second ecosystem at scale for the SBOM to finding layer (Maven or Python), (3) container images, (4) trace the 3 Trivy missing findings and the 22 findings without a govulncheck verdict, (5) outline the paper.

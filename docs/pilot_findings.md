@@ -60,3 +60,15 @@ Verified:
 4. The same correct VEX file leaves different residual findings depending on the scanner (Trivy 0, Grype 3) and on whether the SBOM carries a dependency graph.
 
 Not tested: an intermediate library as product (the scenario in Hidden Dependencies), OSV Scanner VEX support, other VEX formats.
+
+## VEX control experiment (positive control for false suppression)
+
+Control: dataset/controls/other_app calls html.Parse and html.Render from golang.org/x/net v0.61.0. govulncheck (frozen Go DB) reports it affected by GO-2026-6860 and GO-2026-6866, so the findings are real and reachable.
+
+Verified (Grype 0.114.0, Trivy 0.69.3, SBOM with dependency graph):
+1. No VEX: 2 findings in both scanners.
+2. Form A (product is node_exporter): 2 left in both. Correctly not applied to a different product.
+3. Form B (product is the module): 0 left in both. Both reachable findings suppressed. This is false suppression, demonstrated on one constructed control.
+4. Form B is arguably a badly scoped statement, but it is what a pipeline produces when it turns one product's reachability result into a module level statement, and neither scanner restricts it to the analysed product.
+
+Not shown: a rate. Needs many findings (older release pins), an automated VEX generation step, and govulncheck as oracle per finding.

@@ -10,3 +10,5 @@ Next, in order:
 5. sbomqs completeness, dep scan, FOSSA terms check, container image set, container pipeline.
 
 Open: axios 1.0.0 is a nested docs package (Grype 31 findings, Trivy and OSV 0). cdxgen must run at spec 1.6 for Grype and Trivy.
+
+Update 2026-10-30: step 1 (VEX experiment on node_exporter) done, see docs/pilot_findings.md. Next is step 2, older pins.

@@ -154,3 +154,14 @@ Verified: component type is irrelevant. Trivy applies a product scoped statement
 Consequence: Syft SBOM (root without purl, no edges) and Trivy's own SBOM (purl-less anchor on the path) cannot carry a product scoped VEX in the version tested. cdxgen's partial result not yet checked against this rule.
 Correction: my earlier hypothesis that the anchor fails because of its type was wrong. The purl is the factor.
 Limits: one Trivy version, one project, one VEX format, Go only. Grype removed 0 in every variant (cause unknown).
+
+## Go set (10 applications at tags 12 to 21 months old; DB snapshot 20261030; 30 SBOMs in 3.5 minutes)
+
+Projects: alertmanager v0.27.0, blackbox_exporter v0.25.0, restic v0.17.2, fzf v0.56.0, k9s v0.32.5, helm v3.16.2, caddy v2.8.4, nats-server v2.10.22, cli v2.60.1, hugo v0.136.5. lazygit excluded (vendored dependencies, go list -m all fails on the vendor directory).
+Component level against runtime_multi truth (shipped modules, 3 platforms):
+1. cdxgen: precision 1.00 (hugo 0.99), recall 0.97 to 1.00 on 9 projects, fzf 0.55 (6 of 11). Misses 2 to 6 modules on large projects.
+2. Syft: recall 1.00, precision 0.60 to 1.00 (extras 6 to 98, largest on cli 98, k9s 87, caddy 65), plus 5 to 105 non Go components.
+3. Trivy: recall 1.00, precision 0.88 to 0.96 on 9 projects, nats-server 0.60 (6 extra), fzf 1.00.
+Findings (Grype and Trivy on the reference SBOMs): equal on alertmanager 52, blackbox_exporter 51, fzf 3; Grype higher on caddy (79 vs 76), cli (78 vs 75), helm (79 vs 74), hugo (77 vs 76). First scanner disagreement on identical input at scale.
+fzf: cdxgen SBOM lost 2 of 3 real findings because 5 of 11 components are absent (first loss of this kind in the Go set). Cause unverified (host platform resolution is a candidate).
+Inferred from the scorer's categories, not yet verified: Grype reports many extra findings on the product's own module for cdxgen SBOMs (caddy 19, helm 22, hugo 11, cli 9, alertmanager 1) and for Trivy generated SBOMs, but none for Syft SBOMs and none when Trivy is the scanner. Hypothesis: the root component has no version, so Grype matches every advisory for the product itself. Same family as the axios 1.0.0 and requests latest phantoms.

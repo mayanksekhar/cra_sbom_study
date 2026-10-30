@@ -199,3 +199,11 @@ Scans of the 5 pairs: the prediction matched exactly in both scanners (hugo to c
 Verified: module scoped VEX statements from one product silently suppress reachable findings in another product that shares the module version and advisory. This is the form Grype requires.
 Caveat: exposure depends on shared module versions across products (several projects here share Prometheus and other dependencies). A more varied set could show less.
 Unclassified findings on the corrected SBOMs: Trivy 74 (52 on the product's own module, 22 elsewhere), Grype 75 (53 and 22). Correction: with a versioned root purl Trivy does report advisories on the product's own module. The 22 elsewhere are caddy findings on go-chi/chi and go-jose with CVE aliases only, so reach.json gave no verdict.
+
+## Lexical check of govulncheck "not called" verdicts (sample of 20 of 356, seed 20261030)
+
+Method: whole word search in non test, non vendor source for the advisory's vulnerable symbol names (Go DB record). Weak test: cannot see reflection, interface dispatch or plugins.
+Result: no plausible use of a vulnerable function in the 18 testable cases. Matches were generic names on unrelated types (Reject in comments in caddy, Parse on kingpin, level and url in blackbox_exporter, flags.Parse in cli, Authenticate on the Swift client in restic, registry Client, Close and Accept in helm). SSH server advisories (NewServerConn, serverAuthenticate) match nothing in alertmanager, helm, restic, nats-server or blackbox_exporter. One weak lead: hugo commands/server.go line 381 calls h.ServeHTTP (type of h not yet checked; the advisory concerns kin-openapi).
+Not testable: GO-2026-5006 and GO-2026-5005 (x/crypto) have no symbols in the Go DB record.
+Corrections: the earlier count of 8 of 20 came from substring matching without word boundaries. The label sample script printed all 20 rows because the CSV stores the match count as text and "0" is truthy. Empty symbol lists produced an empty alternation pattern.
+Not yet reviewed: the 20 called findings in the sample, and all 40 manual labels (results_go/label_sample.csv).

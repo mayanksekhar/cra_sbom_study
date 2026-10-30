@@ -31,6 +31,7 @@ def sbom_purls(path):
                 out.append(c["purl"])
             walk(c.get("components"))
     walk(doc.get("components"))
+    walk(((doc.get("metadata") or {}).get("component") or {}).get("components"))
     return out
 
 def prf(tp, fp, fn):

@@ -16,6 +16,11 @@ FP pkg:npm/@algolia/recommend@5.50.1
 FP pkg:npm/@algolia/requester-browser-xhr@5.50.1
 FP pkg:npm/@algolia/requester-fetch@5.50.1
 FP pkg:npm/@algolia/requester-node-http@5.50.1
+FP pkg:npm/@axios/bun-smoke-tests
+FP pkg:npm/@axios/cjs-module-tests@1.0.0
+FP pkg:npm/@axios/cjs-smoke-tests@1.0.0
+FP pkg:npm/@axios/esm-module-tests@1.0.0
+FP pkg:npm/@axios/esm-smoke-tests@1.0.0
 FP pkg:npm/@babel/parser@7.29.9
 FP pkg:npm/@babel/types@7.29.8
 FP pkg:npm/@docsearch/css@3.8.2
@@ -137,6 +142,7 @@ FP pkg:npm/@yarnpkg/lockfile@1.1.0
 FP pkg:npm/algoliasearch@5.50.1
 FP pkg:npm/ansi-colors@4.1.1
 FP pkg:npm/assertion-error@1.1.0
+FP pkg:npm/axios@1.0.0
 FP pkg:npm/axios@1.20.0
 FP pkg:npm/balanced-match@1.0.2
 FP pkg:npm/birpc@2.9.0
@@ -165,6 +171,7 @@ FP pkg:npm/debug@4.3.3
 FP pkg:npm/decamelize@4.0.0
 FP pkg:npm/deep-eql@4.1.4
 FP pkg:npm/define-data-property@1.1.4
+FP pkg:npm/deno
 FP pkg:npm/dequal@2.0.3
 FP pkg:npm/devlop@1.1.0
 FP pkg:npm/diff@5.0.0

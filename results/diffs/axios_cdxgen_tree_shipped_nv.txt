@@ -1,3 +1,8 @@
+FP pkg:npm/@axios/bun-smoke-tests
+FP pkg:npm/@axios/cjs-module-tests@1.0.0
+FP pkg:npm/@axios/cjs-smoke-tests@1.0.0
+FP pkg:npm/@axios/esm-module-tests@1.0.0
+FP pkg:npm/@axios/esm-smoke-tests@1.0.0
 FP pkg:npm/@babel/code-frame@7.29.7
 FP pkg:npm/@babel/compat-data@7.29.7
 FP pkg:npm/@babel/core@7.29.7
@@ -267,6 +272,7 @@ FP pkg:npm/assertion-error@1.1.0
 FP pkg:npm/assertion-error@2.0.1
 FP pkg:npm/async-done@2.0.0
 FP pkg:npm/async-settle@2.0.0
+FP pkg:npm/axios@1.0.0
 FP pkg:npm/b4a@1.8.1
 FP pkg:npm/babel-plugin-polyfill-corejs2@0.4.17
 FP pkg:npm/babel-plugin-polyfill-corejs3@0.14.2
@@ -338,6 +344,7 @@ FP pkg:npm/deep-eql@4.1.4
 FP pkg:npm/deep-is@0.1.4
 FP pkg:npm/deepmerge@4.3.1
 FP pkg:npm/define-data-property@1.1.4
+FP pkg:npm/deno
 FP pkg:npm/depd@2.0.0
 FP pkg:npm/detect-file@1.0.0
 FP pkg:npm/detect-libc@2.1.2

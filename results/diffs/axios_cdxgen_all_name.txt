@@ -16,6 +16,11 @@ FP pkg:npm/@algolia/recommend
 FP pkg:npm/@algolia/requester-browser-xhr
 FP pkg:npm/@algolia/requester-fetch
 FP pkg:npm/@algolia/requester-node-http
+FP pkg:npm/@axios/bun-smoke-tests
+FP pkg:npm/@axios/cjs-module-tests
+FP pkg:npm/@axios/cjs-smoke-tests
+FP pkg:npm/@axios/esm-module-tests
+FP pkg:npm/@axios/esm-smoke-tests
 FP pkg:npm/@docsearch/css
 FP pkg:npm/@docsearch/js
 FP pkg:npm/@docsearch/react
@@ -108,6 +113,7 @@ FP pkg:npm/csstype
 FP pkg:npm/decamelize
 FP pkg:npm/deep-eql
 FP pkg:npm/define-data-property
+FP pkg:npm/deno
 FP pkg:npm/dequal
 FP pkg:npm/devlop
 FP pkg:npm/diff

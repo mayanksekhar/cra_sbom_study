@@ -1,7 +1,13 @@
+FP pkg:npm/@axios/bun-smoke-tests
+FP pkg:npm/@axios/cjs-module-tests
+FP pkg:npm/@axios/cjs-smoke-tests
+FP pkg:npm/@axios/esm-module-tests
+FP pkg:npm/@axios/esm-smoke-tests
 FP pkg:npm/@jsr/std__assert
 FP pkg:npm/@jsr/std__internal
 FP pkg:npm/@types/bun
 FP pkg:npm/bun-types
+FP pkg:npm/deno
 FN pkg:npm/string-width-cjs
 FN pkg:npm/strip-ansi-cjs
 FN pkg:npm/wrap-ansi-cjs

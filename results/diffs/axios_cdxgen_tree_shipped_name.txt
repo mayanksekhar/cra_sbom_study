@@ -1,3 +1,8 @@
+FP pkg:npm/@axios/bun-smoke-tests
+FP pkg:npm/@axios/cjs-module-tests
+FP pkg:npm/@axios/cjs-smoke-tests
+FP pkg:npm/@axios/esm-module-tests
+FP pkg:npm/@axios/esm-smoke-tests
 FP pkg:npm/@babel/code-frame
 FP pkg:npm/@babel/compat-data
 FP pkg:npm/@babel/core
@@ -273,6 +278,7 @@ FP pkg:npm/deep-eql
 FP pkg:npm/deep-is
 FP pkg:npm/deepmerge
 FP pkg:npm/define-data-property
+FP pkg:npm/deno
 FP pkg:npm/depd
 FP pkg:npm/detect-file
 FP pkg:npm/detect-libc

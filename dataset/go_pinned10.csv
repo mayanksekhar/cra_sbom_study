@@ -1,0 +1,11 @@
+name,ecosystem,repo_url,kind,tag,commit_sha
+alertmanager,go,https://github.com/prometheus/alertmanager,application,v0.27.0,0aa3c2aad14cff039931923ab16b26b7481783b5
+blackbox_exporter,go,https://github.com/prometheus/blackbox_exporter,application,v0.25.0,ef3ff4fef195333fb8ee0039fb487b2f5007908f
+restic,go,https://github.com/restic/restic,application,v0.17.2,2fb07dcdb190dcc2a0f960567debb9d5b5963ef6
+fzf,go,https://github.com/junegunn/fzf,application,v0.56.0,ff1687744db737c935db0f8e4d29373db9f84d8c
+k9s,go,https://github.com/derailed/k9s,application,v0.32.5,1440643e8d1a101a38d9be1933131ddf5c863940
+helm,go,https://github.com/helm/helm,application,v3.16.2,13654a52f7c70a143b1dd51416d633e1071faffb
+caddy,go,https://github.com/caddyserver/caddy,application,v2.8.4,7088605cc11c52c2777ab613dfc5c2a9816006e4
+nats-server,go,https://github.com/nats-io/nats-server,application,v2.10.22,240e9a41ee009fdc83a845d374bc0ce2139b8942
+cli,go,https://github.com/cli/cli,application,v2.60.1,a381ca5dc43eaba63d2356b1442da119864a17ac
+hugo,go,https://github.com/gohugoio/hugo,application,v0.136.5,46cccb021bc6425455f4eec093f5cc4a32f1d12c

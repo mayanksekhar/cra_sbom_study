@@ -137,3 +137,11 @@ Limits: one project, one oracle (govulncheck, static), one VEX format (OpenVEX),
 Removed of 34 (9 called kept): depth 1, 2, 3 and 4 all 34. Refutes the direct child hypothesis. Depth is not what blocks Trivy on real generator SBOMs.
 Findings per vulnerable module: x/crypto 20 not called (0 called), x/net 11 not called (7 called), x/text 1 (1), klauspost/compress 1 (0), x/sys 1 (0). Module counts overstate spread: 2 modules carry 31 of 34.
 Open: why Trivy removes nothing on Syft and Trivy generated SBOMs unless root purl and flat graph are both corrected. Candidates, untested: dangling or mismatched refs in generator graphs, root reference handling, extra file or lockfile components.
+
+## VEX bisection on Syft's SBOM (Trivy 0.69.3, form A, 34 not called, 9 called kept in all runs)
+
+Removed of 34: original 0; root purl only 0; root type, name and version only 0; root bom-ref set to the purl only 0; flat edges only 0; existing graph plus root edges (no purl) 0; root purl plus flat edges 34; adding reference rewrite or type, name and version on top 34; keeping only Go components 34.
+Verified: Trivy applies a product scoped statement only when the root component has a purl AND the graph connects the root to the vulnerable components. Type, name, version, bom-ref format and non Go components do not matter.
+Open: Trivy's own SBOM with a corrected root purl still removed 0 although all 5 modules were reachable via the lockfile anchor, so connection through that path is not enough. Hypothesis (untested): the anchor is not a library typed component and is not traversed.
+cdxgen fit is partial: root purl present, 2 of 5 modules reachable, 1 finding removed. Findings per reachable module not checked.
+Grype removed 0 in every variant (cause unknown).

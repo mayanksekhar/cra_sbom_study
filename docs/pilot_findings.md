@@ -100,3 +100,17 @@ Checks completed:
 2. GHSA-599f-7c49-w659 is CVE-2022-42889 (Text4Shell). All three generators report it on the commons-text 1.9 root component, a correct finding on the product itself. This corrects my earlier prediction that it would not appear.
 3. ripgrep crossbeam-channel 0.5.13 is a dev dependency of the workspace crate ignore (in all, lock and tree_lock, not shipped). All three generators report it.
 Finding kinds from here on: real (shipped), product itself, dev or test only, other not shipped.
+
+## Finding kinds and VEX at scale (node_exporter v1.9.1)
+
+Finding kinds (Grype findings, Trivy identical). Columns: real found, on product name, other version, not shipped.
+Older pins: cdxgen 48 of 48, 33, 4, 258. Syft 48 of 48, 33, 0, 3. Trivy 48 of 48, 1, 0, 1. Extra totals 295, 36, 2.
+Pilot HEAD: cdxgen 22 of 22, 31, 0, 90. Syft 5 of 22, 32, 13, 45. Trivy 22 of 22, 1, 13, 8.
+Caveat: the product category matches by name only. At HEAD it probably holds the 31 findings on the docs package axios 1.0.0 (not the product). Unverified. The 13 other version findings at HEAD are unexplained.
+
+VEX at scale: 43 findings (9 called, 34 not called per govulncheck), reference SBOM with dependency graph, statements carry all aliases (84 statements for 34 findings).
+Trivy: none 43, form A 9 (34 of 34 removed), form B 9, form A on flat SBOM 43.
+Grype: none 43, form A 43 (0 removed), form B 9 (34 of 34 removed), form A on flat SBOM 43.
+No called finding was suppressed (same product). Cross product false suppression was shown by the control app with form B.
+Verified: correct product scoped VEX works only in Trivy and only with a dependency graph. Grype honours only the module level form.
+Not tested: real generator SBOMs (root identifier and graph differ by generator), why Grype ignores form A, fewer aliases per statement, other VEX formats.

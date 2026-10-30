@@ -72,3 +72,15 @@ Verified (Grype 0.114.0, Trivy 0.69.3, SBOM with dependency graph):
 4. Form B is arguably a badly scoped statement, but it is what a pipeline produces when it turns one product's reachability result into a module level statement, and neither scanner restricts it to the analysed product.
 
 Not shown: a rate. Needs many findings (older release pins), an automated VEX generation step, and govulncheck as oracle per finding.
+
+## Older pins (set _old: node_exporter v1.9.1, cobra v1.9.1, axios v1.9.0, fd v10.2.0, ripgrep 14.1.1, commons_text 1.9; DB snapshot 20261030)
+
+Verified:
+1. Reference findings (real vulnerabilities in the shipped set, Grype and Trivy identical): node_exporter 43, axios 3, commons_text 1, fd 1, ripgrep 0, cobra 0. Total 48. At HEAD the same projects had 3 findings on node_exporter and 0 on axios.
+2. All three generators recover 48 of 48. No miss comes from a missing component in this set.
+3. Findings outside the shipped set (Grype): cdxgen 295 (291 on axios), Syft 36 (32 on axios), Trivy 2. cdxgen reports 1,672 components on axios against 8 that ship.
+4. axios at v1.9.0 has one lockfile and no docs/package.json. Syft and Trivy match the shipped set exactly (8 of 8). At HEAD Syft reported 235 npm components for the same project. The nested placeholder phantom finding does not occur at this tag.
+5. cdxgen again misses one platform specific module on cobra and node_exporter (host platform resolution).
+6. commons_text 1.9 cannot show Text4Shell because the vulnerable artifact is the root component (excluded). Its one reference finding is on a runtime dependency.
+
+Hypotheses, not yet verified: Syft's 32 extra axios findings are advisories on GitHub Actions components. The single extra ripgrep finding (all three generators) is unexplained.

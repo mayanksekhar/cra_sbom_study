@@ -1,0 +1,10 @@
+globset
+grep
+grep-cli
+grep-matcher
+grep-pcre2
+grep-printer
+grep-regex
+grep-searcher
+ignore
+ripgrep

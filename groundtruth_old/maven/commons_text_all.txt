@@ -1,0 +1,16 @@
+pkg:maven/commons-io/commons-io@2.7
+pkg:maven/net.bytebuddy/byte-buddy-agent@1.10.13
+pkg:maven/net.bytebuddy/byte-buddy@1.10.13
+pkg:maven/org.apache.commons/commons-lang3@3.11
+pkg:maven/org.apiguardian/apiguardian-api@1.1.0
+pkg:maven/org.assertj/assertj-core@3.16.1
+pkg:maven/org.junit.jupiter/junit-jupiter-api@5.6.2
+pkg:maven/org.junit.jupiter/junit-jupiter-engine@5.6.2
+pkg:maven/org.junit.jupiter/junit-jupiter-params@5.6.2
+pkg:maven/org.junit.jupiter/junit-jupiter@5.6.2
+pkg:maven/org.junit.platform/junit-platform-commons@1.6.2
+pkg:maven/org.junit.platform/junit-platform-engine@1.6.2
+pkg:maven/org.mockito/mockito-core@3.4.4
+pkg:maven/org.mockito/mockito-inline@3.4.4
+pkg:maven/org.objenesis/objenesis@2.6
+pkg:maven/org.opentest4j/opentest4j@1.2.0

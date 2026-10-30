@@ -1,0 +1,8 @@
+pkg:npm/asynckit@0.4.0
+pkg:npm/combined-stream@1.0.8
+pkg:npm/delayed-stream@1.0.0
+pkg:npm/follow-redirects@1.15.6
+pkg:npm/form-data@4.0.0
+pkg:npm/mime-db@1.52.0
+pkg:npm/mime-types@2.1.35
+pkg:npm/proxy-from-env@1.1.0

@@ -83,4 +83,14 @@ Verified:
 5. cdxgen again misses one platform specific module on cobra and node_exporter (host platform resolution).
 6. commons_text 1.9 cannot show Text4Shell because the vulnerable artifact is the root component (excluded). Its one reference finding is on a runtime dependency.
 
-Hypotheses, not yet verified: Syft's 32 extra axios findings are advisories on GitHub Actions components. The single extra ripgrep finding (all three generators) is unexplained.
+Corrections and further results (older pins):
+1. Refuted: Syft's 32 extra axios findings are not on GitHub Actions components. All 32 are npm components.
+2. The reference excludes the root component, so the extra finding counts above include real findings on the product itself: axios@1.9.0 (GHSA-hfxv-24rg-xrqf) and commons-text@1.9 (GHSA-599f-7c49-w659). cdxgen, Syft and Trivy all report the commons_text root. These need their own category in the findings scorer. My earlier prediction that the commons_text root finding would not appear was wrong.
+3. cdxgen's axios extras include tar 2.2.2, ip 1.1.8 and vm2 3.9.19 (apparent dev tooling, real advisories, not shipped).
+4. ripgrep: crossbeam-channel 0.5.13 (GHSA-pg9f-39pc-qf8g) is reported by all three generators and is outside the shipped set. Likely a dev or build only dependency (unverified, reverse tree check pending).
+
+Reachability on node_exporter v1.9.1 (frozen Go DB 20261030, govulncheck JSON, 43 Grype findings on the reference):
+1. Called: 9. Imported, not called: 0. Module only (required, vulnerable package never imported): 34. No Go DB entry: 0.
+2. Reachability would remove 34 of 43 findings (79 percent). Component level precision on this project is 21 percent.
+3. Caveat: level classification relies on my reading of govulncheck's JSON trace fields. Cross check against the text output pending.
+4. Single project. A published Go study reports a 74.4 percent reduction on other projects (not directly comparable).

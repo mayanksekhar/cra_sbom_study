@@ -7,3 +7,4 @@ vulndb/
 results/vulns/
 results/vulns_ref/
 results/vulns_*/
+results/vex/

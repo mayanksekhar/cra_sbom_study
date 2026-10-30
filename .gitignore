@@ -10,3 +10,4 @@ results/vulns_*/
 results/vex/
 dataset/src_old/
 results_old/
+dataset/src_go/

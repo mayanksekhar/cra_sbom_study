@@ -1,0 +1,12 @@
+name,ecosystem,repo_url,kind,tag
+alertmanager,go,https://github.com/prometheus/alertmanager,application,v0.27.0
+blackbox_exporter,go,https://github.com/prometheus/blackbox_exporter,application,v0.25.0
+restic,go,https://github.com/restic/restic,application,v0.17.2
+fzf,go,https://github.com/junegunn/fzf,application,v0.56.0
+lazygit,go,https://github.com/jesseduffield/lazygit,application,v0.44.1
+k9s,go,https://github.com/derailed/k9s,application,v0.32.5
+helm,go,https://github.com/helm/helm,application,v3.16.2
+caddy,go,https://github.com/caddyserver/caddy,application,v2.8.4
+nats-server,go,https://github.com/nats-io/nats-server,application,v2.10.22
+cli,go,https://github.com/cli/cli,application,v2.60.1
+hugo,go,https://github.com/gohugoio/hugo,application,v0.136.5

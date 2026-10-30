@@ -41,9 +41,10 @@ Verified:
 Method corrections made during the pilot:
 1. The reference builder shortened Go module names and scoped npm names, which hid real findings (node_exporter showed 0 instead of 1). Fixed.
 2. The component scorer excluded the root project by name only and dropped a real dependency (axios 1.20.0). Fixed to name and version.
+8. Phantom findings from nested workspace packages. In the cdxgen axios SBOM, docs/package.json is a private package named axios at version 1.0.0 (the docs site, not the library). cdxgen lists it under metadata.component.components. Grype matches it against the real axios advisories and reports 31 findings. Trivy ignores nested components and reports 0. Confirmed with a minimal SBOM: nested gives Grype 31 and Trivy 0, top level gives 31 and 31. This explains the cdxgen axios disagreement (Grype 72, Trivy 41). Nested components occur in 2 of 11 cdxgen SBOMs (axios 7, ripgrep 10). The component scorer reads only top level components and does not see them.
 
 Open questions:
-1. Why Trivy reports 41 findings and Grype 72 on the cdxgen axios SBOM. The 31 extra Grype findings are all on axios 1.0.0. Both scanners report 31 on a minimal SBOM holding only that component, with or without a root named axios, so a name collision with the root is ruled out. axios 1.0.0 is not a top level entry of the cdxgen components and no lockfile entry with that version was found by grep. Untested hypothesis: it is a nested test project under metadata.component that Grype scans and Trivy ignores, which would make those 31 findings false matches against published axios advisories.
+1. (Resolved, see finding 8.)
 2. The six cdxgen components outside the axios lockfiles (bun and jsr packages) most likely come from tests/smoke/bun/package.json, which has no lockfile, so cdxgen resolved them itself. Not yet confirmed against the SBOM.
 3. The 13 flask findings on older versions that I attribute to examples/celery/requirements.txt (not checked).
 4. The pilot has too few findings for rates. The full dataset should pin release tags one to two years back.

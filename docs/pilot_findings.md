@@ -145,3 +145,12 @@ Verified: Trivy applies a product scoped statement only when the root component 
 Open: Trivy's own SBOM with a corrected root purl still removed 0 although all 5 modules were reachable via the lockfile anchor, so connection through that path is not enough. Hypothesis (untested): the anchor is not a library typed component and is not traversed.
 cdxgen fit is partial: root purl present, 2 of 5 modules reachable, 1 finding removed. Findings per reachable module not checked.
 Grype removed 0 in every variant (cause unknown).
+
+## Trivy VEX path rule (node_exporter v1.9.1, Trivy 0.69.3, form A)
+
+Trivy's own SBOM: root child is an application named go.mod with no purl (the lockfile anchor).
+Chain test, one intermediate component between a purl root and all modules, removed of 34 (9 called kept in all runs): library with purl 34; library no purl 0; application no purl 0; file no purl 0.
+Verified: component type is irrelevant. Trivy applies a product scoped statement only if the root and every component on the path to the vulnerable module have a purl.
+Consequence: Syft SBOM (root without purl, no edges) and Trivy's own SBOM (purl-less anchor on the path) cannot carry a product scoped VEX in the version tested. cdxgen's partial result not yet checked against this rule.
+Correction: my earlier hypothesis that the anchor fails because of its type was wrong. The purl is the factor.
+Limits: one Trivy version, one project, one VEX format, Go only. Grype removed 0 in every variant (cause unknown).

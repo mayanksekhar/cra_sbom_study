@@ -131,3 +131,9 @@ Verified: Syft and Trivy SBOMs need both a purl on the root and a flat graph. cd
 Grype: 0 of 34 removed in all three generators with both fixes. It never applied a product scoped statement here. Cause unverified.
 Unverified: whether Trivy needs the vulnerable module to be a direct child of the root or reachable at any depth (graph analysis pending).
 Limits: one project, one oracle (govulncheck, static), one VEX format (OpenVEX), Go only.
+
+## VEX depth sweep (Trivy, reference SBOM with versioned root purl, synthetic intermediate layers)
+
+Removed of 34 (9 called kept): depth 1, 2, 3 and 4 all 34. Refutes the direct child hypothesis. Depth is not what blocks Trivy on real generator SBOMs.
+Findings per vulnerable module: x/crypto 20 not called (0 called), x/net 11 not called (7 called), x/text 1 (1), klauspost/compress 1 (0), x/sys 1 (0). Module counts overstate spread: 2 modules carry 31 of 34.
+Open: why Trivy removes nothing on Syft and Trivy generated SBOMs unless root purl and flat graph are both corrected. Candidates, untested: dangling or mismatched refs in generator graphs, root reference handling, extra file or lockfile components.

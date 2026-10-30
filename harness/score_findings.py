@@ -44,7 +44,7 @@ def load_trivy(path):
     return out
 
 LOAD = {"grype": load_grype, "trivy": load_trivy}
-CATS = ("fp_not_shipped", "fp_other_version", "fn_component_absent", "fn_no_version", "fn_wrong_version", "fn_scanner_miss")
+CATS = ("fp_root", "fp_not_shipped", "fp_other_version", "fn_component_absent", "fn_no_version", "fn_wrong_version", "fn_scanner_miss")
 rows = []
 for d in sorted((RES / "vulns").iterdir()):
     eco = d.name
@@ -57,6 +57,8 @@ for d in sorted((RES / "vulns").iterdir()):
         for t, p, v in sb:
             sbp.setdefault((t, p), set()).add(v)
         refp = {(t, p) for t, p, v in sbom_keys(RES / "reference" / eco / f"{base}_truth.cdx.json")}
+        mmf = root / ("groundtruth" + SUF) / eco / f"{base}_mainmodule.txt"
+        mm = {l.strip().lower() for l in mmf.read_text().split()} if mmf.exists() else set()
         for scanner, load in LOAD.items():
             scan = d / f"{stem}_{scanner}.json"
             ref = RES / "vulns_ref" / eco / f"{base}_truth_{scanner}.json"
@@ -65,7 +67,10 @@ for d in sorted((RES / "vulns").iterdir()):
             rf, gf = load(ref), load(scan)
             cat = Counter()
             for k, vid in gf - rf:
-                cat["fp_other_version" if (k[0], k[1]) in refp else "fp_not_shipped"] += 1
+                if k[1] in mm:
+                    cat["fp_root"] += 1
+                else:
+                    cat["fp_other_version" if (k[0], k[1]) in refp else "fp_not_shipped"] += 1
             for k, vid in rf - gf:
                 if k in sb:
                     cat["fn_scanner_miss"] += 1

@@ -94,3 +94,9 @@ Reachability on node_exporter v1.9.1 (frozen Go DB 20261030, govulncheck JSON, 4
 2. Reachability would remove 34 of 43 findings (79 percent). Component level precision on this project is 21 percent.
 3. Caveat: level classification relies on my reading of govulncheck's JSON trace fields. Cross check against the text output pending.
 4. Single project. A published Go study reports a 74.4 percent reduction on other projects (not directly comparable).
+
+Checks completed:
+1. govulncheck text output agrees with the JSON classification (affected by 9, 0 in imported packages, 34 in required modules only).
+2. GHSA-599f-7c49-w659 is CVE-2022-42889 (Text4Shell). All three generators report it on the commons-text 1.9 root component, a correct finding on the product itself. This corrects my earlier prediction that it would not appear.
+3. ripgrep crossbeam-channel 0.5.13 is a dev dependency of the workspace crate ignore (in all, lock and tree_lock, not shipped). All three generators report it.
+Finding kinds from here on: real (shipped), product itself, dev or test only, other not shipped.

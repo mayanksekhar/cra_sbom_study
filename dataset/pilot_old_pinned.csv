@@ -1,0 +1,7 @@
+name,ecosystem,repo_url,kind,tag,commit_sha
+node_exporter,go,https://github.com/prometheus/node_exporter,application,v1.9.1,f2ec547b49af53815038a50265aa2adcd1275959
+cobra,go,https://github.com/spf13/cobra,library,v1.9.1,40b5bc1437a564fc795d388b23835e84f54cd1d1
+axios,npm,https://github.com/axios/axios,library,v1.9.0,cdcfd214c169a1acba8e267ab8e77ff4dfec3105
+fd,rust,https://github.com/sharkdp/fd,application,v10.2.0,b19136871310b01500b4f09eadd7387b8476be47
+ripgrep,rust,https://github.com/BurntSushi/ripgrep,application,14.1.1,4649aa9700619f94cf9c66876e9549d83420e16c
+commons_text,maven,https://github.com/apache/commons-text,library,rel/commons-text-1.9,cb85bed468e99d34b88d0c81fe20eb3b1615660e

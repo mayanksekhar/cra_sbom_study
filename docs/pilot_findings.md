@@ -165,3 +165,9 @@ Component level against runtime_multi truth (shipped modules, 3 platforms):
 Findings (Grype and Trivy on the reference SBOMs): equal on alertmanager 52, blackbox_exporter 51, fzf 3; Grype higher on caddy (79 vs 76), cli (78 vs 75), helm (79 vs 74), hugo (77 vs 76). First scanner disagreement on identical input at scale.
 fzf: cdxgen SBOM lost 2 of 3 real findings because 5 of 11 components are absent (first loss of this kind in the Go set). Cause unverified (host platform resolution is a candidate).
 Inferred from the scorer's categories, not yet verified: Grype reports many extra findings on the product's own module for cdxgen SBOMs (caddy 19, helm 22, hugo 11, cli 9, alertmanager 1) and for Trivy generated SBOMs, but none for Syft SBOMs and none when Trivy is the scanner. Hypothesis: the root component has no version, so Grype matches every advisory for the product itself. Same family as the axios 1.0.0 and requests latest phantoms.
+
+## Go set: root purl version and scanner gap
+
+Root purl version (cdxgen SBOMs, Grype, findings on the product's own module). Without version, with the tag: alertmanager 1 and 0, blackbox_exporter 0 and 0, caddy 19 and 15, cli 9 and 9, fzf 1 and 1, helm 23 and 6, hugo 11 and 8, k9s 0 and 0, nats-server 44 and 14, restic 0 and 0. Total 108 and 53.
+Verified: 55 of 108 findings on the product's own name come from the missing root version (phantoms, same family as axios 1.0.0 and requests latest). The remaining 53 are findings on the product at its pinned version and are not individually checked.
+Scanner gap on the identical reference SBOM: Trivy reports nothing Grype misses. Grype only findings: caddy 3, cli 3, helm 5, hugo 1 (goldmark, go-chi, containerd, docker, sigstore timestamp-authority). All shown identifiers are GO- entries. Reading (unverified): Grype uses the Go vulnerability database and Trivy does not, or uses it differently.

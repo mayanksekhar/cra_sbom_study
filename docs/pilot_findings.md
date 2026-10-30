@@ -171,3 +171,9 @@ Inferred from the scorer's categories, not yet verified: Grype reports many extr
 Root purl version (cdxgen SBOMs, Grype, findings on the product's own module). Without version, with the tag: alertmanager 1 and 0, blackbox_exporter 0 and 0, caddy 19 and 15, cli 9 and 9, fzf 1 and 1, helm 23 and 6, hugo 11 and 8, k9s 0 and 0, nats-server 44 and 14, restic 0 and 0. Total 108 and 53.
 Verified: 55 of 108 findings on the product's own name come from the missing root version (phantoms, same family as axios 1.0.0 and requests latest). The remaining 53 are findings on the product at its pinned version and are not individually checked.
 Scanner gap on the identical reference SBOM: Trivy reports nothing Grype misses. Grype only findings: caddy 3, cli 3, helm 5, hugo 1 (goldmark, go-chi, containerd, docker, sigstore timestamp-authority). All shown identifiers are GO- entries. Reading (unverified): Grype uses the Go vulnerability database and Trivy does not, or uses it differently.
+
+## Go set: the Grype only findings
+
+12 findings reported by Grype and not by Trivy on the identical reference SBOM (caddy 3, cli 3, helm 5, hugo 1). OSV Scanner reports all 12. Eleven carry GHSA and CVE aliases (the exception is go-chi/chi v4.1.2+incompatible with GO and GHSA only), so they are not Go database only entries. Refuted: my earlier reading that the gap comes from Grype using the Go database.
+Two Trivy gap patterns: no findings at all on goldmark (v1.5.4, v1.7.1, v1.7.4) and chi v4.1.2+incompatible; other findings on containerd, docker, timestamp-authority and chi v5 but not these advisories. Mechanism not tested.
+Consequence: given an accurate SBOM, Trivy misses real advisories that Grype and OSV report, on 4 of 10 projects. The pilot agreement did not hold at this scale. One snapshot, one Trivy version, 12 findings.

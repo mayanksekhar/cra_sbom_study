@@ -1,0 +1,9 @@
+pkg:golang/github.com/klauspost/compress@v1.17.11
+pkg:golang/github.com/minio/highwayhash@v1.0.3
+pkg:golang/github.com/nats-io/jwt/v2@v2.5.8
+pkg:golang/github.com/nats-io/nkeys@v0.4.7
+pkg:golang/github.com/nats-io/nuid@v1.0.1
+pkg:golang/go.uber.org/automaxprocs@v1.6.0
+pkg:golang/golang.org/x/crypto@v0.28.0
+pkg:golang/golang.org/x/sys@v0.26.0
+pkg:golang/golang.org/x/time@v0.7.0

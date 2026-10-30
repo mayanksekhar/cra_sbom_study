@@ -4,7 +4,11 @@ from pathlib import Path
 from urllib.parse import unquote
 
 root = Path(__file__).resolve().parent.parent
-diffs = root / "results" / "diffs"
+import os
+SUF = os.environ.get("SET_SUFFIX", "")
+RES = root / ("results" + SUF)
+GTR = root / ("groundtruth" + SUF)
+diffs = RES / "diffs"
 diffs.mkdir(parents=True, exist_ok=True)
 KINDS = {"go": ["declared", "modgraph", "runtime_multi"], "maven": ["all", "shipped"],
          "npm": ["all", "shipped", "tree_all", "tree_shipped"], "pypi": ["shipped", "lock"], "rust": ["lock", "all", "shipped", "tree_lock"]}
@@ -46,8 +50,8 @@ def fmt(k):
 levels = (("name", lambda n: n[:2]), ("nv", lambda n: n))
 rows = []
 for eco, kinds in KINDS.items():
-    gt = root / "groundtruth" / eco
-    for sbom in sorted((root / "results" / "raw" / eco).glob("*.cdx.json")):
+    gt = GTR / eco
+    for sbom in sorted((RES / "raw" / eco).glob("*.cdx.json")):
         stem = sbom.name[: -len(".cdx.json")]
         project, tool = stem.rsplit("_", 1)
         base = project.replace("_nolock", "")
@@ -77,7 +81,7 @@ for eco, kinds in KINDS.items():
                 (diffs / f"{project}_{tool}_{kind}_{level}.txt").write_text("\n".join(lines) + "\n")
             rows.append(r)
 
-with open(root / "results" / "metrics.csv", "w", newline="") as fh:
+with open(RES / "metrics.csv", "w", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
     w.writeheader()
     w.writerows(rows)

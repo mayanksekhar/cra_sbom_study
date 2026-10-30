@@ -4,6 +4,9 @@ from collections import Counter
 from pathlib import Path
 from urllib.parse import unquote
 root = Path(__file__).resolve().parent.parent
+import os
+SUF = os.environ.get("SET_SUFFIX", "")
+RES = root / ("results" + SUF)
 
 def parse(purl):
     p = unquote((purl or "").split("?")[0].split("#")[0]).lower()
@@ -43,20 +46,20 @@ def load_trivy(path):
 LOAD = {"grype": load_grype, "trivy": load_trivy}
 CATS = ("fp_not_shipped", "fp_other_version", "fn_component_absent", "fn_no_version", "fn_wrong_version", "fn_scanner_miss")
 rows = []
-for d in sorted((root / "results/vulns").iterdir()):
+for d in sorted((RES / "vulns").iterdir()):
     eco = d.name
     for g in sorted(d.glob("*_grype.json")):
         stem = g.name[: -len("_grype.json")]
         project, tool = stem.rsplit("_", 1)
         base = project.replace("_nolock", "")
-        sb = sbom_keys(root / "results/raw" / eco / f"{stem}.cdx.json")
+        sb = sbom_keys(RES / "raw" / eco / f"{stem}.cdx.json")
         sbp = {}
         for t, p, v in sb:
             sbp.setdefault((t, p), set()).add(v)
-        refp = {(t, p) for t, p, v in sbom_keys(root / "results/reference" / eco / f"{base}_truth.cdx.json")}
+        refp = {(t, p) for t, p, v in sbom_keys(RES / "reference" / eco / f"{base}_truth.cdx.json")}
         for scanner, load in LOAD.items():
             scan = d / f"{stem}_{scanner}.json"
-            ref = root / "results/vulns_ref" / eco / f"{base}_truth_{scanner}.json"
+            ref = RES / "vulns_ref" / eco / f"{base}_truth_{scanner}.json"
             if not ref.exists() or not scan.exists() or scan.stat().st_size == 0:
                 continue
             rf, gf = load(ref), load(scan)
@@ -75,7 +78,7 @@ for d in sorted((root / "results/vulns").iterdir()):
             r.update({c: cat[c] for c in CATS})
             rows.append(r)
 
-with open(root / "results/findings_vs_reference.csv", "w", newline="") as fh:
+with open(RES / "findings_vs_reference.csv", "w", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 print(f"{'sbom':<26}{'scan':<7}{'ref':>4}{'got':>5}{'tp':>4}{'fp':>4}{'fn':>4} | fp:notship/othver  fn:absent/nover/wrongver/scanner")
 for r in rows:

@@ -177,3 +177,10 @@ Scanner gap on the identical reference SBOM: Trivy reports nothing Grype misses.
 12 findings reported by Grype and not by Trivy on the identical reference SBOM (caddy 3, cli 3, helm 5, hugo 1). OSV Scanner reports all 12. Eleven carry GHSA and CVE aliases (the exception is go-chi/chi v4.1.2+incompatible with GO and GHSA only), so they are not Go database only entries. Refuted: my earlier reading that the gap comes from Grype using the Go database.
 Two Trivy gap patterns: no findings at all on goldmark (v1.5.4, v1.7.1, v1.7.4) and chi v4.1.2+incompatible; other findings on containerd, docker, timestamp-authority and chi v5 but not these advisories. Mechanism not tested.
 Consequence: given an accurate SBOM, Trivy misses real advisories that Grype and OSV report, on 4 of 10 projects. The pilot agreement did not hold at this scale. One snapshot, one Trivy version, 12 findings.
+
+## Go set: reachability rate (govulncheck, frozen Go DB 20261030, findings on the reference SBOM, Grype and Trivy merged)
+
+10 applications, 608 findings. Called 230 (38 percent), not called 356 (59 percent), unknown 22 (4 percent, no Go DB entry or no verdict).
+Per project (findings, called, not called, unknown): alertmanager 52, 11, 41, 0; blackbox_exporter 51, 11, 40, 0; restic 53, 11, 42, 0; fzf 3, 0, 1, 2; k9s 112, 64, 45, 3; helm 79, 28, 48, 3; caddy 79, 31, 43, 5; nats-server 24, 0, 24, 0; cli 78, 39, 35, 4; hugo 77, 35, 37, 5.
+Reachability would remove 356 of 608 findings (59 percent; 61 percent of the 586 with a verdict).
+Caveats: alertmanager, blackbox_exporter and restic share dependencies (identical 11 called), so projects are not independent. Findings on the product's own module are included. govulncheck is static and misses reflection, so the removable share is probably at or below 59 percent. Published comparison points (74 percent in one Go study, 92 percent vendor claim) come from different populations.

@@ -184,3 +184,10 @@ Consequence: given an accurate SBOM, Trivy misses real advisories that Grype and
 Per project (findings, called, not called, unknown): alertmanager 52, 11, 41, 0; blackbox_exporter 51, 11, 40, 0; restic 53, 11, 42, 0; fzf 3, 0, 1, 2; k9s 112, 64, 45, 3; helm 79, 28, 48, 3; caddy 79, 31, 43, 5; nats-server 24, 0, 24, 0; cli 78, 39, 35, 4; hugo 77, 35, 37, 5.
 Reachability would remove 356 of 608 findings (59 percent; 61 percent of the 586 with a verdict).
 Caveats: alertmanager, blackbox_exporter and restic share dependencies (identical 11 called), so projects are not independent. Findings on the product's own module are included. govulncheck is static and misses reflection, so the removable share is probably at or below 59 percent. Published comparison points (74 percent in one Go study, 92 percent vendor claim) come from different populations.
+
+## VEX across the Go set (10 applications, reference SBOMs with versioned root purl and flat graph, per project VEX files)
+
+Not called findings removed, then called findings removed: Trivy form A 353 of 353 and 0 of 216; Trivy form B 353 of 353 and 0 of 216 (left 290 each). Grype form A 0 of 356 and 0 of 232 (left 663); Grype form B 356 of 356 and 0 of 232 (left 307).
+Verified: product scoped VEX is applied by Trivy and ignored by Grype, now over 10 projects and 356 findings. Grype honours only the module scoped form. Trivy lacks 3 not called findings that only Grype reports (counts match the 3 caddy Grype only findings, not traced).
+Caveats: SBOMs are hand built in the favourable shape (real generator SBOMs gave 0 to 1 of 34 on node_exporter). Each VEX file covers only its own project, so zero false suppression is expected and not informative. Denominators are raw scanner matches (Grype 232 called, reach.json 230).
+Anomaly (unverified): the corrected SBOMs show 75 (Grype) and 74 (Trivy) findings with no match in the reference classification. Hypothesis: advisories on the product's own module, now that the root has a versioned purl.

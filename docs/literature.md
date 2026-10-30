@@ -21,3 +21,11 @@ Our results that replicate prior work: lockfile dependence, Syft and Trivy agree
 Possibly new, unverified: nested and placeholder name phantom findings, miss attribution (0 scanner misses), measured DB drift, OSV feed coverage, OSV crash on Syft npm and PyPI SBOMs, cdxgen 1.7 rejection.
 Direction: an accurate SBOM is not sufficient for correct vulnerability handling.
 Next: read Mind the Gap, Reality Check, Hidden Dependencies and VEX-Bench in full, then add a container image set.
+
+## Full reads (2026-10-30)
+
+Mind the Gap (arXiv 2609.19920, Inria and ANSSI): 3,000+ JS and Rust projects, lockfile baseline that keeps dev and test dependencies, generation only, no vulnerability scanning. Covers scope policy, cdxgen directory exclusions, symlink and workspace placeholder components, aliasing. Plans an edge case benchmark and Python and Java extension. Tool versions Syft 1.38.2, Trivy 0.68.2, cdxgen 12.0.0. Our npm and Rust RQ1 results are replication.
+
+Hidden Dependencies (arXiv 2604.21278): Java, synthetic, one vulnerability. With VEX applied, Grype and CVE-Bin-Tool suppress nothing, Trivy suppresses everything including reachable cases (false suppression). Cloned components not detected in CycloneDX by any tool. Measures consistency, not accuracy. Same Trivy version (0.69.3) as our setup.
+
+Revised direction: From SBOM to finding, where correctness is lost. Layers: SBOM scope and identity (extend to Go, Maven, Python), scanner consumption (phantom matches, versionless components, feed coverage, drift, crashes), VEX application on real findings. CRA discussion: what an evidence grade pipeline must declare.

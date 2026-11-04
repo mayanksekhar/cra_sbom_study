@@ -1,0 +1,2 @@
+pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.0
+pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.0

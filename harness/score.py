@@ -10,7 +10,7 @@ RES = root / ("results" + SUF)
 GTR = root / ("groundtruth" + SUF)
 diffs = RES / "diffs"
 diffs.mkdir(parents=True, exist_ok=True)
-KINDS = {"go": ["declared", "modgraph", "runtime_multi"], "maven": ["all", "shipped"],
+KINDS = {"go": ["declared", "modgraph", "runtime_multi"], "maven": ["all", "shipped", "shipped_nonopt"],
          "npm": ["all", "shipped", "tree_all", "tree_shipped"], "pypi": ["shipped", "lock"], "rust": ["lock", "all", "shipped", "tree_lock"]}
 TYPE = {"go": "golang", "maven": "maven", "npm": "npm", "pypi": "pypi", "rust": "cargo"}
 

@@ -209,3 +209,9 @@ Corrections: the earlier count of 8 of 20 came from substring matching without w
 Not yet reviewed: the 20 called findings in the sample, and all 40 manual labels (results_go/label_sample.csv).
 
 Hugo lead closed (GO-2026-6112, getkin/kin-openapi): h.ServeHTTP at commands/server.go:381 is a standard net/http handler wrapper inside an http.HandlerFunc closure (checked by reading the surrounding code). hugo imports kin-openapi only in tpl/openapi/openapi3/openapi3.go (package openapi3). Advisory package paths: ['github.com/getkin/kin-openapi/openapi3filter']. Check: hugo does not import any vulnerable package of the advisory.
+
+## Go set: residue traced (2026-11-04)
+
+A. 22 findings without a govulncheck verdict (caddy 5, cli 4, fzf 2, helm 3, hugo 5, k9s 3): 16 have no Go DB record under any alias (go-jose v3 and v4, docker/distribution, kin-openapi v0.123.0 five advisories, chi CVE-2026-114437), outside the Go oracle. 6 have a Go DB record but govulncheck reported no finding (fzf x/text two, caddy chi CVE-2025-71405, helm oras-go, k9s oras-go and docker/docker). Cause of the 6 not yet checked (candidate: Go DB affected range excludes the module version).
+B. Correction: Grype only findings are 17 in 5 projects (caddy 3, cli 3, helm 5, hugo 1, k9s 5), Trivy only 0. The earlier count of 12 in 4 projects omitted k9s because the score table was truncated. By govulncheck class: 3 not called, 14 called. The 3 not called match 356 minus 353 in the VEX test and the caddy gap (43 vs 40). Trivy misses 14 of 230 called findings (6 percent), consistent with its 216 called total in the VEX test. Trivy DB (built 2026-10-30 07:16 UTC) is newer than Grype DB (06:23), so staleness does not explain it. OSV confirmed the first 12 earlier, the k9s 5 unchecked. Mechanism unknown.
+Trade off (inferred): Grype finds the reachable findings but ignores product scoped VEX, Trivy honours product scoped VEX but misses 14 reachable findings.

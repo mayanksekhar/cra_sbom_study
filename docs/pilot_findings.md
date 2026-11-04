@@ -246,3 +246,16 @@ Maven set, optional dependencies result (2026-11-05):
 1. shipped_nonopt truth (shipped minus dependencies marked (optional) in dependency:tree, with descendants): only jedis has optional dependencies (11 marked, 16 shipped becomes 5). Other 7 projects unchanged. Parsing assumption (every optional dependency carries the marker in tree output) verified for jedis only.
 2. Component level totals against shipped_nonopt, name level: Trivy P 0.98 R 0.99 (237/4/3), Syft P 0.54 R 0.33 (80/67/160), cdxgen P 0.48 R 1.00 (240/264/0). Trivy recovers jedis fully (5 of 5). Remaining Trivy misses: swagger-petstore jakarta.activation 1.2.2 and jaxb-osgi 2.3.8, spring-framework-petclinic h2 (causes not checked).
 3. jackson-databind 2.18.0 has 13 advisories on the product itself (GHSA, fixed in 2.18.8 to 2.18.11, high and medium severity, polymorphic type validator bypasses, deserialization DoS and SSRF). Published after the release (data is from Nov 2026). jedis root is 5.2.0-SNAPSHOT, so its zero product findings carries no information.
+
+## Cross set table (Grype findings against the reference, 2026-11-05; Trivy as scanner identical except where noted)
+
+Real findings, found, recall, findings on the product name, findings not shipped, missed by cause (absent, no version):
+Go 10 apps: cdxgen 610, 608, 1.00, 91, 0, (2, 0). Syft 610, 610, 1.00, 0, 48. Trivy 610, 610, 1.00, 91, 14.
+Maven 8 projects: cdxgen 201, 201, 1.00, 15, 104. Syft 201, 43, 0.21, 14, 18, (120, 38). Trivy 201, 201, 1.00, 14, 0.
+Older pins 6: all three 48, 48, 1.00. Product 33, 33, 1 (cdxgen, Syft, Trivy), not shipped 258, 3, 1.
+Pilot HEAD 10: cdxgen 22, 22. Syft 22, 5, 0.23, (16, 1). Trivy 22, 22.
+Observations: no scanner miss in any set (every miss traces to the SBOM). Syft recovers about a fifth of real findings on Maven (and one pilot Maven project) but all of them in Go and on the older pins.
+Caveat: the Go reference total is 610 here (finding per advisory and package, from the scorer) and 608 in reach.json (aliases merged). The paper must fix one counting unit.
+Caveat: the 91 product findings for Trivy as generator in Go are unexplained (its root has no purl).
+
+Maven truth discrepancy (swagger-petstore, spring-framework-petclinic): the 3 Trivy misses are not Trivy gaps. jakarta.activation-api 1.2.2 (group jakarta.activation) is a transitive compile dependency in the tree, but my truth lists com.sun.activation jakarta.activation 1.2.2, a different artifact. jaxb-osgi and h2 are in dependency:list but absent from dependency:tree. Maven's two views differ for these. Shipped truth for Maven has a small error rate (3 of 237 components) to be stated in the methods.

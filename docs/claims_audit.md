@@ -14,3 +14,11 @@
 | Database drift: 19 to 22 reference findings in 4 days | pilot snapshots 20261026, 20261030 | verified | none |
 
 Rule: re-run the producing script from a clean checkout before the number goes in the paper.
+| Syft recovers about a fifth of the real findings on Maven (43 of 201), all of them in Go and on the older pins | harness/score_findings.py, results_mvn, results_go, results_old | verified in 3 sets, every miss traced to the SBOM (120 component absent, 38 no version) | only 3 Maven projects hold 180 of 201 findings, no second Maven generator version |
+| Syft on Maven lists the dependencies declared in the root pom (component count 1 to 3 above the declared count in 8 of 8 projects) | inline script (pom regex count) | verified as a pattern, regex count is rough | the 1 to 3 extra components unexplained |
+| Maven profile behaviour: Trivy ignores profile dependencies, Syft lists all (even flag only), cdxgen follows Maven | /tmp controls (proftest, proftest2), swagger-petstore, petclinic | verified, two minimal controls and two real projects | controls are not in the repo (rebuild as harness/control_profiles.sh), one version per tool |
+| Maven shipped truth error about 3 of 237 components (artifact naming), dependency:list is more complete than dependency:tree | results_mvn, groundtruth_mvn | verified for 8 projects | jakarta.activation naming case open |
+| Optional dependencies: Trivy omits them, jedis shipped set 16 vs 5 for a consumer | groundtruth_mvn shipped_nonopt | verified for jedis, other 7 projects not tested against the pom | parser assumption (every optional marked in tree output) |
+| Reference findings in Maven: 201 across 8 projects, Grype and Trivy identical | results_mvn | verified | 3 projects dominate |
+| Go set: 608 vs 610 reference findings depending on the counting unit | reach.json vs findings_vs_reference.csv | open | paper must fix one unit (finding per advisory and package, or per merged alias set) |
+| Go set: 53 stable findings on the product's own module path (application advisories) | harness/go_checks.py | verified as counts | not classified (relevance to a consumer of an application is unclear) |

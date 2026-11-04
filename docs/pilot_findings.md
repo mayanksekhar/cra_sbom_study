@@ -272,3 +272,8 @@ Maven truth checks (2026-11-05):
 4. spring-framework-petclinic h2: not found by the pattern <artifactId>h2< in the pom, so how it enters the build is unknown. Trivy's SBOM has no h2 component. Open.
 5. spring-framework-petclinic excludes com.sun.activation:jakarta.activation in its pom (duplicate classes with jakarta.activation-api).
 Net: Maven shipped truth error up to 3 of 237 components, no effect on findings (finding recovery was complete for Trivy and cdxgen).
+
+Maven profile lead (2026-11-05):
+1. swagger-petstore jaxb-osgi 2.3.8 and jakarta.xml.bind-api sit in profile jdk11+ (activation jdk [11,)), active under our JDK 25. spring-framework-petclinic h2 2.2.224 sits in profile H2 (line 499), shown at runtime scope in the verbose tree. Trivy's SBOM lacks jaxb-osgi and h2. Both misses are profile declared dependencies (2 examples, a lead not a rule).
+2. Not established: whether Trivy reads profile dependencies at all, and why profile H2 is active in our build (activeByDefault not checked). A profile that needs a flag is a build variant and including it in truth would overstate the default shipped set.
+3. The earlier explanation of the jakarta.activation case as a naming error is weaker: jakarta.xml.bind-api is in the same jdk11+ profile. Why dependency:list shows com.sun.activation and the tree shows jakarta.activation-api is open.

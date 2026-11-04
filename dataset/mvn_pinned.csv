@@ -1,0 +1,5 @@
+name,ecosystem,repo_url,kind,tag,commit_sha
+swagger-petstore,maven,https://github.com/swagger-api/swagger-petstore,application,swagger-petstore-v31-1.0.7,de190889497b917c90cd0fff84c808f119d732c9
+jpetstore-6,maven,https://github.com/mybatis/jpetstore-6,application,jpetstore-6.1.0,0632ee486774fb4c09fb267a9e264975862cd778
+spring-petclinic-rest,maven,https://github.com/spring-petclinic/spring-petclinic-rest,application,v3.2.1,dc06a75075a6a0d493897f8982df7e474afcd7cf
+WebGoat,maven,https://github.com/OWASP/WebGoat,application,5900119921433ecacbb02acde5ef0f2186d2626f,5900119921433ecacbb02acde5ef0f2186d2626f

@@ -1,0 +1,17 @@
+pkg:maven/net.sourceforge.stripes/stripes@1.6.0
+pkg:maven/org.apache.taglibs/taglibs-standard-impl@1.2.5
+pkg:maven/org.apache.taglibs/taglibs-standard-spec@1.2.5
+pkg:maven/org.hsqldb/hsqldb@2.7.1
+pkg:maven/org.mybatis/mybatis-spring@2.1.0
+pkg:maven/org.mybatis/mybatis@3.5.11
+pkg:maven/org.slf4j/slf4j-api@2.0.5
+pkg:maven/org.slf4j/slf4j-simple@2.0.5
+pkg:maven/org.springframework/spring-aop@5.3.24
+pkg:maven/org.springframework/spring-beans@5.3.24
+pkg:maven/org.springframework/spring-context@5.3.24
+pkg:maven/org.springframework/spring-core@5.3.24
+pkg:maven/org.springframework/spring-expression@5.3.24
+pkg:maven/org.springframework/spring-jcl@5.3.24
+pkg:maven/org.springframework/spring-jdbc@5.3.24
+pkg:maven/org.springframework/spring-tx@5.3.24
+pkg:maven/org.springframework/spring-web@5.3.24

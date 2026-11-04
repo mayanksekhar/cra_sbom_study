@@ -1,0 +1,6 @@
+go version go1.26.10-X:nodwarf5 linux/amd64
+Apache Maven 3.9.11 (Red Hat 3.9.11-11)
+cargo 1.99.0 (5f94df478 2026-08-27) (Fedora 1.99.0-1.fc44)
+rustc 1.99.0 (b940084d7 2026-09-28) (Fedora 1.99.0-1.fc44)
+v24.18.0
+11.16.0

@@ -19,6 +19,6 @@
 | Optional dependencies: Trivy omits them, jedis shipped set 16 vs 5 for a consumer | groundtruth_mvn shipped_nonopt | verified for jedis, other 7 projects not tested against the pom | parser assumption (every optional marked in tree output) |
 | Reference findings in Maven: 201 across 8 projects, Grype and Trivy identical | results_mvn | verified | 3 projects dominate |
 | Go set: 608 vs 610 reference findings depending on the counting unit | reach.json vs findings_vs_reference.csv | open | paper must fix one unit (finding per advisory and package, or per merged alias set) |
-| Go set: 53 stable findings on the product's own module path (application advisories) | harness/go_checks.py | verified as counts | not classified (relevance to a consumer of an application is unclear) |
+| Go set: 53 findings on the product's own module at its pinned version, 52 confirmed by Grype, Trivy and OSV, 52 with a Go DB record, 18 high or critical | harness/product_findings.py, results_go/product_findings.csv | verified in 10 Go applications, one snapshot | exploitability not assessed, why 4 projects have none |
 
 Rule: re-run the producing script from a clean checkout before the number goes in the paper.

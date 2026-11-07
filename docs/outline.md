@@ -22,7 +22,7 @@ P: one version per tool. M: one counting unit for findings (count_units.py resul
 2. Syft on Maven lists only declared pom dependencies. P, 8 of 8 projects, regex count is rough.
 3. Maven profiles and optional dependencies (Trivy ignores profiles, Syft lists all, cdxgen follows Maven). P, two controls plus two projects.
 4. Nested and placeholder components give phantom findings (axios 1.0.0, requests latest). P, two examples.
-5. Missing root version creates phantom findings in Go (55 of 108). V. M: classify the remaining 53 on the product's own module.
+5. Missing root version creates phantom findings in Go (55 of 108). V. The remaining 53 findings on the product itself are robust across three scanners (52 of 53) and sit outside the SBOM inventory because generators exclude the root. V for this set, exploitability not assessed.
 
 ## 5 Scanner consumption
 1. Every finding missed against the same scanner's reference result traces to the SBOM, none to the scanner (4 sets). V. Wording must say per scanner.

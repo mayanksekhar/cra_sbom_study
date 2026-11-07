@@ -303,3 +303,9 @@ Grype raw 53 (equal to the earlier with tag total), 53 clusters after alias merg
 Verified: findings on the product itself are robust across scanners, unlike dependency findings where Grype reports 17 more than Trivy. Generators exclude the root from the component list, so these findings are outside the inventory the SBOM presents.
 Unverified: why four projects have none (no Go DB entries, or versions predate advisories). Whether these are exploitable in a deployed instance (no reachability verdict used for the main module).
 Earlier unversioned root counts (nats-server 44, helm 23) were phantoms from missing versions, a separate effect (55 of 108 removed by adding the version).
+
+Go DB coverage of the product's own module path (2026-11-07, frozen Go DB 20261030, records with an affected entry for the module path):
+blackbox_exporter 0, k9s 0, restic 0, alertmanager 1, fzf 1, cli 9, hugo 10, helm 15, caddy 17, nats-server 24. Findings at the pinned tag: 0, 0, 0, 0, 1, 9, 8, 6, 15, 14.
+Reading: three of the four projects with no product findings have no records in the database for their module, so a clean result there reflects database coverage. alertmanager has 1 record and 0 findings at v0.27.0 (record not read). Records exceed findings where advisories were fixed at or before the tag (not checked version by version).
+Note: my first script labelled a column "with fix after tag" but counted records with any fixed event, so it equalled the record count. It carries no information and is not used.
+Threat to validity: absence of findings on the product's own module is not evidence of absence, it can mean the database is silent.

@@ -24,5 +24,6 @@
 | Trivy reads Python requirements only from requirements.txt style names (ansible-lint: 0 PyPI components from .config/requirements-lock.txt, 33 once copied to requirements.txt) | /tmp test (rebuild as a harness script) | one project, one rename | other file names and folders, script not in the repo |
 \n\n
 | CRA requirements as read: Art. 13(8) duty covers components, Annex I Part II point (1) floor is top level dependencies, Art. 14 time limits 24h, 72h, 14 days | docs/cra_mapping.md | Regulation read in the EUR-Lex consolidated English text (Articles 1 to 71 and Annexes I, II, VII; documentation version, no legal effect) | BSI TR-03183-2 v2.1.0 read from a third party mirror (check against bsi.bund.de), no legal interpretation attempted, implementing acts under Art. 13(24) not yet adopted per secondary sources |
+| Scanners read different version carriers: Trivy takes the version from the purl and ignores the version field, Grype reads the version field, OSV Scanner treats UNKNOWN and latest like v0.0.0 | harness/control_version.py, harness/control_version2.py | verified for 2 to 4 Go projects, minimal product SBOM, one version per tool | other ecosystems, OSV sets compared by count only, mechanisms, units differ between the two controls |
 
 Rule: re-run the producing script from a clean checkout before the number goes in the paper.

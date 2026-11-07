@@ -152,6 +152,9 @@ def poetry_lock_closure(d, groups):
 def truth_pypi(name, d, gt):
     pj = tomllib.loads((d / "pyproject.toml").read_text())
     pname = (pj.get("project", {}).get("name") or pj.get("tool", {}).get("poetry", {}).get("name"))
+    if not pname:
+        m = re.search(r"name\s*=\s*[\'\"]([A-Za-z0-9_.-]+)[\'\"]", (d / "setup.py").read_text()) if (d / "setup.py").exists() else None
+        pname = m.group(1) if m else name
     (gt / f"{name}_mainmodule.txt").write_text(pep503(pname) + "\n")
     if (d / "poetry.lock").exists():
         shipped, alltxt = poetry_lock_closure(d, None)

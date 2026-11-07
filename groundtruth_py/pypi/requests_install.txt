@@ -1,0 +1,4 @@
+pkg:pypi/certifi@2026.10.23
+pkg:pypi/charset-normalizer@3.5.2
+pkg:pypi/idna@3.20
+pkg:pypi/urllib3@2.8.0

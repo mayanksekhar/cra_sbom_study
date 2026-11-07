@@ -322,3 +322,6 @@ Older pins 6: all three 48, 48, 0.
 Go 10: cdxgen 608, 606, 2. Syft 608, 608, 0. Trivy 608, 608, 0.
 Maven 8: cdxgen 201, 201, 0. Syft 201, 43, 158. Trivy 201, 201, 0.
 Total reference findings 879 over 34 project versions. This replaces the cross set table above (its Go row read 610 with the pair unit). No scanner miss in any set.
+
+PyPI set truth (2026-11-07, 8 projects at tags between May and Oct 2024, install truth resolved on 2026-11-07): shipped sets are small. poetry 44 (lock) and 37 (install), ansible-lint 37 (pip-compile lock) and 33 (install), fastapi 8, httpx 7, pytest 3, django 2, pip 0 (install only). Install truth is smaller than lock truth in both projects that have both (cause not verified, platform specific packages are the candidate). requests failed first because its pyproject.toml has no project name at this tag (name lives in setup.py), patched.
+Install truth for lockless projects reflects resolution on 2026-11-07, not 2024.

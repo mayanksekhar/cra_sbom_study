@@ -17,6 +17,9 @@ M: read Reality Check and VEX-Bench in full; repeat the search for work after Oc
 Tools and pinned versions, frozen databases (snapshots 20261026 and 20261030 with checksums), sets (pilot 10 at HEAD, older pins 6, Go 10, Maven 8), truth levels (declared, resolved, shipped, tree), reference SBOM per project, error attribution (absent, no version, wrong version, scanner), reachability oracle (govulncheck, Go only), VEX forms A and B, controls.
 P: one version per tool. Counting unit decided: one finding per alias cluster per component (Go reference 608, scorer still counts pairs, 610).
 
+## Results status update (2026-11-07)
+Five sets on one counting unit (alias cluster), 959 reference findings (docs/table_findings.md, generated). No scanner miss in any set (every missed finding traces to the SBOM). PyPI added: cdxgen loses 19 findings by resolving newer versions than the pinned lock, Trivy reads Python requirements only from requirements.txt style names (one project, one rename). Concentration caveat: Go holds 608 of 959, PyPI findings come from two lockfile projects.
+
 ## 4 SBOM scope and identity
 1. Scope policy differs by tool and changes the ranking (pilot, older pins, Maven). P, replicates Mind the Gap for JS and Rust.
 2. Syft on Maven lists only declared pom dependencies. P, 8 of 8 projects, regex count is rough.

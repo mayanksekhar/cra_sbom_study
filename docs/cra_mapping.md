@@ -53,3 +53,27 @@ Observations for the paper (not claims, no legal interpretation, not legal advic
 2. The SBOM floor (Annex I Part II point 1, top level dependencies) is narrower than the duty to manage vulnerabilities of the product including its components (Art. 13(8)) and to share information about potential vulnerabilities in third party components (Annex I Part II point 6).
 3. SBOMs reach authorities on reasoned request (Annex VII point 8) and users only if the manufacturer chooses (Annex II point 9). Errors in an SBOM would mostly surface through an authority request.
 4. Article 14 reporting has applied since 11 September 2026, ahead of the main obligations, and covers older products.
+
+## Update 2026-11-07 (BSI): TR-03183-2 v2.1.0 read
+Source: full text of BSI TR-03183-2 v2.1.0 (2025-08-20) from a third party mirror (ibf-solutions.com). BSI's own PDF fetch returned only a landing page blurb, so check against bsi.bund.de before citing. Section numbers are the guideline's.
+
+Verified:
+1. Section 4: JSON or XML, CycloneDX 1.6 or higher or SPDX 3.0.1 or higher, officially released versions only.
+2. Section 3.1 and 8.1.14: a separate SBOM per software version, updated only for added information or error corrections. An SBOM MUST NOT contain vulnerability information, a document with both does not conform. CSAF recommended, VEX as a profile.
+3. Introduction: an SBOM does not state vulnerabilities or exploitability. Whether a vulnerable component affects the product needs an analysis of how the product uses it, done as part of vulnerability handling, result provided to users as a security advisory or VEX.
+4. Section 3.2.1: compiled code, the component used in the linker run MUST be listed. Interpreted code, exact required version MUST be listed if the component is part of the delivery item, otherwise the minimum required version SHOULD be listed. The primary component is the root of the dependency tree and is a component.
+5. Section 5.1: recursive dependency resolution MUST reach, on each path, the first component outside the scope of delivery. Section 8.1.11: scope of delivery means parts delivered with the product, not parts to be acquired separately. Section 8.3.1: top level SBOM is the primary component plus direct dependencies.
+6. Table 3 required per component: creator, name, version (file modification date if no version assigned), filename, dependencies with completeness clearly indicated, distribution licences, SHA-512 hash of the deployable component, executable, archive and structured properties. Table 2 required for the SBOM: creator (email or URL), timestamp. Table 5 additional, MUST if it exists: source code URI, URI of the deployable form, other unique identifiers (CPE or purl), original licences. CycloneDX mapping: components without dependencies are declared as empty elements in the dependency graph, completeness through compositions.
+7. Section 5.1 and 8.4.3: the SBOM must hold the information available during the build, a build SBOM follows the linker run for translated code.
+8. Section 7: the most recent guideline version MUST be used, the previous one for up to six months after a new one.
+
+Corrections to the secondary source rows above:
+1. "Exact version, not a range" is too simple: exact required version is a MUST for interpreted code in the delivery item, minimum required version a SHOULD outside it. Version is a required field for every component (Table 3), so the Syft versionless Maven components (38 of 158 missed findings) break a required field.
+2. cdxgen's default CycloneDX 1.7 meets "1.6 or higher". Not checked: whether 1.7 is an officially released version.
+
+Observations (not claims):
+1. Our Go shipped truth (linker run, three platforms) matches BSI's rule for compiled code, the declared and module graph definitions do not.
+2. CRA floor (top level dependencies) corresponds to BSI's top level SBOM, BSI's own minimum (5.1) goes deeper.
+3. Syft and Trivy primary components without a version (Go pilot) conflict with the required version field. Probe: harness/bsi_probe.py.
+4. Library projects: scope of delivery may exclude separately acquired dependencies, so BSI might need only the first level identified. Interpretation, unverified. Our shipped truth for libraries is the consumer's runtime closure.
+Not measured by us: creator, filename, SHA-512 hash, executable, archive, structured properties, licences.

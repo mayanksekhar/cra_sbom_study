@@ -315,3 +315,10 @@ Decision: the unit is the alias cluster, one finding per component and issue reg
 Labels: 0 of 40 filled (labels/label_sample.csv).
 
 k9s double reported findings explained (2026-11-07): Grype reports anchore/grype v0.77.0 (CVE-2025-65965 and GHSA-6gxw-85q2-q646) and anchore/syft v1.2.0 (CVE-2026-33481 and GHSA-rjcw-vg7j-m9rc) twice each, once from a record carrying only the CVE id and once from the GHSA record listing the CVE as an alias. They are one issue each. Only 2 such pairs in the 10 Go projects.
+
+Cross set table on one unit (2026-11-07, alias clusters, Grype as scanner, Trivy identical): reference, found, missed.
+Pilot HEAD 10: cdxgen 22, 22, 0. Syft 22, 5, 17. Trivy 22, 22, 0.
+Older pins 6: all three 48, 48, 0.
+Go 10: cdxgen 608, 606, 2. Syft 608, 608, 0. Trivy 608, 608, 0.
+Maven 8: cdxgen 201, 201, 0. Syft 201, 43, 158. Trivy 201, 201, 0.
+Total reference findings 879 over 34 project versions. This replaces the cross set table above (its Go row read 610 with the pair unit). No scanner miss in any set.

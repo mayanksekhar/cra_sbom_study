@@ -20,6 +20,9 @@ P: one version per tool. Counting unit decided: one finding per alias cluster pe
 ## Results status update (2026-11-07)
 Five sets on one counting unit (alias cluster), 959 reference findings (docs/table_findings.md, generated). No scanner miss in any set (every missed finding traces to the SBOM). PyPI added: cdxgen loses 19 findings by resolving newer versions than the pinned lock, Trivy reads Python requirements only from requirements.txt style names (one project, one rename). Concentration caveat: Go holds 608 of 959, PyPI findings come from two lockfile projects.
 
+## Drafting status (2026-11-07)
+docs/draft.md has sections 3 to 6 as a status marked skeleton (V, P, O next to each statement, source files named, headline numbers checked by harness/verify_draft_numbers.py). docs/cra_mapping.md maps results to Annex I Part II point (1) and BSI TR-03183-2, but the regulation's primary text was NOT read in this session (EUR-Lex fetch returned only the page header): rows rest on secondary sources. Not yet verified: Annex I Part II points beyond (1), Article 13 and 14 content and time limits, any wording on VEX.
+
 ## 4 SBOM scope and identity
 1. Scope policy differs by tool and changes the ranking (pilot, older pins, Maven). P, replicates Mind the Gap for JS and Rust.
 2. Syft on Maven lists only declared pom dependencies. P, 8 of 8 projects, regex count is rough.

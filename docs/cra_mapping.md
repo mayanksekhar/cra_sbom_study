@@ -77,3 +77,10 @@ Observations (not claims):
 3. Syft and Trivy primary components without a version (Go pilot) conflict with the required version field. Probe: harness/bsi_probe.py.
 4. Library projects: scope of delivery may exclude separately acquired dependencies, so BSI might need only the first level identified. Interpretation, unverified. Our shipped truth for libraries is the consumer's runtime closure.
 Not measured by us: creator, filename, SHA-512 hash, executable, archive, structured properties, licences.
+
+## BSI probe results (2026-11-07, harness/bsi_probe.py, 43 SBOMs per generator over five sets, all CycloneDX 1.6)
+Primary component has a version: cdxgen 29, Syft 0, Trivy 0. Has a purl: cdxgen 43, Syft 0, Trivy 0. Has outgoing dependency edges: cdxgen 41, Syft 0, Trivy 40. Vulnerability data embedded: 0 for all three. compositions present: 0 for all three. Packages (components with a purl) without a version field: cdxgen 68 of 6162, Syft 0 of 3560, Trivy 15 of 2570.
+Inferred, not checked per file: cdxgen's 14 SBOMs without a root version equal the number of Go SBOMs (2 pilot, 2 older pins, 10 Go set).
+Reading against BSI (Table 3, 5.1, CycloneDX mapping): Syft's primary component enumerates no direct dependencies in any SBOM, no generator states completeness through compositions. No generator embeds vulnerability data (my earlier guess about Trivy was wrong).
+Caveats: scans were of temporary copies so the root name is a local path; source name and version flags of Syft and Trivy not tested, so the missing root version is the default behaviour of a directory scan, not a proven limitation. The probe covers 6 of the 10 required component fields, not creator, filename, SHA-512 hash, executable, archive, structured.
+CORRECTION to the earlier BSI observation: the claim that Syft's versionless Maven components break the required version field is not supported by the probe, because Syft's version field is filled for all 3560 packages. What lacks a version is the purl of some components. The content of the version field for those components is still to be checked. Same open question for Trivy's 15 and cdxgen's 68 packages without a version field.

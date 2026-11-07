@@ -22,4 +22,7 @@
 | Go set: 53 findings on the product's own module at its pinned version, 52 confirmed by Grype, Trivy and OSV, 52 with a Go DB record, 18 high or critical | harness/product_findings.py, results_go/product_findings.csv | verified in 10 Go applications, one snapshot | exploitability not assessed, why 4 projects have none |
 | PyPI set (8 projects): every missed finding traces to the SBOM, none to the scanner; cdxgen loses 19 findings by resolving newer versions than the pinned lock | results_py/findings_vs_reference.csv | verified, one set, 80 reference findings from two lockfile projects | the six lockless projects contribute few findings, install truth reflects 2026-11-07 |
 | Trivy reads Python requirements only from requirements.txt style names (ansible-lint: 0 PyPI components from .config/requirements-lock.txt, 33 once copied to requirements.txt) | /tmp test (rebuild as a harness script) | one project, one rename | other file names and folders, script not in the repo |
-\nRule: re-run the producing script from a clean checkout before the number goes in the paper.\n
+\n\n
+| CRA requirements as read: Art. 13(8) duty covers components, Annex I Part II point (1) floor is top level dependencies, Art. 14 time limits 24h, 72h, 14 days | docs/cra_mapping.md | Articles 1 to 39 read in a French third party reproduction (my translation), Annex I only via secondary sources | read Annex I and Article 71 in EUR-Lex, check translations |
+
+Rule: re-run the producing script from a clean checkout before the number goes in the paper.

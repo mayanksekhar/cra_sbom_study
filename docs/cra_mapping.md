@@ -15,3 +15,23 @@ Verification status. The EUR-Lex fetch returned only the page header, so the reg
 | VEX in the CRA text | NOT VERIFIED. Searches returned no CRA wording on VEX or exploitability. Do not claim the CRA mentions or omits VEX until Annex I and Article 14 are read. | O |
 
 Implication to test in the paper (not yet supported): an evidence grade pipeline needs scope declared, a versioned product purl, a connected dependency graph, exact versions on every component, product scoped statements, a dated vulnerability snapshot.
+
+## Update 2026-11-07: partial primary reading
+Source: cyberresilienceact.eu/fr/regulation.html, a third party French reproduction of Articles 1 to 39 of Regulation (EU) 2024/2847 (not EUR-Lex; my translations; cut off mid Article 39; annexes, Article 40 onward and Article 71 NOT read). This supersedes the earlier "NOT VERIFIED" rows for Article 13 and 14 below.
+
+Verified in that text:
+1. Art. 3(39) SBOM: an official document with the details and the supply chain relationships of the components used to build a product.
+2. Art. 3(41) exploitable vulnerability: one that an adversary could effectively use in actual operating conditions. Art. 3(42) actively exploited: reliable evidence of exploitation by a malicious actor without the system owner's authorisation.
+3. Art. 13(8): during the support period vulnerabilities of the product, including its components, are managed effectively under Annex I Part II. Support period at least five years, or the expected use time if shorter.
+4. Art. 13(6): a vulnerability found in an integrated component is reported to its maintainer and addressed under Annex I Part II.
+5. Art. 13(24): the Commission may specify SBOM format and elements by implementing act. Art. 13(25): market surveillance authorities may request SBOMs for dependency assessments.
+6. Art. 14(1) and (2): actively exploited vulnerability, early warning within 24 hours of becoming aware, notification within 72 hours, final report within 14 days after a fix or mitigation is available, through the single reporting platform (Art. 16). Severe incidents: 24 hours, 72 hours, final report within one month of the notification.
+7. Art. 14(8): users informed of an actively exploited vulnerability and mitigations, in a structured machine readable format where appropriate. VEX is not named.
+8. The term VEX does not appear in Articles 1 to 39.
+Reporting obligations apply from 11 September 2026 (site annotation and earlier secondary sources, Article 71 not read).
+
+Observations for the paper (not yet claims):
+1. The SBOM floor (top level dependencies, Annex I Part II point 1, secondary sources) is narrower than the duty to manage vulnerabilities of components (Art. 13(8)). Maven: Syft, which approximates the top level, recovers 43 of 201 real findings.
+2. Art. 3(41) defines exploitable vulnerability. Reachability and VEX approximate it, the regulation prescribes no method.
+3. Secondary sources number the same duties inconsistently (Art. 13(6) called SBOM maintenance, Art. 13(10) and 13(1)(b) cited for duties the text places in 13(8)). Use verified numbers only.
+Still unread: Annex I (all of it), Annex II, VII, Article 71. Unverified recollection: Annex I Part I point 2(a) refers to products without known exploitable vulnerabilities.

@@ -43,7 +43,38 @@ def load_trivy(path):
             out.add((k, v["VulnerabilityID"]))
     return out
 
-LOAD = {"grype": load_grype, "trivy": load_trivy}
+def cluster_ids(items):
+    """merge findings on the same component that share an advisory id; keep the first id as the cluster name"""
+    groups = []
+    for k, vid, ids in items:
+        hit = [g for g in groups if g[0] == k and g[2] & ids]
+        if hit:
+            g = hit[0]
+            g[2] |= ids
+            for other in hit[1:]:
+                g[2] |= other[2]
+                groups.remove(other)
+        else:
+            groups.append([k, vid, set(ids)])
+    return {(g[0], g[1]) for g in groups}
+
+def load_grype_c(path):
+    items = []
+    for m in json.loads(path.read_text()).get("matches", []):
+        a = m["artifact"]
+        ids = {m["vulnerability"]["id"]} | {r["id"] for r in m.get("relatedVulnerabilities", [])}
+        items.append((parse(a.get("purl") or f'pkg:unknown/{a["name"]}@{a["version"]}'), m["vulnerability"]["id"], ids))
+    return cluster_ids(items)
+
+def load_trivy_c(path):
+    items = []
+    for r in json.loads(path.read_text()).get("Results") or []:
+        for v in r.get("Vulnerabilities") or []:
+            k = parse((v.get("PkgIdentifier") or {}).get("PURL") or f'pkg:unknown/{v["PkgName"]}@{v["InstalledVersion"]}')
+            items.append((k, v["VulnerabilityID"], {v["VulnerabilityID"]} | set(v.get("VendorIDs") or [])))
+    return cluster_ids(items)
+
+LOAD = {"grype": load_grype_c, "trivy": load_trivy_c}
 CATS = ("fp_root", "fp_not_shipped", "fp_other_version", "fn_component_absent", "fn_no_version", "fn_wrong_version", "fn_scanner_miss")
 rows = []
 for d in sorted((RES / "vulns").iterdir()):

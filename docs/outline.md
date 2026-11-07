@@ -44,7 +44,7 @@ docs/draft.md has sections 3 to 6 as a status marked skeleton (V, P, O next to e
 
 ## 7 What an evidence grade pipeline must declare
 Scope, product purl with version, connected graph, product scoped statements, profile handling. Derived from sections 4 to 6.
-M: map to CRA Annex I part II and BSI TR-03183 requirements, check ENISA and Commission guidance.
+CRA text mapped from the EUR-Lex consolidated English text (docs/cra_mapping.md). M: BSI TR-03183-2 primary text (rows are secondary), ENISA and Commission guidance, any implementing act under Art. 13(24).
 
 ## 8 Threats to validity
 Single reachability oracle, Go only; one snapshot and one version per tool; popular projects with shared dependencies; my own method errors found and corrected during the work (listed in docs/pilot_findings.md), so every table must be regenerated from a clean checkout.

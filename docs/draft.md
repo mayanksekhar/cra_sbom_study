@@ -18,7 +18,7 @@ Threats noted here: one version per tool; popular projects with shared dependenc
 
 ## 4 SBOM scope and identity
 
-4.1 Lockfile dependence. Express without a lockfile: Syft 0 components, Trivy 0, cdxgen 368 [V, pilot]. On five lockless PyPI projects the runtime sets total 24 components; cdxgen finds all 24, Syft and Trivy 0 of 24 and report 15 to 18 components each from docs and test requirement files [V]. {results_py/metrics.csv}
+4.1 Lockfile dependence. Express without a lockfile: Syft 0 npm components (it listed 19 GitHub Actions components only), Trivy no components, cdxgen 368 [V, pilot]. On five lockless PyPI projects the runtime sets total 24 components; cdxgen finds all 24, Syft and Trivy 0 of 24 and report 15 to 18 components each from docs and test requirement files [V]. {results_py/metrics.csv}
 
 4.2 Scope policy. Maven, 8 projects, component level, name level. Against all scope truth: cdxgen P 1.00 R 1.00, Syft P 0.96 R 0.28, Trivy P 1.00 R 0.48. Against shipped without optional dependencies: cdxgen P 0.48 R 1.00, Syft P 0.54 R 0.33, Trivy P 0.98 R 0.99 [V]. No generator wins under both definitions. {results_mvn/metrics.csv}
 

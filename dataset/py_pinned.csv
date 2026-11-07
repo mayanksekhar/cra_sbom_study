@@ -1,0 +1,9 @@
+name,ecosystem,repo_url,kind,tag,commit_sha
+poetry,pypi,https://github.com/python-poetry/poetry,application,1.8.4,6a071c181ad82ec3a5d4ecd54d50d08a75470e78
+ansible-lint,pypi,https://github.com/ansible/ansible-lint,application,v24.9.2,3b5bee19c2102ea35bc8619795a72c5c73797fc7
+requests,pypi,https://github.com/psf/requests,library,v2.32.3,0e322af87745eff34caffe4df68456ebc20d9068
+httpx,pypi,https://github.com/encode/httpx,library,0.27.2,609df7ecc0f7cb10a1c998aa9c269bba77337c5f
+fastapi,pypi,https://github.com/tiangolo/fastapi,library,0.115.4,31887b1cc6fb45373b615448627c63410bd37333
+django,pypi,https://github.com/django/django,library,5.1.2,c499184f198df8deb8b5f7282b679babef8384ff
+pip,pypi,https://github.com/pypa/pip,application,24.3.1,05293b6b55eca86490b7c2944bcc558a56064f0d
+pytest,pypi,https://github.com/pytest-dev/pytest,library,8.3.3,d0f136fe64f9374f18a04562305b178fb380d1ec

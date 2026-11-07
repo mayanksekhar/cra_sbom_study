@@ -114,7 +114,65 @@ def truth_rust(name, d, gt):
     write(gt / f"{name}_lock.txt", lock_set([d / "Cargo.lock"]))
     write(gt / f"{name}_tree_lock.txt", lock_set([p for p in d.rglob("Cargo.lock") if "target" not in p.parts]))
 
-BUILDERS = {"go": truth_go, "maven": truth_maven, "npm": truth_npm, "rust": truth_rust}
+
+def pep503(n):
+    return re.sub(r"[-_.]+", "-", n.lower())
+
+def pypi_install(name, d, gt):
+    venv = Path("/tmp") / ("cra_venv_" + name)
+    sh(["rm", "-rf", str(venv)], d)
+    sh(["python3", "-m", "venv", str(venv)], d)
+    sh([str(venv / "bin/pip"), "install", "-q", "--disable-pip-version-check", "."], d)
+    out = sh([str(venv / "bin/pip"), "freeze"], d)
+    main = (gt / f"{name}_mainmodule.txt").read_text().strip()
+    items = []
+    for l in out.splitlines():
+        if "==" in l:
+            n, v = l.split("==", 1)
+            if pep503(n) != main:
+                items.append("pkg:pypi/%s@%s" % (pep503(n), v.strip()))
+    write(gt / f"{name}_install.txt", items)
+
+def poetry_lock_closure(d, groups):
+    pj = tomllib.loads((d / "pyproject.toml").read_text())
+    tp = pj["tool"]["poetry"]
+    roots = set(pep503(k) for k in tp.get("dependencies", {}) if k.lower() != "python")
+    lock = tomllib.loads((d / "poetry.lock").read_text())
+    pk = {pep503(p["name"]): p for p in lock["package"]}
+    seen, stack = set(), list(roots)
+    while stack:
+        n = stack.pop()
+        if n in seen or n not in pk:
+            continue
+        seen.add(n)
+        for dep in (pk[n].get("dependencies") or {}):
+            stack.append(pep503(dep))
+    return {"pkg:pypi/%s@%s" % (n, pk[n]["version"]) for n in seen}, {"pkg:pypi/%s@%s" % (n, p["version"]) for n, p in pk.items()}
+
+def truth_pypi(name, d, gt):
+    pj = tomllib.loads((d / "pyproject.toml").read_text())
+    pname = (pj.get("project", {}).get("name") or pj.get("tool", {}).get("poetry", {}).get("name"))
+    (gt / f"{name}_mainmodule.txt").write_text(pep503(pname) + "\n")
+    if (d / "poetry.lock").exists():
+        shipped, alltxt = poetry_lock_closure(d, None)
+        write(gt / f"{name}_lock.txt", shipped)
+        write(gt / f"{name}_all.txt", alltxt)
+        (gt / f"{name}_lockfile.txt").write_text("poetry.lock\n")
+    elif (d / ".config/requirements-lock.txt").exists():
+        items = []
+        for l in (d / ".config/requirements-lock.txt").read_text().splitlines():
+            l = l.split("#")[0].strip()
+            if "==" in l:
+                n, v = l.split("==", 1)
+                items.append("pkg:pypi/%s@%s" % (pep503(n.split("[")[0]), v.strip()))
+        write(gt / f"{name}_lock.txt", items)
+        (gt / f"{name}_lockfile.txt").write_text("pip-compile requirements-lock.txt\n")
+    else:
+        (gt / f"{name}_lockfile.txt").write_text("none\n")
+    pypi_install(name, d, gt)
+    write(gt / f"{name}_shipped.txt", (gt / f"{name}_lock.txt").read_text().split() if (gt / f"{name}_lock.txt").exists() else (gt / f"{name}_install.txt").read_text().split())
+
+BUILDERS = {"go": truth_go, "maven": truth_maven, "npm": truth_npm, "rust": truth_rust, "pypi": truth_pypi}
 print(f"{'project':<16}{'eco':<7}status")
 for r in csv.DictReader(open(root / args.csv)):
     name, eco = r["name"], r["ecosystem"]

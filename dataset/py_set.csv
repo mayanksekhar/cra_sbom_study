@@ -1,0 +1,9 @@
+name,ecosystem,repo_url,kind,tag
+poetry,pypi,https://github.com/python-poetry/poetry,application,1.8.4
+ansible-lint,pypi,https://github.com/ansible/ansible-lint,application,v24.9.2
+requests,pypi,https://github.com/psf/requests,library,v2.32.3
+httpx,pypi,https://github.com/encode/httpx,library,0.27.2
+fastapi,pypi,https://github.com/tiangolo/fastapi,library,0.115.4
+django,pypi,https://github.com/django/django,library,5.1.2
+pip,pypi,https://github.com/pypa/pip,application,24.3.1
+pytest,pypi,https://github.com/pytest-dev/pytest,library,8.3.3

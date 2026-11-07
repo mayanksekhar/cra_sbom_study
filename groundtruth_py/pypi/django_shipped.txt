@@ -1,0 +1,2 @@
+pkg:pypi/asgiref@3.13.0
+pkg:pypi/sqlparse@0.6.1

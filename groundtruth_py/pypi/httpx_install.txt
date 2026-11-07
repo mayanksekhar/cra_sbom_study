@@ -1,0 +1,7 @@
+pkg:pypi/anyio@4.16.0
+pkg:pypi/certifi@2026.10.23
+pkg:pypi/h11@0.16.0
+pkg:pypi/httpcore@1.0.9
+pkg:pypi/idna@3.20
+pkg:pypi/sniffio@1.3.1
+pkg:pypi/typing-extensions@4.16.0

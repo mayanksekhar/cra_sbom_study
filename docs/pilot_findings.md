@@ -369,3 +369,5 @@ Verified for 2 Go projects: Trivy reads the version from the purl only. Grype an
 Correction: my written prediction in the previous step mislabelled the rows, mapped to the actual row order the data support the hypothesis. Not examined: why caddy gives Trivy 14 with v0.0.0 in the purl (module path ends in /v2), other ecosystems.
 
 Correction (2026-11-07): express without a lockfile, Syft listed 19 components, all GitHub Actions, and 0 npm components. Earlier entries saying "Syft 0 components" meant npm components. Trivy listed 0 components, cdxgen 368. Fixed in docs/draft.md 4.1 and docs/draft_section7.md 7.5.
+
+Root version flags (2026-11-07): Syft --source-name fzf --source-version v0.56.0 gives the root name fzf, version v0.56.0, purl null, type file (one project, Syft 1.45.1). Section 7.2 updated. verify_section7.py: 11 of 11 phrases found. Express wording corrected earlier (Syft listed 19 GitHub Actions components, 0 npm).

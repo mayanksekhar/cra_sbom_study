@@ -91,3 +91,6 @@ Version field: Syft holds the string UNKNOWN in 79 (14 Go product modules, 64 Ma
 Reading against BSI Table 3 (version required for every component, file modification date if no version is assigned): all three generators emit components without a usable version. The earlier withdrawal of the Syft claim is itself withdrawn: Syft fills the field with a placeholder, which is not a version identifier as I read the text.
 CORRECTION to the 2026-11-05 entry on Go product findings: I wrote that Trivy lists the product as an ordinary component "with a purl and a version". It does not: the purl has no version and the version field is absent in all 15 Go SBOMs.
 Hypothesis, untested: a scanner treats version UNKNOWN as matching nothing and an absent version as matching every advisory (Syft 0 product findings, Trivy and cdxgen 91 each). Control: harness/control_version.py.
+
+## Update 2026-11-07: root version at generation time
+Syft 1.45.1 has --source-name and --source-version. On fzf (dir scan) the root becomes name fzf, version v0.56.0, purl null, type file. So the default lack of a root version (Syft 0 of 43 SBOMs) can be changed with flags, the lack of a root purl remains. cdxgen 12.9.0 has --project-name, --project-version, --project-group described as Dependency-Track options, effect on the SBOM root not tested. Trivy flags not checked.

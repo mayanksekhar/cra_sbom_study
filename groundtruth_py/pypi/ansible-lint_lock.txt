@@ -28,6 +28,6 @@ pkg:pypi/ruamel-yaml@0.18.6
 pkg:pypi/subprocess-tee@0.4.2
 pkg:pypi/tomli@2.0.1
 pkg:pypi/typing-extensions@4.12.2
-pkg:pypi/wcmatch@9.0 ; python_version < "3.12"
+pkg:pypi/wcmatch@9.0
 pkg:pypi/yamllint@1.35.1
 pkg:pypi/zipp@3.20.2

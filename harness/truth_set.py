@@ -164,10 +164,9 @@ def truth_pypi(name, d, gt):
     elif (d / ".config/requirements-lock.txt").exists():
         items = []
         for l in (d / ".config/requirements-lock.txt").read_text().splitlines():
-            l = l.split("#")[0].strip()
-            if "==" in l:
-                n, v = l.split("==", 1)
-                items.append("pkg:pypi/%s@%s" % (pep503(n.split("[")[0]), v.strip()))
+            m = re.match(r"^([A-Za-z0-9][A-Za-z0-9._-]*)(?:\[[^\]]*\])?==([A-Za-z0-9._!+-]+)", l.strip())
+            if m:
+                items.append("pkg:pypi/%s@%s" % (pep503(m.group(1)), m.group(2)))
         write(gt / f"{name}_lock.txt", items)
         (gt / f"{name}_lockfile.txt").write_text("pip-compile requirements-lock.txt\n")
     else:

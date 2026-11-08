@@ -23,7 +23,9 @@ results_*/*
 !results_go/vex_cross_product.txt
 dataset/src_rust/
 dataset/src_npm/
-results_rust/
-results_npm/
+results_rust/*
+results_npm/*
 !results_rust/findings_vs_reference.csv
 !results_rust/metrics.csv
+!results_npm/findings_vs_reference.csv
+!results_npm/metrics.csv

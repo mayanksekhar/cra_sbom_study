@@ -5,6 +5,8 @@ from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 ap = argparse.ArgumentParser()
 ap.add_argument("--out", default="/tmp/mech")
+ap.add_argument("--gcflags", default="", help="for example all=-l to disable inlining")
+ap.add_argument("--projects", default="", help="comma separated subset")
 a = ap.parse_args()
 out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
 DB = root / "vulndb" / "20261030" / "govuln" / "ID"
@@ -16,7 +18,7 @@ def build(p):
     syms, ok = set(), []
     for i, m in enumerate(MAINS[p]):
         b = out / f"{p}_{i}.bin"
-        r = subprocess.run(["go", "build", "-o", str(b), m], cwd=root / "dataset" / "src_go" / p, capture_output=True, text=True)
+        r = subprocess.run(["go", "build"] + (["-gcflags=" + a.gcflags] if a.gcflags else []) + ["-o", str(b), m], cwd=root / "dataset" / "src_go" / p, capture_output=True, text=True)
         if r.returncode != 0:
             print(f"BUILD FAILED {p} {m}: {(r.stderr.strip().splitlines() or [''])[-1][:100]}", flush=True)
             continue
@@ -35,6 +37,8 @@ rows = []
 cross = collections.Counter()
 called_absent = []
 for p, es in reach.items():
+    if a.projects and p not in a.projects.split(","):
+        continue
     syms, ok = build(p)
     pkgs_present = {x.rsplit(".", 1)[0] if "(" not in x else x.split(".(")[0] for x in syms}
     print(f"{p}: built {len(ok)} of {len(MAINS[p])} binaries, {len(syms)} symbols", flush=True)

@@ -1,0 +1,1 @@
+[{"purl": "golang.org/x/text@v0.14.0", "ids": ["CVE-2026-56852", "GO-2026-5970"], "class": "unknown"}, {"purl": "golang.org/x/text@v0.14.0", "ids": ["CVE-2026-56851", "GO-2026-6629"], "class": "unknown"}, {"purl": "golang.org/x/sys@v0.26.0", "ids": ["CVE-2026-39824", "GO-2026-5024"], "class": "not called"}]

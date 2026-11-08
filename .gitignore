@@ -15,3 +15,5 @@ results_*/*
 !results_go/product_findings.csv
 !results_go/vex_set.csv
 !results_go/mech_result.csv
+!results_go/reach_product/
+!results_go/reach_product/*.json

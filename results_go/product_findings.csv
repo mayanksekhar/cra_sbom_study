@@ -1,0 +1,11 @@
+project,tag,grype_raw,grype_high_crit,clusters,all_three,two_of_three,grype_only,trivy_only,osv_only,in_go_db_for_module
+alertmanager,v0.27.0,0,0,0,0,0,0,0,0,0
+blackbox_exporter,v0.25.0,0,0,0,0,0,0,0,0,0
+caddy,v2.8.4,15,8,15,14,1,0,0,0,14
+cli,v2.60.1,9,2,9,9,0,0,0,0,9
+fzf,v0.56.0,1,0,1,1,0,0,0,0,1
+helm,v3.16.2,6,1,6,6,0,0,0,0,6
+hugo,v0.136.5,8,0,8,8,0,0,0,0,8
+k9s,v0.32.5,0,0,0,0,0,0,0,0,0
+nats-server,v2.10.22,14,7,14,14,0,0,0,0,14
+restic,v0.17.2,0,0,0,0,0,0,0,0,0

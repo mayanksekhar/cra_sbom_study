@@ -60,6 +60,9 @@ for c in todo:
             continue
         ch = ans[0].lower()
         if ch in "ynu":
+            if ch in "yn" and len(ans[1:].strip()) < 20:
+                print("y and n need a reason of at least 20 characters after the letter (what you saw in the code). If you cannot give one, answer u.")
+                continue
             new = not vp.exists()
             with open(vp, "a", newline="") as fh:
                 w = csv.writer(fh)
@@ -74,4 +77,4 @@ for c in todo:
             print("saved, stopping")
             raise SystemExit(0)
         print("type y, n, u, s or q")
-print(f"\nthis sitting: {n} answered. Send the verdicts file back.")
+print(f"\nthis sitting: {n} answered. Keep your verdicts file private until you have finished all your cards.")

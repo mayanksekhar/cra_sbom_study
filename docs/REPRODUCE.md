@@ -5,11 +5,11 @@ The headline numbers can be recomputed from the summary files in this repository
 
 ## Steps
 1. Clone the repository. Run: python3 harness/check_all.py
-   Expected without the archive: 4 ok, 0 failed, 2 skipped.
+   Expected without the archive: 5 ok, 0 failed, 2 skipped.
 2. Download cra_data_20261108_clean2.tar.gz from the release page. Check it: sha256sum -c against the checksum in README.md.
 3. Extract at the repository root without overwriting tracked files: tar -xzf cra_data_20261108_clean2.tar.gz --skip-old-files
 4. Run again: python3 harness/check_all.py
-   Expected with the archive: 6 ok, 0 failed, 0 skipped, and git status shows no changed files.
+   Expected with the archive: 7 ok, 0 failed, 0 skipped, and git status shows no changed files.
 
 ## Known and expected
 1. Nine JSON files in the archive are empty. They are OSV Scanner outputs for SBOMs that crashed the scanner (five Syft SBOMs for npm and PyPI projects, express without a lockfile with Syft and Trivy) or produced no output (three PyPI cases).

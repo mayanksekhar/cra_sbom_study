@@ -5,8 +5,13 @@ from urllib.parse import unquote
 root = Path(__file__).resolve().parent.parent
 snap = os.environ["SNAP"]
 R = root / "results_go"
-V = R / "vex"
-reach = json.loads((R / "reach.json").read_text())
+import argparse
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--reach", default="reach.json")
+_ap.add_argument("--tag", default="")
+A = _ap.parse_args()
+V = R / ("vex" + A.tag)
+reach = json.loads((R / A.reach).read_text())
 names = sorted(reach)
 norm = lambda p: unquote((p or "").split("?")[0]).lower()
 def path_of(purl):

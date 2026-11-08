@@ -7,6 +7,7 @@ CSVS = [f"{d}/findings_vs_reference.csv" for d in ("results", "results_old", "re
 SUMMARY = CSVS + ["results_go/reach.json", "results_go/product_findings.csv", "results_go/vex_set.csv"]
 RAW = [f"{d}/raw" for d in ("results", "results_old", "results_go", "results_mvn", "results_py")]
 DOCS = ["docs/draft.md", "docs/draft_section7.md", "docs/draft_front_back.md"]
+PRODUCT = ["results_go/reach_product.json", "results_go/vex_set_product.csv", "results_go/vex_set_product.log", "results_go/vex_cross_product.txt", "results_go/mech_result.csv"]
 CHECKS = [
     ("progress rubric", "harness/progress.py", ["docs/progress.csv"]),
     ("findings table (regenerates docs/table_findings.md)", "harness/make_table_findings.py", CSVS),
@@ -14,6 +15,7 @@ CHECKS = [
     ("abstract numbers", "harness/verify_front.py", CSVS + DOCS),
     ("section 7 numbers", "harness/verify_section7.py", SUMMARY + RAW + DOCS),
     ("BSI probe of generator SBOMs", "harness/bsi_probe.py", RAW),
+    ("product level reachability and VEX numbers", "harness/verify_product_level.py", PRODUCT + DOCS),
 ]
 skipped = failed = 0
 for name, script, needs in CHECKS:

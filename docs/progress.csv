@@ -18,8 +18,8 @@ Experiments,database drift and snapshot comparison (one measurement),2,1
 Experiments,findings on the product's own module,2,2
 Experiments,replication with other tool versions,2,0
 VEX and reachability,reachability rate on Go (govulncheck),4,3
-VEX and reachability,VEX mechanism per scanner and Trivy path rule,4,3
-VEX and reachability,cross project suppression,3,2
+VEX and reachability,VEX mechanism per scanner and Trivy path rule,4,4
+VEX and reachability,cross project suppression,3,3
 VEX and reachability,oracle agreement on decidable cards (at most 18 of 40): author labels,2,0
 VEX and reachability,oracle agreement on decidable cards: second labeller,2,0
 Write up and CRA mapping,CRA text mapping from the primary source,3,3

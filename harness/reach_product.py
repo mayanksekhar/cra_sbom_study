@@ -101,8 +101,7 @@ def merge():
     for (o, n), c in sorted(trans.items()):
         print(f"   {o:<13} -> {n:<11}{c:>5}")
     print("not done yet:", missing or "none")
-    if not missing:
-        (R / "reach_product.json").write_text(json.dumps(new))
-        print("wrote", R / "reach_product.json", "(reach.json untouched)")
+    (R / "reach_product.json").write_text(json.dumps(new))
+    print("wrote", R / "reach_product.json", "for", len(new), "projects (reach.json untouched)", "| MISSING at product level: " + ", ".join(missing) if missing else "")
 
 {"run": lambda: run(sys.argv[2]), "check": check, "merge": merge}[sys.argv[1]]()

@@ -5,10 +5,15 @@ from urllib.parse import unquote
 root = Path(__file__).resolve().parent.parent
 snap = os.environ["SNAP"]
 R = root / "results_go"
-out = R / "vex"
+import argparse
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--reach", default="reach.json")
+_ap.add_argument("--tag", default="")
+A = _ap.parse_args()
+out = R / ("vex" + A.tag)
 out.mkdir(exist_ok=True)
-reach = json.loads((R / "reach.json").read_text())
-tags = {r["name"]: r["tag"] for r in csv.DictReader(open(root / "dataset/go_pinned10.csv"))}
+reach = json.loads((R / A.reach).read_text())
+tags = {r["name"]: r["tag"] for r in csv.DictReader(open(root / "dataset/go_pinned10.csv")) if r["name"] in reach}
 norm = lambda p: unquote((p or "").split("?")[0]).lower()
 def path_of(purl):
     u = norm(purl)
@@ -98,5 +103,5 @@ print("\nper project, trivy form A: called removed, not called removed of total"
 for n, s, f, cr, nr, nt in rows:
     if s == "trivy" and f == "A":
         print(f"   {n:<18}{cr:>4}{nr:>6} of {nt}")
-with open(R / "vex_set.csv", "w", newline="") as fh:
+with open(R / ("vex_set" + A.tag + ".csv"), "w", newline="") as fh:
     w = csv.writer(fh); w.writerow(["project", "scanner", "form", "called_removed", "notcalled_removed", "notcalled_total"]); w.writerows(rows)

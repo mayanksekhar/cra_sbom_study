@@ -1,0 +1,27 @@
+ordered project pairs: 72; pairs where P's module level file covers a called finding of Q: 4
+distinct called findings that some other project's file would suppress: 24 of 151
+at risk per project: {'cli': 9, 'hugo': 15}
+   example: golang.org/x/crypto@v0.28.0 CVE-2025-22869
+   example: golang.org/x/crypto@v0.28.0 CVE-2026-39829
+   example: golang.org/x/crypto@v0.28.0 CVE-2026-39830
+   example: golang.org/x/crypto@v0.28.0 CVE-2026-39831
+   example: golang.org/x/crypto@v0.28.0 CVE-2026-39834
+   example: golang.org/x/crypto@v0.28.0 CVE-2026-46597
+
+             P file -> applied to Q        predicted  trivy B  grype B  trivy A   (called findings removed)
+                cli -> hugo                       13       13       13        0
+               hugo -> cli                         9        9        9        0
+        nats-server -> cli                         9        9        9        0
+               helm -> hugo                        2        2        2        0
+
+== findings classified unknown in the baseline scans of the corrected SBOMs
+trivy: unknown 74, on the product's own module 52, elsewhere 22
+     elsewhere: ('caddy', 'github.com/go-chi/chi/v5@v5.0.12', 'CVE-2025-71405')
+     elsewhere: ('caddy', 'github.com/go-chi/chi/v5@v5.0.12', 'CVE-2026-114437')
+     elsewhere: ('caddy', 'github.com/go-jose/go-jose/v3@v3.0.3', 'CVE-2026-116587')
+     elsewhere: ('caddy', 'github.com/go-jose/go-jose/v3@v3.0.3', 'CVE-2026-116585')
+grype: unknown 75, on the product's own module 53, elsewhere 22
+     elsewhere: ('caddy', 'github.com/go-jose/go-jose/v3@v3.0.3', 'CVE-2026-116587')
+     elsewhere: ('caddy', 'github.com/go-chi/chi/v5@v5.0.12', 'CVE-2025-71405')
+     elsewhere: ('caddy', 'github.com/go-jose/go-jose/v3@v3.0.3', 'CVE-2026-116586')
+     elsewhere: ('caddy', 'github.com/go-jose/go-jose/v3@v3.0.3', 'CVE-2026-116585')

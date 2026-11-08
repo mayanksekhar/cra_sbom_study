@@ -11,7 +11,7 @@ This project did not run or evaluate any FOSSA product. It is not affiliated wit
 ## Status and limits (read this first)
 1. This is a draft that has not been peer reviewed. There is no preprint yet.
 2. The numbers in the draft are checked by scripts against the CSV files in this repository. Several statements rest on one or two projects and are marked as such.
-3. The reachability rate depends on a single static oracle that has no independent check yet. A blind labelling sheet is planned.
+3. The reachability rate depends on a single static oracle that has no independent check yet. A blind agreement check is planned on the decidable cards of a 40 card sample (at most 18: 6 with a direct import, 13 reached through an import chain, minus one card whose answer the author saw). It tests the oracle on those cards, not the whole rate.
 4. The regulation was read in the EUR-Lex consolidated English text, which has no legal effect. The BSI guideline was read from a mirror copy. Nothing here is legal advice or a legal interpretation.
 5. Errors found and claims withdrawn during the work are logged in docs/pilot_findings.md.
 

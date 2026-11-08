@@ -19,6 +19,6 @@ ok = f"{n} project versions" in abstract
 bad += not ok
 print(f"{'OK     ' if ok else 'MISSING'} {n} project versions (recomputed from the seven findings CSVs)")
 t = re.search(r"\b(\d+) reference findings\b", abstract)
-print("phrase '1061 reference findings' present" if "959 reference findings" in abstract else "check the reference findings figure")
+print("phrase '1061 reference findings' present" if "1061 reference findings" in abstract else "check the reference findings figure")
 print("not checked: scanner names, VEX removal counts other than those matched above, the sentence about version carriers")
 print("abstract phrases not confirmed:", bad)

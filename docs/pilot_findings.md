@@ -233,7 +233,7 @@ Syft recall by project (shipped, name level): jpetstore-6 11 of 17, petclinic-re
 Caveats: 3 projects hold 180 of 201 findings, 3 have none; commons-io and commons-lang have empty shipped sets so their empty scan results were written by hand (not checked that Grype and Trivy handle empty SBOMs); no reachability oracle for Java.
 
 Maven set, follow up (2026-11-05):
-1. Syft reads the dependencies declared in the root pom. Components against rough count of <dependency> entries in the root pom (excluding dependencyManagement): swagger-petstore 18 vs 17, jpetstore-6 21 vs 20, spring-petclinic-rest 26 vs 24, spring-framework-petclinic 40 vs 38, commons-lang 9 vs 8, commons-io 12 vs 10, jackson-databind 11 vs 10, jedis 18 vs 17 (shipped sets 51, 17, 100, 65, 0, 0, 2, 16). Transitive dependencies are not resolved. Count is rough (includes test scope), extras of 1 to 3 not examined.
+1. Syft reads the dependencies declared in the root pom. Components against rough count of `<dependency>` entries in the root pom (excluding dependencyManagement): swagger-petstore 18 vs 17, jpetstore-6 21 vs 20, spring-petclinic-rest 26 vs 24, spring-framework-petclinic 40 vs 38, commons-lang 9 vs 8, commons-io 12 vs 10, jackson-databind 11 vs 10, jedis 18 vs 17 (shipped sets 51, 17, 100, 65, 0, 0, 2, 16). Transitive dependencies are not resolved. Count is rough (includes test scope), extras of 1 to 3 not examined.
 2. Trivy misses on Maven: jedis 11 of 16 shipped (the six seen are resilience4j 1.7.1 modules), swagger-petstore 2 (jakarta.activation 1.2.2, jaxb-osgi 2.3.8), spring-framework-petclinic 1 (h2 2.2.224). Causes not examined.
 3. Product findings in Maven differ from Go: jackson-databind has 13 findings on its own module in all three generators regardless of root version (cdxgen has a versioned root, Syft and Trivy none). The Go root version effect does not appear here. The output was truncated after jackson-databind, other projects unseen.
 
@@ -269,7 +269,7 @@ Maven truth checks (2026-11-05):
 1. spring-petclinic-rest: the 8 components in dependency:list only are duplicates that dependency:tree omits ("omitted for duplicate" in the verbose tree). The list based shipped truth is correct for this project.
 2. swagger-petstore jakarta.activation: Trivy's SBOM contains jakarta.activation/jakarta.activation-api 1.2.2, which is what the tree shows. My truth lists com.sun.activation/jakarta.activation 1.2.2 (different artifact). So this miss is a truth artifact error, cause of the list entry unknown (classifier or relocation not checked).
 3. swagger-petstore jaxb-osgi 2.3.8: declared in pom.xml line 313 with scope runtime. Trivy's SBOM has other jaxb components but not this one. Open: genuine Trivy miss or a dependency in a profile or plugin block (context above line 312 not read).
-4. spring-framework-petclinic h2: not found by the pattern <artifactId>h2< in the pom, so how it enters the build is unknown. Trivy's SBOM has no h2 component. Open.
+4. spring-framework-petclinic h2: not found by the pattern `<artifactId>h2<` in the pom, so how it enters the build is unknown. Trivy's SBOM has no h2 component. Open.
 5. spring-framework-petclinic excludes com.sun.activation:jakarta.activation in its pom (duplicate classes with jakarta.activation-api).
 Net: Maven shipped truth error up to 3 of 237 components, no effect on findings (finding recovery was complete for Trivy and cdxgen).
 

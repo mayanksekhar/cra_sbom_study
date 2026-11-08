@@ -13,12 +13,12 @@ for pat in (r"\b\d[\d,]* of \d[\d,]*\b", r"\b\d+ percent\b"):
         bad += not ok
         print(f"{'OK     ' if ok else 'MISSING'} {m}")
 n = 0
-for d in ("results", "results_old", "results_go", "results_mvn", "results_py"):
+for d in ("results", "results_old", "results_go", "results_mvn", "results_py", "results_rust", "results_npm"):
     n += len({r["project"] for r in csv.DictReader(open(root / d / "findings_vs_reference.csv")) if not r["project"].endswith("_nolock")})
 ok = f"{n} project versions" in abstract
 bad += not ok
-print(f"{'OK     ' if ok else 'MISSING'} {n} project versions (recomputed from the five findings CSVs)")
+print(f"{'OK     ' if ok else 'MISSING'} {n} project versions (recomputed from the seven findings CSVs)")
 t = re.search(r"\b(\d+) reference findings\b", abstract)
-print("phrase '959 reference findings' present" if "959 reference findings" in abstract else "check the reference findings figure")
+print("phrase '1061 reference findings' present" if "959 reference findings" in abstract else "check the reference findings figure")
 print("not checked: scanner names, VEX removal counts other than those matched above, the sentence about version carriers")
 print("abstract phrases not confirmed:", bad)

@@ -6,10 +6,10 @@ draft = " ".join((root / "docs" / "draft.md").read_text().split())
 def tot(f, tool, key):
     return sum(int(r[key]) for r in csv.DictReader(open(root / f)) if r["scanner"] == "grype" and r["tool"] == tool and not r["project"].endswith("_nolock"))
 S = {"pilot": "results/findings_vs_reference.csv", "older": "results_old/findings_vs_reference.csv", "go": "results_go/findings_vs_reference.csv",
-     "maven": "results_mvn/findings_vs_reference.csv", "pypi": "results_py/findings_vs_reference.csv"}
+     "maven": "results_mvn/findings_vs_reference.csv", "pypi": "results_py/findings_vs_reference.csv", "rust": "results_rust/findings_vs_reference.csv", "npm": "results_npm/findings_vs_reference.csv"}
 ref = {k: tot(f, "cdxgen", "ref_n") for k, f in S.items()}
 phrases = {
- "grand total": f"{sum(ref.values())} reference findings over five sets",
+ "grand total": f"{sum(ref.values())} reference findings over seven sets",
  "pilot syft": f"Syft {tot(S['pilot'], 'syft', 'tp')} of {ref['pilot']}",
  "older all three": f"older pins 48 of 48" if ref["older"] == 48 and all(tot(S["older"], t, "tp") == 48 for t in ("cdxgen", "syft", "trivy")) else "older pins MISMATCH",
  "go cdxgen": f"cdxgen {tot(S['go'], 'cdxgen', 'tp')} of {ref['go']}",

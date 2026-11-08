@@ -1,0 +1,9 @@
+name,ecosystem,repo_url,kind,tag
+dust,rust,https://github.com/bootandy/dust,application,v1.1.1
+zoxide,rust,https://github.com/ajeetdsouza/zoxide,application,v0.9.6
+starship,rust,https://github.com/starship/starship,application,v1.21.1
+delta,rust,https://github.com/dandavison/delta,application,0.18.2
+bottom,rust,https://github.com/ClementTsang/bottom,application,0.10.2
+just,rust,https://github.com/casey/just,application,1.36.0
+eza,rust,https://github.com/eza-community/eza,application,v0.20.5
+bat,rust,https://github.com/sharkdp/bat,application,v0.24.0

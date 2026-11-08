@@ -1,0 +1,4 @@
+name,ecosystem,repo_url,kind,tag
+mocha,npm,https://github.com/mochajs/mocha,library,v10.7.3
+TypeScript,npm,https://github.com/microsoft/TypeScript,library,v5.6.3
+pm2,npm,https://github.com/Unitech/pm2,application,v5.4.2

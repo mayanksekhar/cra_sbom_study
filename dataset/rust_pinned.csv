@@ -1,0 +1,9 @@
+name,ecosystem,repo_url,kind,tag,commit_sha
+dust,rust,https://github.com/bootandy/dust,application,v1.1.1,dbd18f90e7b184d12f14533e76e5915dbe4a2051
+zoxide,rust,https://github.com/ajeetdsouza/zoxide,application,v0.9.6,3d3267b4fd73e6292d317f96d60ef69ea035912d
+starship,rust,https://github.com/starship/starship,application,v1.21.1,47ccc3603dc20edf4bb59e56b26d19f78a41e770
+delta,rust,https://github.com/dandavison/delta,application,0.18.2,a589ff9debaefdd3992384434120f5a03a103481
+bottom,rust,https://github.com/ClementTsang/bottom,application,0.10.2,2ec1fb56c9db0b37acc4eca3230adfb52720376b
+just,rust,https://github.com/casey/just,application,1.36.0,66ccef79420ed1fe59efb067e5f85b5fe88d7484
+eza,rust,https://github.com/eza-community/eza,application,v0.20.5,ab57f463440f1441691616cbf6761f66b7949591
+bat,rust,https://github.com/sharkdp/bat,application,v0.24.0,fc9546854f5a7b38823f4990453c6cde386bfd3b

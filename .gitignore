@@ -14,3 +14,4 @@ results_*/*
 !results_go/reach.json
 !results_go/product_findings.csv
 !results_go/vex_set.csv
+!results_go/mech_result.csv

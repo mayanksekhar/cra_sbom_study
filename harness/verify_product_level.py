@@ -35,7 +35,7 @@ checks = [
  (D, f"Grype with form B: {vs('grype','B','notcalled_removed')} of {vs('grype','B','notcalled_total')} removed, {gB[0]} of {gB[1]} called removed"),
  (D, f"{po} of {pt} ordered pairs overlap; {n_exp} of {m_called} called findings are exposed ({riskstr})"),
  (D, f"matched the scans of all {len(rows)} pairs in both scanners ({predstr} called findings removed)"),
- (D, f"Of the {nas} not called findings that can be checked this way, {nca} have no vulnerable function in the built binary; of the {cas} called findings that can be checked, {ca} have none"),
+ (D, f"Of the {nas} not called findings that can be checked this way, {nca} have no vulnerable function in the built binary; of the {cas} called findings that can be checked, {ca} " + ("has" if ca == 1 else "have") + " none"),
  (S7, f"Trivy removed {vs('trivy','A','notcalled_removed')} of {vs('trivy','A','notcalled_total')} not called findings"),
  (S7, f"Grype removed {vs('grype','A','notcalled_removed')} of {vs('grype','A','notcalled_total')}"),
  (S7, f"({vs('grype','B','notcalled_removed')} of {vs('grype','B','notcalled_total')})"),

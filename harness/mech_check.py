@@ -32,7 +32,7 @@ def build(p):
             print(f"BUILD FAILED {p} {m}: {(r.stderr.strip().splitlines() or [''])[-1][:100]}", flush=True)
             continue
         nm = subprocess.run(["go", "tool", "nm", str(b)], capture_output=True, text=True).stdout
-        syms |= {l.split(None, 2)[2] for l in nm.splitlines() if len(l.split(None, 2)) == 3}
+        syms |= {(x[len("vendor/"):] if x.startswith("vendor/") else x) for x in (l.split(None, 2)[2] for l in nm.splitlines() if len(l.split(None, 2)) == 3)}
         ok.append(m)
     return syms, ok
 

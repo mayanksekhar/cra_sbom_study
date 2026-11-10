@@ -127,7 +127,7 @@ restic,golang.org/x/net@v0.26.0,CVE-2026-46600;GO-2026-5942,not called,function 
 restic,github.com/klauspost/compress@v1.17.9,CVE-2026-63209;GHSA-259r-337f-4rfw,not called,no GO id
 restic,golang.org/x/crypto@v0.24.0,CVE-2026-56855;GO-2026-6355,not called,all listed functions absent
 restic,golang.org/x/net@v0.26.0,CVE-2026-97032;GO-2026-6617,called,function present
-restic,golang.org/x/text@v0.16.0,CVE-2026-56852;GO-2026-5970,called,all listed functions absent
+restic,golang.org/x/text@v0.16.0,CVE-2026-56852;GO-2026-5970,called,function present
 restic,golang.org/x/crypto@v0.24.0,CVE-2026-46597;GHSA-q4h4-gmj2-qvw2;GO-2026-5013,not called,function present
 restic,golang.org/x/crypto@v0.24.0,CVE-2026-39829;GHSA-w879-237q-wc7r;GO-2026-5018,not called,all listed functions absent
 restic,golang.org/x/text@v0.16.0,CVE-2026-56851;GO-2026-6629,not called,all listed functions absent

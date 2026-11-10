@@ -29,3 +29,4 @@ results_npm/*
 !results_rust/metrics.csv
 !results_npm/findings_vs_reference.csv
 !results_npm/metrics.csv
+!results_go/mech_result_product.csv

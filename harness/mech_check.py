@@ -7,18 +7,27 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--out", default="/tmp/mech")
 ap.add_argument("--gcflags", default="", help="for example all=-l to disable inlining")
 ap.add_argument("--projects", default="", help="comma separated subset")
+ap.add_argument("--reach", default="reach.json", help="classes file inside results_go")
+ap.add_argument("--reuse", action="store_true", help="reuse binaries already in --out")
+ap.add_argument("--name", default="mech_result.csv")
 a = ap.parse_args()
 out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
 DB = root / "vulndb" / "20261030" / "govuln" / "ID"
 MAINS = {"alertmanager": ["./cmd/alertmanager", "./cmd/amtool"], "blackbox_exporter": ["."], "restic": ["./cmd/restic"], "fzf": ["."],
          "k9s": ["."], "helm": ["./cmd/helm"], "caddy": ["./cmd/caddy"], "nats-server": ["."], "cli": ["./cmd/gh"], "hugo": ["."]}
-reach = json.loads((root / "results_go" / "reach.json").read_text())
+reach = json.loads((root / "results_go" / a.reach).read_text())
 
 def build(p):
     syms, ok = set(), []
     for i, m in enumerate(MAINS[p]):
         b = out / f"{p}_{i}.bin"
-        r = subprocess.run(["go", "build"] + (["-gcflags=" + a.gcflags] if a.gcflags else []) + ["-o", str(b), m], cwd=root / "dataset" / "src_go" / p, capture_output=True, text=True)
+        if a.reuse and b.exists():
+            class _R:
+                returncode = 0
+                stderr = ""
+            r = _R()
+        else:
+            r = subprocess.run(["go", "build"] + (["-gcflags=" + a.gcflags] if a.gcflags else []) + ["-o", str(b), m], cwd=root / "dataset" / "src_go" / p, capture_output=True, text=True)
         if r.returncode != 0:
             print(f"BUILD FAILED {p} {m}: {(r.stderr.strip().splitlines() or [''])[-1][:100]}", flush=True)
             continue
@@ -74,7 +83,7 @@ for p, es in reach.items():
         rows.append([p, e["purl"], ";".join(e["ids"]), e["class"], res])
         if e["class"] == "called" and res in ("all listed functions absent", "package absent"):
             called_absent.append((p, e["purl"], e["ids"][:3], res))
-with open(out / "mech_result.csv", "w", newline="") as fh:
+with open(out / a.name, "w", newline="") as fh:
     w = csv.writer(fh); w.writerow(["project", "purl", "ids", "govulncheck", "mechanical"]); w.writerows(rows)
 res_all = sorted({r for _, r in cross})
 print("\ngovulncheck class x mechanical result (findings)")
@@ -84,4 +93,4 @@ for c in ("called", "not called", "unknown"):
 print("\ncalled but absent from the binary:", len(called_absent))
 for x in called_absent[:15]:
     print("  ", x)
-print("result file:", out / "mech_result.csv")
+print("result file:", out / a.name)

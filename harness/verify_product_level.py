@@ -24,7 +24,7 @@ rows = [tuple(map(int, m)) for m in re.findall(r"^\s*\S+ -> \S+\s+(\d+)\s+(\d+)\
 pairs_ok = all(p == t == g and a == 0 for p, t, g, a in rows)
 pred = [str(r[0]) for r in rows]
 predstr = ", ".join(pred[:-1]) + " and " + pred[-1] if len(pred) > 1 else "".join(pred)
-mech = list(csv.DictReader(open(R / "mech_result.csv")))
+mech = list(csv.DictReader(open(R / "mech_result_product.csv")))
 ABS, PRES = ("all listed functions absent", "package absent"), ("function present", "package symbols present")
 def cnt(c, vals): return sum(1 for r in mech if r["govulncheck"] == c and r["mechanical"] in vals)
 nca, nas, ca, cas = cnt("not called", ABS), cnt("not called", ABS + PRES), cnt("called", ABS), cnt("called", ABS + PRES)

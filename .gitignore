@@ -39,3 +39,4 @@ results_npm/*
 !results_containers/images.csv
 !results_containers/truth/
 !results_containers/truth/*.json
+!results_containers/container_components.csv

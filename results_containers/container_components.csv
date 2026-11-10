@@ -1,0 +1,17 @@
+image,generator,truth,true_positive,extra,missed,other_types
+debian12,syft,88,88,0,0,0
+debian12,trivy,88,88,0,0,0
+debian11,syft,96,96,0,0,0
+debian11,trivy,96,96,0,0,0
+alpine320,syft,14,14,0,0,0
+alpine320,trivy,14,14,0,0,0
+alpine318,syft,15,15,0,0,0
+alpine318,trivy,15,15,0,0,0
+nginx,syft,149,149,0,0,1
+nginx,trivy,149,149,0,0,0
+redis,syft,89,89,0,0,5
+redis,trivy,89,89,0,0,4
+python,syft,105,105,0,0,2
+python,trivy,105,105,0,0,1
+postgres,syft,45,45,0,0,5
+postgres,trivy,45,45,0,0,4

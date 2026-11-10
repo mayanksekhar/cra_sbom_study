@@ -16,6 +16,7 @@ CHECKS = [
     ("section 7 numbers", "harness/verify_section7.py", SUMMARY + RAW + DOCS),
     ("BSI probe of generator SBOMs", "harness/bsi_probe.py", RAW),
     ("product level reachability and VEX numbers", "harness/verify_product_level.py", PRODUCT + DOCS),
+    ("figures (regenerated and compared with docs/figures)", "harness/check_figures.py", [f"{d}/findings_vs_reference.csv" for d in ("results", "results_old", "results_go", "results_mvn", "results_py", "results_rust", "results_npm")] + ["results_go/reach_product.json", "results_go/vex_set_product.csv", "docs/figures/index.md"]),
 ]
 skipped = failed = 0
 for name, script, needs in CHECKS:

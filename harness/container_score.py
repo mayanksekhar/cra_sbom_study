@@ -35,7 +35,7 @@ for n in imgs:
         only_im = set(im) - set(ref)
         cpe = sum(1 for k in only_im if im[k] == "cpe-match")
         cal.append([n, scanner, len(im), len(ref), len(set(im) & set(ref)), len(only_im), len(set(ref) - set(im)), cpe])
-        for gen in ("syft", "trivy"):
+        for gen in ("syft", "trivy", "cdxgen"):
             g = scan(scanner, "sbom", W / "out" / f"{n}_{gen}.cdx.json")
             sco.append([n, scanner, gen, len(ref), len(set(g) & set(ref)), len(set(ref) - set(g)), len(set(g) - set(ref))])
 with open(OUT / "container_calibration.csv", "w", newline="") as f:

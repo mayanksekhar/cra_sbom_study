@@ -32,3 +32,10 @@ results_npm/*
 !results_go/mech_result_product.csv
 !results_drift/
 !results_drift/drift_20261110.csv
+
+!results_containers/container_calibration.csv
+!results_containers/container_scoring.csv
+!results_containers/container_controls.csv
+!results_containers/images.csv
+!results_containers/truth/
+!results_containers/truth/*.json

@@ -8,6 +8,7 @@ SUMMARY = CSVS + ["results_go/reach.json", "results_go/product_findings.csv", "r
 RAW = [f"{d}/raw" for d in ("results", "results_old", "results_go", "results_mvn", "results_py")]
 DOCS = ["docs/draft.md", "docs/draft_section7.md", "docs/draft_front_back.md"]
 PRODUCT = ["results_go/reach_product.json", "results_go/vex_set_product.csv", "results_go/vex_set_product.log", "results_go/vex_cross_product.txt", "results_go/mech_result_product.csv", "results_drift/drift_20261110.csv"]
+CONTAINERS = [f"results_containers/{f}" for f in ("container_calibration.csv", "container_scoring.csv", "container_controls.csv", "container_components.csv", "images.csv")]
 CHECKS = [
     ("progress rubric", "harness/progress.py", ["docs/progress.csv"]),
     ("findings table (regenerates docs/table_findings.md)", "harness/make_table_findings.py", CSVS),
@@ -16,6 +17,7 @@ CHECKS = [
     ("section 7 numbers", "harness/verify_section7.py", SUMMARY + RAW + DOCS),
     ("BSI probe of generator SBOMs", "harness/bsi_probe.py", RAW),
     ("product level reachability and VEX numbers", "harness/verify_product_level.py", PRODUCT + DOCS),
+    ("container set numbers", "harness/verify_containers.py", CONTAINERS + DOCS),
     ("figures (regenerated and compared with docs/figures)", "harness/check_figures.py", [f"{d}/findings_vs_reference.csv" for d in ("results", "results_old", "results_go", "results_mvn", "results_py", "results_rust", "results_npm")] + ["results_go/reach_product.json", "results_go/vex_set_product.csv", "docs/figures/index.md"]),
 ]
 skipped = failed = 0

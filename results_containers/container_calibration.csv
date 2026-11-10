@@ -1,0 +1,17 @@
+image,scanner,image_scan,reference,in_both,only_image,only_reference,only_image_cpe_match
+debian12,grype,317,317,317,0,0,0
+debian12,trivy,328,328,328,0,0,0
+debian11,grype,320,320,320,0,0,0
+debian11,trivy,413,413,413,0,0,0
+alpine320,grype,62,59,59,3,0,3
+alpine320,trivy,60,60,60,0,0,0
+alpine318,grype,20,6,6,14,0,14
+alpine318,trivy,6,6,6,0,0,0
+nginx,grype,751,751,751,0,0,0
+nginx,trivy,784,792,784,0,8,0
+redis,grype,356,356,356,0,0,0
+redis,trivy,367,367,367,0,0,0
+python,grype,456,456,456,0,0,0
+python,trivy,469,469,469,0,0,0
+postgres,grype,72,68,68,4,0,4
+postgres,trivy,69,69,69,0,0,0

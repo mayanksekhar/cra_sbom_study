@@ -10,7 +10,7 @@ Scale,Go set (10 applications),6,6
 Scale,Maven set (8 projects),4,4
 Scale,PyPI set (8 projects),3,3
 Scale,npm and Rust sets at scale (Rust 8 projects; npm only 3 and one degenerate),3,2.5
-Scale,container image set,4,0
+Scale,container image set,4,2
 Experiments,component accuracy and scope across sets,5,5
 Experiments,findings recovery and miss attribution (five sets),5,5
 Experiments,scanner consumption controls (version carrier and profiles and layout and compatibility),4,4

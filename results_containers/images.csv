@@ -1,0 +1,9 @@
+name,ref,digest,bytes
+debian12,docker.io/library/debian:bookworm-20240926-slim,sha256:7095ea629c4563714b9655137db2eacd456eb3eea0eb8a2b0a4a6b0b187220a9,77841408
+debian11,docker.io/library/debian:bullseye-20240926-slim,sha256:d64241f857a1d4515f831751dad27fe6c974fe73d58b909936fefff6914ad3b9,84187136
+alpine320,docker.io/library/alpine:3.20.3,sha256:029a752048e32e843bd6defe3841186fb8d19a28dae8ec287f433bb9d6d1ad85,8089600
+alpine318,docker.io/library/alpine:3.18.9,sha256:d3b83042301e01a491840c524c60720ee9a00eacce990ed39278e8076bd8ce22,7651840
+nginx,docker.io/library/nginx:1.27.2,sha256:5341b734e75ce46bbb8e02476434217fd771e23df9a4bfea756a6f3a4a521d3e,195830272
+redis,docker.io/library/redis:7.4.1-bookworm,sha256:18077322db9506f5df37db3e0f7080574853d593bcd23a4d42d551a3127b55fd,120205312
+python,docker.io/library/python:3.12.7-slim-bookworm,sha256:1c44018d7eb40488f29e7c6ad4991d3200507e14dca71b94fe61011815e98155,128366080
+postgres,docker.io/library/postgres:16.4-alpine3.20,sha256:f5aa7cac1dc299a77761ada5a5cf9c6ef4064bc85c89fed49c587dd2381d6f05,253316096

@@ -1,0 +1,41 @@
+image,scanner,generator,variant,reference,found,extra
+debian12,grype,trivy,as generated,317,36,0
+debian12,grype,trivy,with upstream,317,317,0
+debian12,grype,trivy,with upstream and distro,317,317,0
+debian12,trivy,syft,as generated,328,41,0
+debian12,trivy,syft,with trivy properties,328,328,0
+debian11,grype,trivy,as generated,320,29,0
+debian11,grype,trivy,with upstream,320,320,0
+debian11,grype,trivy,with upstream and distro,320,320,0
+debian11,trivy,syft,as generated,413,42,0
+debian11,trivy,syft,with trivy properties,413,413,0
+alpine320,grype,trivy,as generated,59,0,0
+alpine320,grype,trivy,with upstream,59,0,0
+alpine320,grype,trivy,with upstream and distro,59,59,0
+alpine320,trivy,syft,as generated,60,8,0
+alpine320,trivy,syft,with trivy properties,60,60,0
+alpine318,grype,trivy,as generated,6,0,0
+alpine318,grype,trivy,with upstream,6,0,0
+alpine318,grype,trivy,with upstream and distro,6,6,0
+alpine318,trivy,syft,as generated,6,1,0
+alpine318,trivy,syft,with trivy properties,6,6,0
+nginx,grype,trivy,as generated,751,160,0
+nginx,grype,trivy,with upstream,751,751,0
+nginx,grype,trivy,with upstream and distro,751,751,0
+nginx,trivy,syft,as generated,792,168,0
+nginx,trivy,syft,with trivy properties,792,792,0
+redis,grype,trivy,as generated,356,36,0
+redis,grype,trivy,with upstream,356,356,0
+redis,grype,trivy,with upstream and distro,356,356,0
+redis,trivy,syft,as generated,367,41,0
+redis,trivy,syft,with trivy properties,367,367,0
+python,grype,trivy,as generated,456,75,0
+python,grype,trivy,with upstream,456,456,0
+python,grype,trivy,with upstream and distro,456,456,0
+python,trivy,syft,as generated,469,82,0
+python,trivy,syft,with trivy properties,469,469,0
+postgres,grype,trivy,as generated,68,0,0
+postgres,grype,trivy,with upstream,68,0,0
+postgres,grype,trivy,with upstream and distro,68,68,0
+postgres,trivy,syft,as generated,69,15,0
+postgres,trivy,syft,with trivy properties,69,69,0

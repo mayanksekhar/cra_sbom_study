@@ -1,0 +1,631 @@
+{
+ "image": "docker.io/library/redis:7.4.1-bookworm",
+ "os": "debian",
+ "os_version": "12",
+ "kind": "deb",
+ "packages": [
+  {
+   "name": "adduser",
+   "version": "3.134",
+   "arch": "all",
+   "source": "adduser",
+   "source_version": "3.134"
+  },
+  {
+   "name": "apt",
+   "version": "2.6.1",
+   "arch": "amd64",
+   "source": "apt",
+   "source_version": "2.6.1"
+  },
+  {
+   "name": "base-files",
+   "version": "12.4+deb12u8",
+   "arch": "amd64",
+   "source": "base-files",
+   "source_version": "12.4+deb12u8"
+  },
+  {
+   "name": "base-passwd",
+   "version": "3.6.1",
+   "arch": "amd64",
+   "source": "base-passwd",
+   "source_version": "3.6.1"
+  },
+  {
+   "name": "bash",
+   "version": "5.2.15-2+b7",
+   "arch": "amd64",
+   "source": "bash",
+   "source_version": "5.2.15-2"
+  },
+  {
+   "name": "bsdutils",
+   "version": "1:2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "coreutils",
+   "version": "9.1-1",
+   "arch": "amd64",
+   "source": "coreutils",
+   "source_version": "9.1-1"
+  },
+  {
+   "name": "dash",
+   "version": "0.5.12-2",
+   "arch": "amd64",
+   "source": "dash",
+   "source_version": "0.5.12-2"
+  },
+  {
+   "name": "debconf",
+   "version": "1.5.82",
+   "arch": "all",
+   "source": "debconf",
+   "source_version": "1.5.82"
+  },
+  {
+   "name": "debian-archive-keyring",
+   "version": "2023.3+deb12u1",
+   "arch": "all",
+   "source": "debian-archive-keyring",
+   "source_version": "2023.3+deb12u1"
+  },
+  {
+   "name": "debianutils",
+   "version": "5.7-0.5~deb12u1",
+   "arch": "amd64",
+   "source": "debianutils",
+   "source_version": "5.7-0.5~deb12u1"
+  },
+  {
+   "name": "diffutils",
+   "version": "1:3.8-4",
+   "arch": "amd64",
+   "source": "diffutils",
+   "source_version": "1:3.8-4"
+  },
+  {
+   "name": "dpkg",
+   "version": "1.21.22",
+   "arch": "amd64",
+   "source": "dpkg",
+   "source_version": "1.21.22"
+  },
+  {
+   "name": "e2fsprogs",
+   "version": "1.47.0-2",
+   "arch": "amd64",
+   "source": "e2fsprogs",
+   "source_version": "1.47.0-2"
+  },
+  {
+   "name": "findutils",
+   "version": "4.9.0-4",
+   "arch": "amd64",
+   "source": "findutils",
+   "source_version": "4.9.0-4"
+  },
+  {
+   "name": "gcc-12-base",
+   "version": "12.2.0-14",
+   "arch": "amd64",
+   "source": "gcc-12",
+   "source_version": "12.2.0-14"
+  },
+  {
+   "name": "gpgv",
+   "version": "2.2.40-1.1",
+   "arch": "amd64",
+   "source": "gnupg2",
+   "source_version": "2.2.40-1.1"
+  },
+  {
+   "name": "grep",
+   "version": "3.8-5",
+   "arch": "amd64",
+   "source": "grep",
+   "source_version": "3.8-5"
+  },
+  {
+   "name": "gzip",
+   "version": "1.12-1",
+   "arch": "amd64",
+   "source": "gzip",
+   "source_version": "1.12-1"
+  },
+  {
+   "name": "hostname",
+   "version": "3.23+nmu1",
+   "arch": "amd64",
+   "source": "hostname",
+   "source_version": "3.23+nmu1"
+  },
+  {
+   "name": "init-system-helpers",
+   "version": "1.65.2",
+   "arch": "all",
+   "source": "init-system-helpers",
+   "source_version": "1.65.2"
+  },
+  {
+   "name": "libacl1",
+   "version": "2.3.1-3",
+   "arch": "amd64",
+   "source": "acl",
+   "source_version": "2.3.1-3"
+  },
+  {
+   "name": "libapt-pkg6.0",
+   "version": "2.6.1",
+   "arch": "amd64",
+   "source": "apt",
+   "source_version": "2.6.1"
+  },
+  {
+   "name": "libattr1",
+   "version": "1:2.5.1-4",
+   "arch": "amd64",
+   "source": "attr",
+   "source_version": "1:2.5.1-4"
+  },
+  {
+   "name": "libaudit-common",
+   "version": "1:3.0.9-1",
+   "arch": "all",
+   "source": "audit",
+   "source_version": "1:3.0.9-1"
+  },
+  {
+   "name": "libaudit1",
+   "version": "1:3.0.9-1",
+   "arch": "amd64",
+   "source": "audit",
+   "source_version": "1:3.0.9-1"
+  },
+  {
+   "name": "libblkid1",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "libbz2-1.0",
+   "version": "1.0.8-5+b1",
+   "arch": "amd64",
+   "source": "bzip2",
+   "source_version": "1.0.8-5"
+  },
+  {
+   "name": "libc-bin",
+   "version": "2.36-9+deb12u9",
+   "arch": "amd64",
+   "source": "glibc",
+   "source_version": "2.36-9+deb12u9"
+  },
+  {
+   "name": "libc6",
+   "version": "2.36-9+deb12u9",
+   "arch": "amd64",
+   "source": "glibc",
+   "source_version": "2.36-9+deb12u9"
+  },
+  {
+   "name": "libcap-ng0",
+   "version": "0.8.3-1+b3",
+   "arch": "amd64",
+   "source": "libcap-ng",
+   "source_version": "0.8.3-1"
+  },
+  {
+   "name": "libcap2",
+   "version": "1:2.66-4",
+   "arch": "amd64",
+   "source": "libcap2",
+   "source_version": "1:2.66-4"
+  },
+  {
+   "name": "libcom-err2",
+   "version": "1.47.0-2",
+   "arch": "amd64",
+   "source": "e2fsprogs",
+   "source_version": "1.47.0-2"
+  },
+  {
+   "name": "libcrypt1",
+   "version": "1:4.4.33-2",
+   "arch": "amd64",
+   "source": "libxcrypt",
+   "source_version": "1:4.4.33-2"
+  },
+  {
+   "name": "libdb5.3",
+   "version": "5.3.28+dfsg2-1",
+   "arch": "amd64",
+   "source": "db5.3",
+   "source_version": "5.3.28+dfsg2-1"
+  },
+  {
+   "name": "libdebconfclient0",
+   "version": "0.270",
+   "arch": "amd64",
+   "source": "cdebconf",
+   "source_version": "0.270"
+  },
+  {
+   "name": "libext2fs2",
+   "version": "1.47.0-2",
+   "arch": "amd64",
+   "source": "e2fsprogs",
+   "source_version": "1.47.0-2"
+  },
+  {
+   "name": "libffi8",
+   "version": "3.4.4-1",
+   "arch": "amd64",
+   "source": "libffi",
+   "source_version": "3.4.4-1"
+  },
+  {
+   "name": "libgcc-s1",
+   "version": "12.2.0-14",
+   "arch": "amd64",
+   "source": "gcc-12",
+   "source_version": "12.2.0-14"
+  },
+  {
+   "name": "libgcrypt20",
+   "version": "1.10.1-3",
+   "arch": "amd64",
+   "source": "libgcrypt20",
+   "source_version": "1.10.1-3"
+  },
+  {
+   "name": "libgmp10",
+   "version": "2:6.2.1+dfsg1-1.1",
+   "arch": "amd64",
+   "source": "gmp",
+   "source_version": "2:6.2.1+dfsg1-1.1"
+  },
+  {
+   "name": "libgnutls30",
+   "version": "3.7.9-2+deb12u3",
+   "arch": "amd64",
+   "source": "gnutls28",
+   "source_version": "3.7.9-2+deb12u3"
+  },
+  {
+   "name": "libgpg-error0",
+   "version": "1.46-1",
+   "arch": "amd64",
+   "source": "libgpg-error",
+   "source_version": "1.46-1"
+  },
+  {
+   "name": "libhogweed6",
+   "version": "3.8.1-2",
+   "arch": "amd64",
+   "source": "nettle",
+   "source_version": "3.8.1-2"
+  },
+  {
+   "name": "libidn2-0",
+   "version": "2.3.3-1+b1",
+   "arch": "amd64",
+   "source": "libidn2",
+   "source_version": "2.3.3-1"
+  },
+  {
+   "name": "liblz4-1",
+   "version": "1.9.4-1",
+   "arch": "amd64",
+   "source": "lz4",
+   "source_version": "1.9.4-1"
+  },
+  {
+   "name": "liblzma5",
+   "version": "5.4.1-0.2",
+   "arch": "amd64",
+   "source": "xz-utils",
+   "source_version": "5.4.1-0.2"
+  },
+  {
+   "name": "libmd0",
+   "version": "1.0.4-2",
+   "arch": "amd64",
+   "source": "libmd",
+   "source_version": "1.0.4-2"
+  },
+  {
+   "name": "libmount1",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "libnettle8",
+   "version": "3.8.1-2",
+   "arch": "amd64",
+   "source": "nettle",
+   "source_version": "3.8.1-2"
+  },
+  {
+   "name": "libp11-kit0",
+   "version": "0.24.1-2",
+   "arch": "amd64",
+   "source": "p11-kit",
+   "source_version": "0.24.1-2"
+  },
+  {
+   "name": "libpam-modules",
+   "version": "1.5.2-6+deb12u1",
+   "arch": "amd64",
+   "source": "pam",
+   "source_version": "1.5.2-6+deb12u1"
+  },
+  {
+   "name": "libpam-modules-bin",
+   "version": "1.5.2-6+deb12u1",
+   "arch": "amd64",
+   "source": "pam",
+   "source_version": "1.5.2-6+deb12u1"
+  },
+  {
+   "name": "libpam-runtime",
+   "version": "1.5.2-6+deb12u1",
+   "arch": "all",
+   "source": "pam",
+   "source_version": "1.5.2-6+deb12u1"
+  },
+  {
+   "name": "libpam0g",
+   "version": "1.5.2-6+deb12u1",
+   "arch": "amd64",
+   "source": "pam",
+   "source_version": "1.5.2-6+deb12u1"
+  },
+  {
+   "name": "libpcre2-8-0",
+   "version": "10.42-1",
+   "arch": "amd64",
+   "source": "pcre2",
+   "source_version": "10.42-1"
+  },
+  {
+   "name": "libseccomp2",
+   "version": "2.5.4-1+deb12u1",
+   "arch": "amd64",
+   "source": "libseccomp",
+   "source_version": "2.5.4-1+deb12u1"
+  },
+  {
+   "name": "libselinux1",
+   "version": "3.4-1+b6",
+   "arch": "amd64",
+   "source": "libselinux",
+   "source_version": "3.4-1"
+  },
+  {
+   "name": "libsemanage-common",
+   "version": "3.4-1",
+   "arch": "all",
+   "source": "libsemanage",
+   "source_version": "3.4-1"
+  },
+  {
+   "name": "libsemanage2",
+   "version": "3.4-1+b5",
+   "arch": "amd64",
+   "source": "libsemanage",
+   "source_version": "3.4-1"
+  },
+  {
+   "name": "libsepol2",
+   "version": "3.4-2.1",
+   "arch": "amd64",
+   "source": "libsepol",
+   "source_version": "3.4-2.1"
+  },
+  {
+   "name": "libsmartcols1",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "libss2",
+   "version": "1.47.0-2",
+   "arch": "amd64",
+   "source": "e2fsprogs",
+   "source_version": "1.47.0-2"
+  },
+  {
+   "name": "libssl3",
+   "version": "3.0.15-1~deb12u1",
+   "arch": "amd64",
+   "source": "openssl",
+   "source_version": "3.0.15-1~deb12u1"
+  },
+  {
+   "name": "libstdc++6",
+   "version": "12.2.0-14",
+   "arch": "amd64",
+   "source": "gcc-12",
+   "source_version": "12.2.0-14"
+  },
+  {
+   "name": "libsystemd0",
+   "version": "252.31-1~deb12u1",
+   "arch": "amd64",
+   "source": "systemd",
+   "source_version": "252.31-1~deb12u1"
+  },
+  {
+   "name": "libtasn1-6",
+   "version": "4.19.0-2",
+   "arch": "amd64",
+   "source": "libtasn1-6",
+   "source_version": "4.19.0-2"
+  },
+  {
+   "name": "libtinfo6",
+   "version": "6.4-4",
+   "arch": "amd64",
+   "source": "ncurses",
+   "source_version": "6.4-4"
+  },
+  {
+   "name": "libudev1",
+   "version": "252.31-1~deb12u1",
+   "arch": "amd64",
+   "source": "systemd",
+   "source_version": "252.31-1~deb12u1"
+  },
+  {
+   "name": "libunistring2",
+   "version": "1.0-2",
+   "arch": "amd64",
+   "source": "libunistring",
+   "source_version": "1.0-2"
+  },
+  {
+   "name": "libuuid1",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "libxxhash0",
+   "version": "0.8.1-1",
+   "arch": "amd64",
+   "source": "xxhash",
+   "source_version": "0.8.1-1"
+  },
+  {
+   "name": "libzstd1",
+   "version": "1.5.4+dfsg2-5",
+   "arch": "amd64",
+   "source": "libzstd",
+   "source_version": "1.5.4+dfsg2-5"
+  },
+  {
+   "name": "login",
+   "version": "1:4.13+dfsg1-1+b1",
+   "arch": "amd64",
+   "source": "shadow",
+   "source_version": "1:4.13+dfsg1-1"
+  },
+  {
+   "name": "logsave",
+   "version": "1.47.0-2",
+   "arch": "amd64",
+   "source": "e2fsprogs",
+   "source_version": "1.47.0-2"
+  },
+  {
+   "name": "mawk",
+   "version": "1.3.4.20200120-3.1",
+   "arch": "amd64",
+   "source": "mawk",
+   "source_version": "1.3.4.20200120-3.1"
+  },
+  {
+   "name": "mount",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "ncurses-base",
+   "version": "6.4-4",
+   "arch": "all",
+   "source": "ncurses",
+   "source_version": "6.4-4"
+  },
+  {
+   "name": "ncurses-bin",
+   "version": "6.4-4",
+   "arch": "amd64",
+   "source": "ncurses",
+   "source_version": "6.4-4"
+  },
+  {
+   "name": "passwd",
+   "version": "1:4.13+dfsg1-1+b1",
+   "arch": "amd64",
+   "source": "shadow",
+   "source_version": "1:4.13+dfsg1-1"
+  },
+  {
+   "name": "perl-base",
+   "version": "5.36.0-7+deb12u1",
+   "arch": "amd64",
+   "source": "perl",
+   "source_version": "5.36.0-7+deb12u1"
+  },
+  {
+   "name": "sed",
+   "version": "4.9-1",
+   "arch": "amd64",
+   "source": "sed",
+   "source_version": "4.9-1"
+  },
+  {
+   "name": "sysvinit-utils",
+   "version": "3.06-4",
+   "arch": "amd64",
+   "source": "sysvinit",
+   "source_version": "3.06-4"
+  },
+  {
+   "name": "tar",
+   "version": "1.34+dfsg-1.2+deb12u1",
+   "arch": "amd64",
+   "source": "tar",
+   "source_version": "1.34+dfsg-1.2+deb12u1"
+  },
+  {
+   "name": "tzdata",
+   "version": "2024b-0+deb12u1",
+   "arch": "all",
+   "source": "tzdata",
+   "source_version": "2024b-0+deb12u1"
+  },
+  {
+   "name": "usr-is-merged",
+   "version": "37~deb12u1",
+   "arch": "all",
+   "source": "usrmerge",
+   "source_version": "37~deb12u1"
+  },
+  {
+   "name": "util-linux",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "util-linux-extra",
+   "version": "2.38.1-5+deb12u2",
+   "arch": "amd64",
+   "source": "util-linux",
+   "source_version": "2.38.1-5+deb12u2"
+  },
+  {
+   "name": "zlib1g",
+   "version": "1:1.2.13.dfsg-1",
+   "arch": "amd64",
+   "source": "zlib",
+   "source_version": "1:1.2.13.dfsg-1"
+  }
+ ]
+}

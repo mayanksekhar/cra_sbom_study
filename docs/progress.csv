@@ -14,7 +14,7 @@ Scale,container image set,4,0
 Experiments,component accuracy and scope across sets,5,5
 Experiments,findings recovery and miss attribution (five sets),5,5
 Experiments,scanner consumption controls (version carrier and profiles and layout and compatibility),4,4
-Experiments,database drift and snapshot comparison (one measurement),2,1
+Experiments,database drift and snapshot comparison (two extra snapshots),2,2
 Experiments,findings on the product's own module,2,2
 Experiments,replication with other tool versions (Syft 1.33.0 and Trivy 0.66.0 on npm and Rust; Grype and cdxgen and other ecosystems not),2,1
 VEX and reachability,reachability rate on Go (govulncheck),4,3

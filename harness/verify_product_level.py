@@ -28,7 +28,10 @@ mech = list(csv.DictReader(open(R / "mech_result_product.csv")))
 ABS, PRES = ("all listed functions absent", "package absent"), ("function present", "package symbols present")
 def cnt(c, vals): return sum(1 for r in mech if r["govulncheck"] == c and r["mechanical"] in vals)
 nca, nas, ca, cas = cnt("not called", ABS), cnt("not called", ABS + PRES), cnt("called", ABS), cnt("called", ABS + PRES)
+dr = list(csv.DictReader(open(root / "results_drift" / "drift_20261110.csv")))
+dsum = lambda k: sum(int(r[k]) for r in dr)
 checks = [
+ (S7, f"Over the {dsum('sboms')} reference SBOMs of all seven sets, Grype 0.114.0 reports {dsum('findings_20261110')} findings with the newer database against {dsum('findings_20261030')} with the frozen one: {dsum('only_20261110')} appeared and {dsum('only_20261030')} disappeared"),
  (D, f"{tot} findings, {cls['called']} called, {nc} not called, {cls['unknown']} without a verdict, so {nc} of {tot} ({pct} percent) are not called"),
  (D, f"Trivy with form A: {vs('trivy','A','notcalled_removed')} of {vs('trivy','A','notcalled_total')} not called findings removed (its scan reports {vs('trivy','A','notcalled_total')} of the {nc}), {tA[0]} of {tA[1]} called removed"),
  (D, f"Grype with form A: {vs('grype','A','notcalled_removed')} of {vs('grype','A','notcalled_total')} removed"),

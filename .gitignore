@@ -30,3 +30,5 @@ results_npm/*
 !results_npm/findings_vs_reference.csv
 !results_npm/metrics.csv
 !results_go/mech_result_product.csv
+!results_drift/
+!results_drift/drift_20261110.csv

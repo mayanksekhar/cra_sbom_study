@@ -45,6 +45,7 @@ checks = [
  (abstract, f"removed {vs('trivy','A','notcalled_removed')} of {vs('trivy','A','notcalled_total')} not called findings in Trivy and {vs('grype','A','notcalled_removed')} of {vs('grype','A','notcalled_total')} in Grype"),
  (abstract, f"({n_exp} of {m_called} called findings)"),
  (abstract, f"classifies {nc} of {tot} findings ({pct} percent) as not called"),
+ (FB, f"{nca + ca} of {nas + cas} checkable findings have no vulnerable function in the built binary ({round(100 * (nca + ca) / (nas + cas))} percent)"),
 ]
 bad = 0
 if not pairs_ok or po != str(len(rows)):

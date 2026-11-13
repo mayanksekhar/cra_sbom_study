@@ -1,0 +1,12 @@
+eco,project,pinned_12.9.0,old_10.11.0,common,only_pinned,only_old,old_spec
+npm,mocha,1150,1150,1150,0,0,1.6
+npm,TypeScript,368,368,368,0,0,1.6
+npm,pm2,188,188,188,0,0,1.6
+rust,dust,123,123,123,0,0,1.6
+rust,zoxide,126,126,126,0,0,1.6
+rust,starship,390,390,390,0,0,1.6
+rust,delta,215,215,215,0,0,1.6
+rust,bottom,216,216,216,0,0,1.6
+rust,just,229,229,229,0,0,1.6
+rust,eza,203,203,203,0,0,1.6
+rust,bat,181,181,181,0,0,1.6

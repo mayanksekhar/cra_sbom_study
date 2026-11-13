@@ -40,3 +40,5 @@ results_npm/*
 !results_containers/truth/
 !results_containers/truth/*.json
 !results_containers/container_components.csv
+!results_replication/
+!results_replication/*.csv

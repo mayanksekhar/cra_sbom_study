@@ -1,15 +1,16 @@
 
 scanner form   called removed (false suppression)      not called removed   left
-grype   A                       0 of 151                  0 of 323      549
-grype   B                       0 of 151                323 of 323      226
-trivy   A                       0 of 143                319 of 319      217
-trivy   B                       0 of 143                319 of 319      217
+grype   A                       0 of 217                  0 of 368      663
+grype   B                       0 of 217                368 of 368      295
+trivy   A                       0 of 202                364 of 364      279
+trivy   B                       0 of 202                364 of 364      279
 
 per project, trivy form A: called removed, not called removed of total
    alertmanager         0    41 of 41
    blackbox_exporter    0    40 of 40
    restic               0    43 of 43
    fzf                  0     1 of 1
+   k9s                  0    45 of 45
    helm                 0    48 of 48
    caddy                0    40 of 40
    nats-server          0    24 of 24

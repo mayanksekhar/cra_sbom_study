@@ -15,6 +15,10 @@ fzf,trivy,A,0,1,1
 fzf,trivy,B,0,1,1
 fzf,grype,A,0,0,1
 fzf,grype,B,0,1,1
+k9s,trivy,A,0,45,45
+k9s,trivy,B,0,45,45
+k9s,grype,A,0,0,45
+k9s,grype,B,0,45,45
 helm,trivy,A,0,48,48
 helm,trivy,B,0,48,48
 helm,grype,A,0,0,48

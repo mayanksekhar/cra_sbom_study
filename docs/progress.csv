@@ -17,7 +17,7 @@ Experiments,scanner consumption controls (version carrier and profiles and layou
 Experiments,database drift and snapshot comparison (two extra snapshots),2,2
 Experiments,findings on the product's own module,2,2
 Experiments,replication with other tool versions (Syft 1.33.0 and Trivy 0.66.0 and cdxgen 10.11.0 and 11.11.0 on npm and Rust; Grype and other ecosystems not),2,1.5
-VEX and reachability,reachability rate on Go (govulncheck),4,3
+VEX and reachability,reachability rate on Go (govulncheck),4,4
 VEX and reachability,VEX mechanism per scanner and Trivy path rule,4,4
 VEX and reachability,cross project suppression,3,3
 VEX and reachability,oracle agreement on decidable cards (at most 18 of 40): author labels,2,0

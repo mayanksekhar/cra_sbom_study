@@ -12,7 +12,7 @@ Share of the reference findings that each generator's SBOM recovers when scanned
 
 ![Go findings by reachability class at product level](fig2_reachability_by_project.svg)
 
-Product level classes from govulncheck run on the packages of each shipped binary (results_go/reach_product.json): 151 called, 323 not called, 22 unknown over nine projects. k9s is missing because its analysis exceeded the memory available.
+Product level classes from govulncheck run on the packages of each shipped binary (results_go/reach_product.json): 215 called, 368 not called, 25 unknown over nine projects. k9s is missing because its analysis exceeded the memory available.
 
 ## Figure 3
 

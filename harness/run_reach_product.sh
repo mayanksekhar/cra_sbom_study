@@ -9,7 +9,7 @@ for p in $PROJECTS; do
   if [ -f "results_go/reach_product/$p.json" ]; then echo "$(date +%H:%M:%S) skip $p (done)"; continue; fi
   echo "$(date +%H:%M:%S) start $p (cap $CAP, free $(free -m | awk '/Mem:/{print $7}') MB available)"
   T=""; [ -x /usr/bin/time ] && T="/usr/bin/time -f %M -o /tmp/peak_$p.txt"
-  $T systemd-run --user --scope -q -p MemoryMax="$CAP" -p MemorySwapMax=0 python3 harness/reach_product.py run "$p"
+  $T systemd-run --user --scope -q -p MemoryHigh="${HIGH:-infinity}" -p MemoryMax="$CAP" -p MemorySwapMax="${SWAP:-0}" python3 harness/reach_product.py run "$p"
   rc=$?
   peak=""; [ -f /tmp/peak_$p.txt ] && peak=" peak $(( $(tail -n1 /tmp/peak_$p.txt) / 1024 )) MB"
   echo "$(date +%H:%M:%S) end   $p exit $rc$peak"

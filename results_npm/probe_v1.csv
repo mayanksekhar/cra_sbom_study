@@ -1,0 +1,16 @@
+name,kind,repo_url,tag,commit_sha,lock,lock_packages
+uptime-kuma,application,https://github.com/louislam/uptime-kuma,2.5.11,4433aba09a1a4cf8ec13141f2a73436ab87a2366,yes,1310
+juice-shop,application,https://github.com/juice-shop/juice-shop,v20.4.0,266448aba68cd8ba5915f526a128da4fa7bc3f9f,no,0
+node-red,application,https://github.com/node-red/node-red,v0.2.0,81d6a4b04fb06c9692aab841b7e18fb63f54c709,no,0
+nest,library,https://github.com/nestjs/nest,v12.5.0,3a1c9ac570a822ce92e2b7f35b79b5391ca393e3,yes,1631
+serverless,application,https://github.com/serverless/serverless,v4.29.0,b83fbd3b5e215a416434b0f5dc26c155e02330f6,no,0
+puppeteer,library,https://github.com/puppeteer/puppeteer,v19.2.2,30e5b1a58edb8b1d94acdff00d64c76e76cf02a3,yes,713
+socket.io,library,https://github.com/socketio/socket.io,4.7.5,50176812a1f815b779cf8936996b06e559122620,yes,384
+mongoose,library,https://github.com/Automattic/mongoose,v4.11.13,96e06b70fb35d3f847dc4a82d04459204655a3ff,yes,0
+json-server,application,https://github.com/typicode/json-server,v0.17.4,78ea71375666d49145734689c097654c54f90686,yes,1064
+http-server,application,https://github.com/http-party/http-server,v14.1.1,af0ac3e4b9bd5fff55337aee32bf37f6116c7b4f,yes,684
+nodemon,application,https://github.com/remy/nodemon,v3.1.14,cfebe2feb2054a13fa6b9c493c1cd826ffccf167,yes,807
+sequelize,library,https://github.com/sequelize/sequelize,v6.37.8,cb7f99ad05de56137672ab95586359ff6ceba004,no,0
+webtorrent,library,https://github.com/webtorrent/webtorrent,v3.0.21,e75f75c7ac6b755c2eb36842c51806da8ff560ff,no,0
+gatsby,application,https://github.com/gatsbyjs/gatsby,v2.20.0,bd72f8349f209f5a15968b38b0249d4c9c9607a0,no,0
+NodeBB,application,https://github.com/NodeBB/NodeBB,v4.16.8,f7ee36d64fee09a39229836dbabad79044f18172,no,0

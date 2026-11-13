@@ -19,6 +19,15 @@ ok = f"{n} project versions" in abstract
 bad += not ok
 print(f"{'OK     ' if ok else 'MISSING'} {n} project versions (recomputed from the seven findings CSVs)")
 t = re.search(r"\b(\d+) reference findings\b", abstract)
-print("phrase '1061 reference findings' present" if "1061 reference findings" in abstract else "check the reference findings figure")
+total = 0
+for d in ("results", "results_old", "results_go", "results_mvn", "results_py", "results_rust", "results_npm"):
+    seen = {}
+    for r in csv.DictReader(open(root / d / "findings_vs_reference.csv")):
+        if not r["project"].endswith("_nolock"):
+            seen.setdefault(r["project"], int(r["ref_n"]))
+    total += sum(seen.values())
+ok = f"{total} reference findings" in abstract
+bad += not ok
+print(f"{'OK     ' if ok else 'MISSING'} {total} reference findings (recomputed from the seven findings CSVs)")
 print("not checked: scanner names, VEX removal counts other than those matched above, the sentence about version carriers")
 print("abstract phrases not confirmed:", bad)

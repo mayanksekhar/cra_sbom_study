@@ -3,7 +3,7 @@
 Independent research project. Unreviewed draft. Author: Mayank Sekhar (GitHub: mayanksekhar). Last updated 2026-11-08.
 
 ## What this is
-An empirical study of where correctness is lost between an SBOM and a vulnerability finding. It covers 53 project versions (pilot in five ecosystems, then Go, Maven, PyPI, Rust and npm sets of 3 to 10 projects each), three SBOM generators (Syft, Trivy, cdxgen), scoring with Grype, Trivy and OSV Scanner used in controls, a reachability oracle for Go (govulncheck) and OpenVEX statements. Every missed finding is attributed to a cause. The results are mapped to Regulation (EU) 2024/2847 and to BSI TR-03183-2.
+An empirical study of where correctness is lost between an SBOM and a vulnerability finding. It covers 61 project versions (pilot in five ecosystems, then Go, Maven, PyPI, Rust and npm sets of 8 to 11 projects each), three SBOM generators (Syft, Trivy, cdxgen), scoring with Grype, Trivy and OSV Scanner used in controls, a reachability oracle for Go (govulncheck) and OpenVEX statements. Every missed finding is attributed to a cause. The results are mapped to Regulation (EU) 2024/2847 and to BSI TR-03183-2.
 
 ## Independence
 This project did not run or evaluate any FOSSA product. It is not affiliated with or endorsed by FOSSA or by any tool vendor named here. Tool names are trademarks of their owners.

@@ -8,6 +8,10 @@ def tot(f, tool, key):
 S = {"pilot": "results/findings_vs_reference.csv", "older": "results_old/findings_vs_reference.csv", "go": "results_go/findings_vs_reference.csv",
      "maven": "results_mvn/findings_vs_reference.csv", "pypi": "results_py/findings_vs_reference.csv", "rust": "results_rust/findings_vs_reference.csv", "npm": "results_npm/findings_vs_reference.csv"}
 ref = {k: tot(f, "cdxgen", "ref_n") for k, f in S.items()}
+_per = {r["project"]: int(r["ref_n"]) for r in csv.DictReader(open(root / S["npm"])) if r["scanner"] == "grype" and r["tool"] == "cdxgen"}
+_top = sorted(_per.items(), key=lambda kv: (-kv[1], kv[0]))[:5]
+_words = {6: "six"}
+npm_spread = f"npm holds {ref['npm']} findings over {len(_per)} projects (" + ", ".join(f"{k} {v}" for k, v in _top) + f", the other {_words.get(len(_per) - 5, len(_per) - 5)} {ref['npm'] - sum(v for _, v in _top)})"
 phrases = {
  "grand total": f"{sum(ref.values())} reference findings over seven sets",
  "pilot syft": f"Syft {tot(S['pilot'], 'syft', 'tp')} of {ref['pilot']}",
@@ -18,6 +22,9 @@ phrases = {
  "pypi cdxgen": f"cdxgen {tot(S['pypi'], 'cdxgen', 'tp')} of {ref['pypi']} ({tot(S['pypi'], 'cdxgen', 'fn_wrong_version')} wrong version",
  "pypi syft": f"Syft {tot(S['pypi'], 'syft', 'tp')} of {ref['pypi']}",
  "pypi trivy": f"Trivy {tot(S['pypi'], 'trivy', 'tp')} of {ref['pypi']}",
+ "npm gens": f"npm, cdxgen {tot(S['npm'], 'cdxgen', 'tp')} of {ref['npm']}, Syft {tot(S['npm'], 'syft', 'tp')} of {ref['npm']}, Trivy {tot(S['npm'], 'trivy', 'tp')} of {ref['npm']} ({tot(S['npm'], 'trivy', 'fn_component_absent')} absent components, {'all in nest' if sum(int(r['fn_component_absent']) for r in csv.DictReader(open(root / S['npm'])) if r['scanner'] == 'grype' and r['tool'] == 'trivy' and r['project'] == 'nest') == tot(S['npm'], 'trivy', 'fn_component_absent') else 'NOT ALL IN NEST'})",
+ "npm spread": npm_spread,
+ "npm truth": f"root lock shipped truth (puppeteer {len((root / 'groundtruth_npm/npm/puppeteer_shipped.txt').read_text().split())} and socket.io {len((root / 'groundtruth_npm/npm/socket.io_shipped.txt').read_text().split())} components)",
 }
 reach = json.loads((root / "results_go/reach.json").read_text())
 c = collections.Counter(e["class"] for es in reach.values() for e in es)

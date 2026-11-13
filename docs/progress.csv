@@ -9,7 +9,7 @@ Pilot literature direction,revised research questions,3,3
 Scale,Go set (10 applications),6,6
 Scale,Maven set (8 projects),4,4
 Scale,PyPI set (8 projects),3,3
-Scale,npm and Rust sets at scale (Rust 8 projects; npm only 3 and one degenerate),3,2.5
+Scale,npm and Rust sets at scale (Rust 8 projects; npm 11 projects of which 8 chosen by a rule fixed beforehand; three npm tags are old and the root lock truth of puppeteer and socket.io is far smaller than what the generators list),3,3
 Scale,container image set,4,3
 Experiments,component accuracy and scope across sets,5,5
 Experiments,findings recovery and miss attribution (five sets),5,5

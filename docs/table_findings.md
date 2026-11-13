@@ -22,8 +22,8 @@ Scanner: Grype. Unit: one finding per component and issue (alias cluster). Refer
 | Rust (8) | cdxgen | 47 | 47 | 0 | 0 | 0 | 0 | 0 |
 | Rust (8) | syft | 47 | 47 | 0 | 0 | 0 | 0 | 0 |
 | Rust (8) | trivy | 47 | 46 | 1 | 1 | 0 | 0 | 0 |
-| npm (3) | cdxgen | 55 | 55 | 0 | 0 | 0 | 0 | 0 |
-| npm (3) | syft | 55 | 55 | 0 | 0 | 0 | 0 | 0 |
-| npm (3) | trivy | 55 | 55 | 0 | 0 | 0 | 0 | 0 |
+| npm (11) | cdxgen | 260 | 260 | 0 | 0 | 0 | 0 | 0 |
+| npm (11) | syft | 260 | 260 | 0 | 0 | 0 | 0 | 0 |
+| npm (11) | trivy | 260 | 257 | 3 | 3 | 0 | 0 | 0 |
 
-Reference findings over the seven sets: 1061.
+Reference findings over the seven sets: 1266.

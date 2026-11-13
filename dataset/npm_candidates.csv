@@ -1,0 +1,16 @@
+name,ecosystem,repo_url,kind
+uptime-kuma,npm,https://github.com/louislam/uptime-kuma,application
+juice-shop,npm,https://github.com/juice-shop/juice-shop,application
+node-red,npm,https://github.com/node-red/node-red,application
+nest,npm,https://github.com/nestjs/nest,library
+serverless,npm,https://github.com/serverless/serverless,application
+puppeteer,npm,https://github.com/puppeteer/puppeteer,library
+socket.io,npm,https://github.com/socketio/socket.io,library
+mongoose,npm,https://github.com/Automattic/mongoose,library
+json-server,npm,https://github.com/typicode/json-server,application
+http-server,npm,https://github.com/http-party/http-server,application
+nodemon,npm,https://github.com/remy/nodemon,application
+sequelize,npm,https://github.com/sequelize/sequelize,library
+webtorrent,npm,https://github.com/webtorrent/webtorrent,library
+gatsby,npm,https://github.com/gatsbyjs/gatsby,application
+NodeBB,npm,https://github.com/NodeBB/NodeBB,application

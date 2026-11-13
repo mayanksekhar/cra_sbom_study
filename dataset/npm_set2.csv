@@ -1,0 +1,9 @@
+name,ecosystem,repo_url,kind,tag
+uptime-kuma,npm,https://github.com/louislam/uptime-kuma,application,2.5.11
+node-red,npm,https://github.com/node-red/node-red,application,5.0.9
+nest,npm,https://github.com/nestjs/nest,library,v12.5.0
+puppeteer,npm,https://github.com/puppeteer/puppeteer,library,v19.2.2
+socket.io,npm,https://github.com/socketio/socket.io,library,4.7.5
+json-server,npm,https://github.com/typicode/json-server,application,v0.17.4
+http-server,npm,https://github.com/http-party/http-server,application,v14.1.1
+nodemon,npm,https://github.com/remy/nodemon,application,v3.1.14

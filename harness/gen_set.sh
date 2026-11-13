@@ -5,7 +5,7 @@ export PATH="$PATH:$HOME/go/bin"
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 SRC="$1"; CSV="$2"; R="$3"
-work=/tmp/cra_work; rm -rf "$work"; mkdir -p "$work"
+work="${CRA_WORK:-/tmp/cra_work}"; rm -rf "$work"; mkdir -p "$work"
 fresh() { rm -rf "$work/$1"; cp -a "$SRC/$1" "$work/$1"; git -C "$work/$1" clean -xfdq; git -C "$work/$1" checkout -q -- .; }
 tail -n +2 "$CSV" | while IFS=, read -r name eco url kind tag sha; do
   case "$eco" in go) t=golang;; maven) t=java;; npm) t=js;; pypi) t=py;; rust) t=rust;; esac

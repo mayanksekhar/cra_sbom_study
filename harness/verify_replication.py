@@ -94,6 +94,30 @@ for line in ("cdxgen 10.11.0 (npm package", "cdxgen 11.11.0 (npm package)", "pin
              "?vcs_url=git%2Bssh", "?vcs_url=git%2Bhttps"):
     need(line in cr, f"cdxgen npm2 record: missing line: {line}")
 need("cdxgen was not rerun on the eight npm projects added later" not in text, "old cdxgen scope sentence still in the draft")
+g3 = list(csv.DictReader(open("results_replication/replication_syft_trivy_go_mvn_py.csv")))
+need(len(g3) == 52, f"go mvn py: {len(g3)} rows, expected 52")
+need(sum(r["ecosystem"] == "go" for r in g3) == 20 and sum(r["ecosystem"] == "maven" for r in g3) == 16 and sum(r["ecosystem"] == "pypi" for r in g3) == 16, "go mvn py: ecosystem rows")
+need(sum(r["identical"] == "1" for r in g3) == 41, "go mvn py: identical pairs")
+zero = {("fastapi", "trivy"), ("pip", "trivy")}
+need(all(int(r["n_old"]) > 0 for r in g3 if (r["project"], r["tool"]) not in zero), "go mvn py: an old output is empty")
+need(all(r["n_old"] == r["n_new"] == "0" for r in g3 if (r["project"], r["tool"]) in zero), "go mvn py: the two zero rows")
+gosyft = [r for r in g3 if r["ecosystem"] == "go" and r["tool"] == "syft"]
+need(len(gosyft) == 10 and all(r["identical"] == "0" and r["n_old"] == r["n_new"] and r["only_old"] == r["only_new"] for r in gosyft), "go mvn py: go syft rows")
+need(sum(int(r["only_old"]) for r in gosyft) == 251, "go mvn py: 251 go purls")
+need({(r["project"], r["tool"]) for r in g3 if r["identical"] == "0"} == {(r["project"], "syft") for r in gosyft} | {("spring-petclinic-rest", "trivy")}, "go mvn py: differing pairs")
+sp = [r for r in g3 if r["project"] == "spring-petclinic-rest" and r["tool"] == "trivy"][0]
+need((sp["n_old"], sp["n_new"], sp["only_old"], sp["only_new"]) == ("101", "101", "2", "2"), "go mvn py: spring-petclinic-rest trivy")
+gg = list(csv.DictReader(open("results_replication/replication_syft_go_grype.csv")))
+need(len(gg) == 10 and all(r["only_old"] == "0" and r["only_new"] == "0" and r["old"] == r["new"] and r["new_equals_committed"] == "1" for r in gg), "go grype: rows")
+gm = open("results_replication/syft_trivy_go_mvn_py_record.txt").read()
+for line in ("pinned Syft 1.45.1", "Grype 0.114.0",
+             "run 1 old  purls 101 | swagger jakarta: versioned 0 unversioned 2", "run 2 new  purls 101 | swagger jakarta: versioned 2 unversioned 0",
+             "run 3 new  purls 101 | swagger jakarta: versioned 2 unversioned 0", "run 4 old  purls 101 | swagger jakarta: versioned 0 unversioned 2",
+             "total only_old 251, with subpath 251, mapped one to one 251, unmapped 0", "rows 10 | old equals new in 10 | new equals committed in 10"):
+    need(line in gm, f"go mvn py record: missing line: {line}")
+for phrase in ("41 of 52 pairs", "replication_syft_trivy_go_mvn_py.csv", "cdxgen and Grype were not rerun on the Go, Maven and PyPI sets"):
+    need(phrase in text, f"missing in {DOC}: {phrase}")
+need("Go, Maven, PyPI and the container set were not rerun with other versions of any tool" not in text, "old scope sentence still in the draft")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])
@@ -101,3 +125,4 @@ print("grype replication ok: 0.95.0 and 0.100.0 identical to 0.114.0 on 76 sboms
 print("trivy license control ok: nest, unmodified copy finds 150 of 188 truth components, copy with one license list converted finds 188 of 188")
 print("syft and trivy replication ok: 19 projects, 34 of 38 pairs identical, the 4 differences are the recorded ones")
 print("cdxgen npm2 replication ok: 8 projects x 2 versions, 6 identical, node-red differs by a purl qualifier, socket.io by two yarn.lock files")
+print("go maven pypi replication ok: 26 projects, 41 of 52 pairs identical, 251 go purls differ in form only, pinned Grype findings identical on 10 of 10")

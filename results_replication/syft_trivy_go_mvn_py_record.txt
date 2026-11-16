@@ -1,0 +1,35 @@
+tools: old Syft 1.33.0 (release tarball, checksum verified); old Trivy 0.66.0 (built from tag v0.66.0, source commit 7bcb181268893fdd69ef4582588c040bb1036c33, with go1.26.10-X:nodwarf5, not the official binary); pinned Syft 1.45.1; pinned Trivy 0.69.3; Grype 0.114.0 with the frozen database snapshot 20261030
+scope: Go (10 projects, dataset/go_pinned10.csv), Maven (8, dataset/mvn_pinned.csv) and PyPI (8, dataset/py_pinned.csv); fresh copies, arguments of gen_set.sh
+== Trivy on Maven, order control on spring-petclinic-rest (old, new, new, old)
+Version: 0.66.0
+Version: 0.69.3
+run 1 old  purls 101 | swagger jakarta: versioned 0 unversioned 2
+run 2 new  purls 101 | swagger jakarta: versioned 2 unversioned 0
+run 3 new  purls 101 | swagger jakarta: versioned 2 unversioned 0
+run 4 old  purls 101 | swagger jakarta: versioned 0 unversioned 2
+== Go: how the Syft purls that differ map (old subpath form to the pinned name form)
+project              only_old with subpath  mapped one to one  unmapped
+alertmanager                9            9                  9         0
+blackbox_exporter           5            5                  5         0
+caddy                      50           50                 50         0
+cli                        54           54                 54         0
+fzf                         1            1                  1         0
+helm                       14           14                 14         0
+hugo                       54           54                 54         0
+k9s                        42           42                 42         0
+nats-server                 2            2                  2         0
+restic                     20           20                 20         0
+total only_old 251, with subpath 251, mapped one to one 251, unmapped 0
+== Go: pinned Grype on the old and the pinned Syft SBOMs
+project               old  new only_old only_new  new equals committed scan
+alertmanager           63   63        0        0  1
+blackbox_exporter      53   53        0        0  1
+caddy                  82   82        0        0  1
+cli                    92   92        0        0  1
+fzf                     3    3        0        0  1
+helm                   82   82        0        0  1
+hugo                   82   82        0        0  1
+k9s                   124  124        0        0  1
+nats-server            24   24        0        0  1
+restic                 53   53        0        0  1
+rows 10 | old equals new in 10 | new equals committed in 10

@@ -12,6 +12,7 @@ CONTAINERS = [f"results_containers/{f}" for f in ("container_calibration.csv", "
 REPLICATION = [f"results_replication/replication_cdxgen_{v}.csv" for v in ("11.11.0", "10.11.0")] + [f"results_replication/replication_grype_{v}.csv" for v in ("0.88.0", "0.90.0", "0.95.0", "0.100.0")] + ["results_replication/replication_grype_scores_0.88.0.csv", "results_replication/grype_group_control_uptime_kuma.txt", "results_replication/trivy_license_control_nest.txt"]
 REPLICATION += ["results_replication/replication_syft_trivy.csv", "results_replication/syft_trivy_replication_record.txt"]
 REPLICATION += ["results_replication/replication_cdxgen_npm2_11.11.0.csv", "results_replication/replication_cdxgen_npm2_10.11.0.csv", "results_replication/cdxgen_npm2_record.txt"]
+REPLICATION += ["results_replication/replication_syft_trivy_go_mvn_py.csv", "results_replication/replication_syft_go_grype.csv", "results_replication/syft_trivy_go_mvn_py_record.txt"]
 CHECKS = [
     ("progress rubric", "harness/progress.py", ["docs/progress.csv"]),
     ("findings table (regenerates docs/table_findings.md)", "harness/make_table_findings.py", CSVS),

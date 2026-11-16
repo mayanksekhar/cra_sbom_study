@@ -1,0 +1,11 @@
+project,old,new,only_old,only_new,new_equals_committed
+alertmanager,63,63,0,0,1
+blackbox_exporter,53,53,0,0,1
+caddy,82,82,0,0,1
+cli,92,92,0,0,1
+fzf,3,3,0,0,1
+helm,82,82,0,0,1
+hugo,82,82,0,0,1
+k9s,124,124,0,0,1
+nats-server,24,24,0,0,1
+restic,53,53,0,0,1

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""usage: replicate_syft_trivy_compare.py OUT CSV  (compares old and new purl sets per project and tool)"""
+"""usage: replicate_syft_trivy_compare.py OUT CSV [ECOSYSTEM ...]  (compares old and new purl sets per project and tool; with ecosystems only those)"""
 import csv, json, sys
 from pathlib import Path
 out, dest = Path(sys.argv[1]), sys.argv[2]
+ecos = set(sys.argv[3:])
 def purls(p):
     s = set()
     def walk(cs):
@@ -15,6 +16,8 @@ def purls(p):
 rows = []
 for old in sorted((out / "old").glob("*/*/*.cdx.json")):
     tool, eco, name = old.parts[-3], old.parts[-2], old.name[: -len(".cdx.json")]
+    if ecos and eco not in ecos:
+        continue
     new = out / "new" / tool / eco / old.name
     if not new.exists():
         print("MISSING new", tool, eco, name); continue

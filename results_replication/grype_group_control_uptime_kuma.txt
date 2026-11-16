@@ -1,0 +1,24 @@
+== 1 evidence: pairs 0.88.0 reports on the trivy sbom that 0.114.0 does not (first 8)
+    GHSA-xfrf-2f75-hwjw | artifact name core-auth version 1.10.1 | purl pkg:npm/%40azure/core-auth@1.10.1
+    GHSA-59fc-vwh4-jhgv | artifact name core-paging version 1.6.2 | purl pkg:npm/%40azure/core-paging@1.6.2
+    GHSA-p9pj-6w9f-c6xg | artifact name core-rest-pipeline version 1.24.0 | purl pkg:npm/%40azure/core-rest-pipeline@1.24.0
+    GHSA-q427-j5g8-prm4 | artifact name core-tracing version 1.3.1 | purl pkg:npm/%40azure/core-tracing@1.3.1
+    GHSA-6gj8-qm23-fmw9 | artifact name keyvault-common version 2.1.0 | purl pkg:npm/%40azure/keyvault-common@2.1.0
+    GHSA-9599-fxfv-47gc | artifact name keyvault-keys version 4.10.2 | purl pkg:npm/%40azure/keyvault-keys@4.10.2
+    GHSA-3q85-w8vf-m34h | artifact name msal-node version 5.6.0 | purl pkg:npm/%40azure/msal-node@5.6.0
+    GHSA-3c6g-pvg8-gqw2 | artifact name json version 5.9.0 | purl pkg:npm/%40redis/json@5.9.0
+   total only_old 26 of which artifact name has no scope slash while the purl has %40: 26
+== 2 control: group merged into name on a copy of the trivy sbom, scanned with 0.88.0
+   reference findings lost, as generated: 6 | after merging group into name: 0
+   only_old pairs, as generated: 26 | after: 0
+== 3 bisect: reference findings lost and extra pairs per version
+   trivy   0.88.0   lost 6  only_old 26  only_pinned 6
+   trivy   0.90.0   lost 6  only_old 26  only_pinned 6
+   trivy   0.95.0   lost 0  only_old 0  only_pinned 0
+   trivy   0.97.0   lost 0  only_old 0  only_pinned 0
+   trivy   0.100.0  lost 0  only_old 0  only_pinned 0
+   cdxgen  0.88.0   lost 6  only_old 32  only_pinned 11
+   cdxgen  0.90.0   lost 6  only_old 32  only_pinned 11
+   cdxgen  0.95.0   lost 0  only_old 0  only_pinned 0
+   cdxgen  0.97.0   lost 0  only_old 0  only_pinned 0
+   cdxgen  0.100.0  lost 0  only_old 0  only_pinned 0

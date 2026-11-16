@@ -44,6 +44,15 @@ miss = [r for r in sc if r["old_fn_scanner_miss"] != "0"]
 need(len(miss) == 2 and all(r["project"] == "uptime-kuma" and r["scanner"] == "grype" and r["generator"] in ("cdxgen", "trivy") and r["old_fn_scanner_miss"] == "6" for r in miss), "scores: 0.88.0 scanner misses are not the two uptime-kuma rows")
 for phrase in ("Grype 0.88.0, 0.90.0, 0.95.0 and 0.100.0 were rerun",):
     need(phrase in text, f"missing in {DOC}: {phrase}")
+gc = open("results_replication/grype_group_control_uptime_kuma.txt").read()
+for line in ("reference findings lost, as generated: 6 | after merging group into name: 0",
+             "only_old pairs, as generated: 26 | after: 0",
+             "total only_old 26 of which artifact name has no scope slash while the purl has %40: 26",
+             "trivy   0.90.0   lost 6  only_old 26  only_pinned 6",
+             "trivy   0.95.0   lost 0  only_old 0  only_pinned 0",
+             "cdxgen  0.90.0   lost 6  only_old 32  only_pinned 11",
+             "cdxgen  0.95.0   lost 0  only_old 0  only_pinned 0"):
+    need(line in gc, f"group control record: missing line: {line}")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])

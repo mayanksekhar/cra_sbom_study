@@ -44,3 +44,4 @@ results_npm/*
 !results_containers/container_components.csv
 !results_replication/
 !results_replication/*.csv
+!results_replication/grype_group_control_uptime_kuma.txt

@@ -1,0 +1,4 @@
+trivy: Version: 0.69.3
+license lists changed in the control copy: 1
+nest_unmodified: components 151, walk errors 1, language specific files 1, truth components found 150 of 188, missing 38
+nest_control: components 332, walk errors 0, language specific files 2, truth components found 188 of 188, missing 0

@@ -53,7 +53,14 @@ for line in ("reference findings lost, as generated: 6 | after merging group int
              "cdxgen  0.90.0   lost 6  only_old 32  only_pinned 11",
              "cdxgen  0.95.0   lost 0  only_old 0  only_pinned 0"):
     need(line in gc, f"group control record: missing line: {line}")
+tc = open("results_replication/trivy_license_control_nest.txt").read()
+for line in ("trivy: Version: 0.69.3",
+             "license lists changed in the control copy: 1",
+             "nest_unmodified: components 151, walk errors 1, language specific files 1, truth components found 150 of 188, missing 38",
+             "nest_control: components 332, walk errors 0, language specific files 2, truth components found 188 of 188, missing 0"):
+    need(line in tc, f"trivy license control record: missing line: {line}")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])
 print("grype replication ok: 0.95.0 and 0.100.0 identical to 0.114.0 on 76 sboms; 0.90.0 differs on 15; 0.88.0 shows 6 scanner misses in two uptime-kuma rows")
+print("trivy license control ok: nest, unmodified copy finds 150 of 188 truth components, copy with one license list converted finds 188 of 188")

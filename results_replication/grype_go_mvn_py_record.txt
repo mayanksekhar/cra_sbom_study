@@ -1,0 +1,71 @@
+tools: pinned Grype 0.114.0 with the frozen database snapshot 20261030; older Grype 0.88.0, 0.90.0, 0.95.0 and 0.100.0 (release binaries) with the same database
+scope: Go 40 SBOMs, Maven 32, PyPI 32 (generator and reference SBOMs of the scored sets)
+== grype 0.95.0
+grype 0.95.0: descriptor version in the outputs ['0.95.0']; sboms 104, unreadable 0
+  go    generator sboms  30 pinned   2072 old   2072 common   2072 only_pinned     0 only_old     0
+  go    reference sboms  10 pinned    610 old    610 common    610 only_pinned     0 only_old     0
+  maven generator sboms  24 pinned    610 old    610 common    610 only_pinned     0 only_old     0
+  maven reference sboms   8 pinned    201 old    201 common    201 only_pinned     0 only_old     0
+  pypi  generator sboms  24 pinned    914 old    947 common    914 only_pinned     0 only_old    33
+  pypi  reference sboms   8 pinned     80 old     80 common     80 only_pinned     0 only_old     0
+  sboms with any difference: 4 of 104
+== grype 0.100.0
+grype 0.100.0: descriptor version in the outputs ['0.100.0']; sboms 104, unreadable 0
+  go    generator sboms  30 pinned   2072 old   2072 common   2072 only_pinned     0 only_old     0
+  go    reference sboms  10 pinned    610 old    610 common    610 only_pinned     0 only_old     0
+  maven generator sboms  24 pinned    610 old    610 common    610 only_pinned     0 only_old     0
+  maven reference sboms   8 pinned    201 old    201 common    201 only_pinned     0 only_old     0
+  pypi  generator sboms  24 pinned    914 old    914 common    914 only_pinned     0 only_old     0
+  pypi  reference sboms   8 pinned     80 old     80 common     80 only_pinned     0 only_old     0
+  sboms with any difference: 0 of 104
+== grype 0.90.0
+grype 0.90.0: descriptor version in the outputs ['0.90.0']; sboms 104, unreadable 0
+  go    generator sboms  30 pinned   2072 old   1823 common   1822 only_pinned   250 only_old     1
+  go    reference sboms  10 pinned    610 old    589 common    589 only_pinned    21 only_old     0
+  maven generator sboms  24 pinned    610 old    610 common    610 only_pinned     0 only_old     0
+  maven reference sboms   8 pinned    201 old    201 common    201 only_pinned     0 only_old     0
+  pypi  generator sboms  24 pinned    914 old    677 common    677 only_pinned   237 only_old     0
+  pypi  reference sboms   8 pinned     80 old     80 common     80 only_pinned     0 only_old     0
+  sboms with any difference: 44 of 104
+== grype 0.88.0
+grype 0.88.0: descriptor version in the outputs ['0.88.0']; sboms 104, unreadable 0
+  go    generator sboms  30 pinned   2072 old   1823 common   1822 only_pinned   250 only_old     1
+  go    reference sboms  10 pinned    610 old    589 common    589 only_pinned    21 only_old     0
+  maven generator sboms  24 pinned    610 old    610 common    610 only_pinned     0 only_old     0
+  maven reference sboms   8 pinned    201 old    201 common    201 only_pinned     0 only_old     0
+  pypi  generator sboms  24 pinned    914 old    677 common    677 only_pinned   237 only_old     0
+  pypi  reference sboms   8 pinned     80 old     80 common     80 only_pinned     0 only_old     0
+  sboms with any difference: 44 of 104
+== counts
+== Go, Grype 0.90.0 against the pinned 0.114.0, all 40 SBOMs, by advisory id prefix
+   gained in 0.90.0: alertmanager_trivy_grype.json ('pkg:npm/%40babel/helper-validator-identifier@7.19.1', 'GHSA-pvjq-589m-3mc8')
+   CVE   pinned     8 lost     0 gained   0
+   GHSA  pinned  1694 lost   181 gained   1
+   GO    pinned   980 lost    90 gained   0
+== PyPI, all 32 SBOMs: pairs on purls with and without a version
+   0.90.0: lost on versioned purls 3, on unversioned 234 | extra on versioned 0, on unversioned 0
+   0.95.0: lost on versioned purls 0, on unversioned 0 | extra on versioned 0, on unversioned 33
+   pinned 0.114.0: 234 of 994 pairs are on unversioned purls
+== the SBOMs that carry unversioned purls (pypi), count of such components
+   django_cdxgen                22 of 28
+   fastapi_cdxgen                6 of 45
+   fastapi_syft                  1 of 80
+   httpx_cdxgen                  1 of 24
+   pip_cdxgen                   22 of 48
+   poetry_cdxgen                 4 of 138
+   pytest_cdxgen                 5 of 28
+   requests_cdxgen               4 of 13
+== PyPI: pairs on purls without a version against the false positives of the score (pinned Grype 0.114.0)
+project       tool     pairs  on unversioned  fp in score
+ansible-lint  cdxgen       0               0            0
+django        cdxgen     137             137          137
+fastapi       cdxgen      84               0           77
+httpx         cdxgen       8               0            8
+pip           cdxgen      66              61           66
+poetry        cdxgen     163              36          109
+pytest        cdxgen      36               0           36
+requests      cdxgen       1               0            1
+== totals per generator: pairs, on unversioned purls, false positives in the score
+   cdxgen     495     234     434
+   syft       262       0     189
+   trivy      157       0     103

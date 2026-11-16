@@ -49,3 +49,4 @@ results_npm/*
 !results_replication/syft_trivy_replication_record.txt
 !results_replication/cdxgen_npm2_record.txt
 !results_replication/syft_trivy_go_mvn_py_record.txt
+!results_replication/grype_go_mvn_py_record.txt

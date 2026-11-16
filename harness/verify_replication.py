@@ -115,9 +115,37 @@ for line in ("pinned Syft 1.45.1", "Grype 0.114.0",
              "run 3 new  purls 101 | swagger jakarta: versioned 2 unversioned 0", "run 4 old  purls 101 | swagger jakarta: versioned 0 unversioned 2",
              "total only_old 251, with subpath 251, mapped one to one 251, unmapped 0", "rows 10 | old equals new in 10 | new equals committed in 10"):
     need(line in gm, f"go mvn py record: missing line: {line}")
-for phrase in ("41 of 52 pairs", "replication_syft_trivy_go_mvn_py.csv", "cdxgen and Grype were not rerun on the Go, Maven and PyPI sets"):
+for phrase in ("41 of 52 pairs", "replication_syft_trivy_go_mvn_py.csv", "6 of 8 (node-red differs in one purl only by a vcs_url qualifier"):
     need(phrase in text, f"missing in {DOC}: {phrase}")
 need("Go, Maven, PyPI and the container set were not rerun with other versions of any tool" not in text, "old scope sentence still in the draft")
+def grows(v):
+    return list(csv.DictReader(open(f"results_replication/replication_grype_go_mvn_py_{v}.csv")))
+gv = {v: grows(v) for v in ("0.95.0", "0.100.0", "0.90.0", "0.88.0")}
+for v, rs in gv.items():
+    need(len(rs) == 104 and sum(r["eco"] == "go" for r in rs) == 40 and sum(r["eco"] == "maven" for r in rs) == 32 and sum(r["eco"] == "pypi" for r in rs) == 32, f"grype go mvn py {v}: rows")
+    need(all(r["only_pinned"] == "0" and r["only_old"] == "0" for r in rs if r["eco"] == "maven"), f"grype go mvn py {v}: maven differs")
+need(all(r["only_pinned"] == "0" and r["only_old"] == "0" for r in gv["0.100.0"]), "grype 0.100.0 go mvn py: differs")
+d95 = {r["sbom"]: (r["only_pinned"], r["only_old"]) for r in gv["0.95.0"] if r["only_pinned"] != "0" or r["only_old"] != "0"}
+need(d95 == {"django_cdxgen": ("0", "18"), "pip_cdxgen": ("0", "5"), "poetry_cdxgen": ("0", "8"), "requests_cdxgen": ("0", "2")}, f"grype 0.95.0 go mvn py: differing sboms {d95}")
+k = lambda rs: [(r["sbom"], r["kind"], r["pinned_0.114.0"], r["common"], r["only_pinned"], r["only_old"]) for r in rs]
+need(k(gv["0.90.0"]) == k(gv["0.88.0"]), "grype 0.88.0 and 0.90.0 go mvn py differ from each other")
+d90 = [r for r in gv["0.90.0"] if r["only_pinned"] != "0" or r["only_old"] != "0"]
+need(len(d90) == 44, f"grype 0.90.0 go mvn py: {len(d90)} differing sboms")
+need(sum(int(r["only_pinned"]) for r in d90 if r["eco"] == "go") == 271 and sum(int(r["only_old"]) for r in d90 if r["eco"] == "go") == 1, "grype 0.90.0 go: 271 lost and 1 gained")
+need(sum(int(r["only_pinned"]) for r in d90 if r["eco"] == "pypi") == 237 and sum(int(r["only_old"]) for r in d90 if r["eco"] == "pypi") == 0, "grype 0.90.0 pypi: 237 lost")
+gr = open("results_replication/grype_go_mvn_py_record.txt").read()
+for line in ("Grype 0.114.0 with the frozen database snapshot 20261030", "descriptor version in the outputs ['0.88.0']", "descriptor version in the outputs ['0.90.0']",
+             "descriptor version in the outputs ['0.95.0']", "descriptor version in the outputs ['0.100.0']",
+             "sboms with any difference: 44 of 104", "sboms with any difference: 4 of 104", "sboms with any difference: 0 of 104",
+             "GHSA  pinned  1694 lost   181 gained   1", "GO    pinned   980 lost    90 gained   0", "CVE   pinned     8 lost     0 gained   0",
+             "0.90.0: lost on versioned purls 3, on unversioned 234 | extra on versioned 0, on unversioned 0",
+             "0.95.0: lost on versioned purls 0, on unversioned 0 | extra on versioned 0, on unversioned 33",
+             "pinned 0.114.0: 234 of 994 pairs are on unversioned purls",
+             "   cdxgen     495     234     434", "   syft       262       0     189", "   trivy      157       0     103"):
+    need(line in gr, f"grype go mvn py record: missing line: {line}")
+for phrase in ("234 of the 434 false positives of cdxgen with Grype on PyPI (54 percent)", "cdxgen was not rerun on the Go, Maven and PyPI sets", "replication_grype_go_mvn_py_*.csv"):
+    need(phrase in text, f"missing in {DOC}: {phrase}")
+need("cdxgen and Grype were not rerun on the Go, Maven and PyPI sets" not in text, "old Grype scope sentence still in the draft")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])
@@ -126,3 +154,4 @@ print("trivy license control ok: nest, unmodified copy finds 150 of 188 truth co
 print("syft and trivy replication ok: 19 projects, 34 of 38 pairs identical, the 4 differences are the recorded ones")
 print("cdxgen npm2 replication ok: 8 projects x 2 versions, 6 identical, node-red differs by a purl qualifier, socket.io by two yarn.lock files")
 print("go maven pypi replication ok: 26 projects, 41 of 52 pairs identical, 251 go purls differ in form only, pinned Grype findings identical on 10 of 10")
+print("grype go maven pypi replication ok: 4 versions x 104 sboms; 0.100.0 identical, maven identical in all, 0.95.0 differs on 4 pypi cdxgen sboms, 0.88.0 and 0.90.0 on 44")

@@ -75,12 +75,29 @@ for line in ("old Syft 1.33.0", "old Trivy 0.66.0", "source commit 7bcb181268893
              "17 /examples/basic-crud-application/vue-client/yarn.lock", "17 /examples/create-react-app-example/yarn.lock", "3 /snap/snapcraft.yaml",
              "== nest trivy, components only in the old output: 48", "== just trivy, components only in the new output: 7", "== socket.io syft, components only in the old output: 34"):
     need(line in sr, f"syft trivy record: missing line: {line}")
-for phrase in ("34 of 38 project and tool pairs", "replication_syft_trivy.csv", "cdxgen was not rerun on the eight npm projects added later"):
+for phrase in ("34 of 38 project and tool pairs", "replication_syft_trivy.csv", "6 of 8 (node-red differs in one purl only by a vcs_url qualifier"):
     need(phrase in text, f"missing in {DOC}: {phrase}")
 need("the same Rust lists in 7 of 8 projects" not in text, "old Rust sentence still in the draft")
+for v in ("11.11.0", "10.11.0"):
+    c2 = list(csv.DictReader(open(f"results_replication/replication_cdxgen_npm2_{v}.csv")))
+    need(len(c2) == 8 and all(r["eco"] == "npm" for r in c2), f"cdxgen npm2 {v}: rows")
+    need(all(r["old_spec"] == "1.6" for r in c2), f"cdxgen npm2 {v}: spec")
+    d2 = {r["project"]: (r["pinned_12.9.0"], r["old_" + v], r["common"], r["only_pinned"], r["only_old"]) for r in c2 if not (r["only_pinned"] == "0" and r["only_old"] == "0")}
+    need(d2 == {"node-red": ("939", "939", "938", "1", "1"), "socket.io": ("1810", "364", "363", "1447", "1")}, f"cdxgen npm2 {v}: differing rows {d2}")
+cr = open("results_replication/cdxgen_npm2_record.txt").read()
+for line in ("cdxgen 10.11.0 (npm package", "cdxgen 11.11.0 (npm package)", "pinned CycloneDX Generator 12.9.0",
+             "== node-red, cdxgen 10.11.0 against the pinned 12.9.0: only pinned 1, only old 1",
+             "== node-red, cdxgen 11.11.0 against the pinned 12.9.0: only pinned 1, only old 1",
+             "== socket.io, cdxgen 10.11.0 against the pinned 12.9.0: only pinned 1447, only old 1",
+             "== socket.io, cdxgen 11.11.0 against the pinned 12.9.0: only pinned 1447, only old 1",
+             "1037 examples/create-react-app-example/yarn.lock", "409 examples/basic-crud-application/vue-client/yarn.lock",
+             "?vcs_url=git%2Bssh", "?vcs_url=git%2Bhttps"):
+    need(line in cr, f"cdxgen npm2 record: missing line: {line}")
+need("cdxgen was not rerun on the eight npm projects added later" not in text, "old cdxgen scope sentence still in the draft")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])
 print("grype replication ok: 0.95.0 and 0.100.0 identical to 0.114.0 on 76 sboms; 0.90.0 differs on 15; 0.88.0 shows 6 scanner misses in two uptime-kuma rows")
 print("trivy license control ok: nest, unmodified copy finds 150 of 188 truth components, copy with one license list converted finds 188 of 188")
 print("syft and trivy replication ok: 19 projects, 34 of 38 pairs identical, the 4 differences are the recorded ones")
+print("cdxgen npm2 replication ok: 8 projects x 2 versions, 6 identical, node-red differs by a purl qualifier, socket.io by two yarn.lock files")

@@ -1,7 +1,10 @@
 import sys, json, csv, os
 V, W = sys.argv[1], sys.argv[2]
-sets = [("npm", "dataset/npm_set.csv", "results_npm/raw/npm"),
-        ("rust", "dataset/rust_set.csv", "results_rust/raw/rust")]
+if len(sys.argv) > 3 and sys.argv[3] == "npm2":
+    sets = [("npm", "dataset/npm_pinned2.csv", "results_npm/raw/npm")]; tag = "npm2_"
+else:
+    sets = [("npm", "dataset/npm_set.csv", "results_npm/raw/npm"),
+            ("rust", "dataset/rust_set.csv", "results_rust/raw/rust")]; tag = ""
 
 def load(p):
     d = json.load(open(p))
@@ -20,7 +23,7 @@ for eco, c, rd in sets:
         except Exception as e:
             rows.append([eco, n, "", "", "", "", "", "unreadable"]); continue
         rows.append([eco, n, len(a), len(b), len(a & b), len(a - b), len(b - a), spec])
-out = f"{W}/replication_cdxgen_{V}.csv"
+out = f"{W}/replication_cdxgen_{tag}{V}.csv"
 csv.writer(open(out, "w")).writerows(rows)
 for r in rows:
     print("%-5s %-16s %13s %10s %7s %11s %8s %s" % tuple(r))

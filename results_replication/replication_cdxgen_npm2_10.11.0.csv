@@ -1,0 +1,9 @@
+eco,project,pinned_12.9.0,old_10.11.0,common,only_pinned,only_old,old_spec
+npm,uptime-kuma,1200,1200,1200,0,0,1.6
+npm,node-red,939,939,938,1,1,1.6
+npm,nest,1478,1478,1478,0,0,1.6
+npm,puppeteer,1458,1458,1458,0,0,1.6
+npm,socket.io,1810,364,363,1447,1,1.6
+npm,json-server,921,921,921,0,0,1.6
+npm,http-server,550,550,550,0,0,1.6
+npm,nodemon,718,718,718,0,0,1.6

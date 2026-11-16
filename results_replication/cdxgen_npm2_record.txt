@@ -1,0 +1,30 @@
+tools: cdxgen 10.11.0 (npm package, installed version read from package.json; its --version prints unknown); cdxgen 11.11.0 (npm package); pinned CycloneDX Generator 12.9.0
+scope: the 8 npm projects of dataset/npm_pinned2.csv (sources dataset/src_npm2), fresh copies, arguments of gen_set.sh; the two projects whose purl sets differ
+== node-red, cdxgen 10.11.0 against the pinned 12.9.0: only pinned 1, only old 1
+only old (up to 5): [('pkg:npm/jsdoc-nr-template@1.0.0', 'package-lock.json')]
+only pinned from the root lock file (up to 5): [('pkg:npm/jsdoc-nr-template@1.0.0?vcs_url=git%2Bssh%3A//git%40github.com/node-red/jsdoc-nr-template.git%233c7c8f96d585c7c5918a2e63519310e1297e162d', 'package-lock.json')]
+only pinned, by source file (top 8 of 1 files):
+   1 package-lock.json
+source files in the old output: 1 | in the pinned output: 1
+== socket.io, cdxgen 10.11.0 against the pinned 12.9.0: only pinned 1447, only old 1
+only old (up to 5): [('pkg:npm/uWebSockets.js@20.30.0', 'package-lock.json')]
+only pinned from the root lock file (up to 5): [('pkg:npm/uWebSockets.js@20.30.0?vcs_url=git%2Bhttps%3A//git%40github.com/uNetworking/uWebSockets.js.git%23d39d4181daf5b670d44cbc1b18f8c28c85fd4142', 'package-lock.json')]
+only pinned, by source file (top 8 of 3 files):
+   1037 examples/create-react-app-example/yarn.lock
+   409 examples/basic-crud-application/vue-client/yarn.lock
+   1 package-lock.json
+source files in the old output: 1 | in the pinned output: 3
+== node-red, cdxgen 11.11.0 against the pinned 12.9.0: only pinned 1, only old 1
+only old (up to 5): [('pkg:npm/jsdoc-nr-template@1.0.0', 'package-lock.json')]
+only pinned from the root lock file (up to 5): [('pkg:npm/jsdoc-nr-template@1.0.0?vcs_url=git%2Bssh%3A//git%40github.com/node-red/jsdoc-nr-template.git%233c7c8f96d585c7c5918a2e63519310e1297e162d', 'package-lock.json')]
+only pinned, by source file (top 8 of 1 files):
+   1 package-lock.json
+source files in the old output: 1 | in the pinned output: 1
+== socket.io, cdxgen 11.11.0 against the pinned 12.9.0: only pinned 1447, only old 1
+only old (up to 5): [('pkg:npm/uWebSockets.js@20.30.0', 'package-lock.json')]
+only pinned from the root lock file (up to 5): [('pkg:npm/uWebSockets.js@20.30.0?vcs_url=git%2Bhttps%3A//git%40github.com/uNetworking/uWebSockets.js.git%23d39d4181daf5b670d44cbc1b18f8c28c85fd4142', 'package-lock.json')]
+only pinned, by source file (top 8 of 3 files):
+   1037 examples/create-react-app-example/yarn.lock
+   409 examples/basic-crud-application/vue-client/yarn.lock
+   1 package-lock.json
+source files in the old output: 1 | in the pinned output: 3

@@ -1041,9 +1041,6 @@ pkg:npm/p-map@4.0.0
 pkg:npm/p-retry@4.6.2
 pkg:npm/p-try@2.2.0
 pkg:npm/package-json@6.5.0
-pkg:npm/packages/puppeteer-core@19.2.2
-pkg:npm/packages/puppeteer@19.2.2
-pkg:npm/packages/testserver@0.6.0
 pkg:npm/param-case@3.0.4
 pkg:npm/parent-module@1.0.1
 pkg:npm/parse-entities@2.0.0
@@ -1322,8 +1319,6 @@ pkg:npm/tar-stream@2.2.0
 pkg:npm/terser-webpack-plugin@5.3.6
 pkg:npm/terser@5.15.0
 pkg:npm/test-exclude@6.0.0
-pkg:npm/test/installation@latest
-pkg:npm/test@latest
 pkg:npm/text-diff@1.0.1
 pkg:npm/text-extensions@1.9.0
 pkg:npm/text-table@0.2.0

@@ -1057,16 +1057,6 @@ pkg:npm/p-map@7.0.8
 pkg:npm/p-queue@9.3.3
 pkg:npm/p-timeout@7.0.2
 pkg:npm/p-try@2.2.0
-pkg:npm/packages/common@12.5.0
-pkg:npm/packages/core@12.5.0
-pkg:npm/packages/microservices@12.5.0
-pkg:npm/packages/platform-express@12.5.0
-pkg:npm/packages/platform-fastify@12.5.0
-pkg:npm/packages/platform-node@12.5.0
-pkg:npm/packages/platform-socket.io@12.5.0
-pkg:npm/packages/platform-ws@12.5.0
-pkg:npm/packages/testing@12.5.0
-pkg:npm/packages/websockets@12.5.0
 pkg:npm/pacote@22.0.0
 pkg:npm/parent-module@1.0.1
 pkg:npm/parse-conflict-json@6.0.0

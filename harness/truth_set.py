@@ -65,7 +65,7 @@ def npm_purls(lock, shipped):
         raise RuntimeError("lockfile version 1 not supported: " + str(lock))
     out = set()
     for k, v in doc["packages"].items():
-        if not k or not v.get("version"):
+        if not k or "node_modules/" not in k or not v.get("version"):
             continue
         if shipped and v.get("dev"):
             continue

@@ -470,9 +470,6 @@ pkg:npm/p-limit@3.1.0
 pkg:npm/p-locate@4.1.0
 pkg:npm/p-locate@5.0.0
 pkg:npm/p-try@2.2.0
-pkg:npm/packages/puppeteer-core@19.2.2
-pkg:npm/packages/puppeteer@19.2.2
-pkg:npm/packages/testserver@0.6.0
 pkg:npm/parent-module@1.0.1
 pkg:npm/parse-json@4.0.0
 pkg:npm/parse-json@5.2.0
@@ -579,8 +576,6 @@ pkg:npm/supports-preserve-symlinks-flag@1.0.0
 pkg:npm/tar-fs@2.1.1
 pkg:npm/tar-stream@2.2.0
 pkg:npm/test-exclude@6.0.0
-pkg:npm/test/installation@latest
-pkg:npm/test@latest
 pkg:npm/text-diff@1.0.1
 pkg:npm/text-extensions@1.9.0
 pkg:npm/text-table@0.2.0

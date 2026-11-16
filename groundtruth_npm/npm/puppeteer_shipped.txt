@@ -96,9 +96,6 @@ pkg:npm/normalize-path@3.0.0
 pkg:npm/once@1.4.0
 pkg:npm/p-limit@3.1.0
 pkg:npm/p-locate@5.0.0
-pkg:npm/packages/puppeteer-core@19.2.2
-pkg:npm/packages/puppeteer@19.2.2
-pkg:npm/packages/testserver@0.6.0
 pkg:npm/parent-module@1.0.1
 pkg:npm/parse-json@5.2.0
 pkg:npm/path-exists@4.0.0
@@ -126,8 +123,6 @@ pkg:npm/supports-color@7.2.0
 pkg:npm/supports-color@8.1.1
 pkg:npm/tar-fs@2.1.1
 pkg:npm/tar-stream@2.2.0
-pkg:npm/test/installation@latest
-pkg:npm/test@latest
 pkg:npm/through@2.3.8
 pkg:npm/to-regex-range@5.0.1
 pkg:npm/tr46@0.0.3

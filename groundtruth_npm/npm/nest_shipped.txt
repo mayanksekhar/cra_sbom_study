@@ -110,16 +110,6 @@ pkg:npm/object-inspect@1.13.4
 pkg:npm/on-exit-leak-free@2.1.2
 pkg:npm/on-finished@2.4.2
 pkg:npm/once@1.4.0
-pkg:npm/packages/common@12.5.0
-pkg:npm/packages/core@12.5.0
-pkg:npm/packages/microservices@12.5.0
-pkg:npm/packages/platform-express@12.5.0
-pkg:npm/packages/platform-fastify@12.5.0
-pkg:npm/packages/platform-node@12.5.0
-pkg:npm/packages/platform-socket.io@12.5.0
-pkg:npm/packages/platform-ws@12.5.0
-pkg:npm/packages/testing@12.5.0
-pkg:npm/packages/websockets@12.5.0
 pkg:npm/parseurl@1.3.3
 pkg:npm/path-to-regexp@8.4.2
 pkg:npm/pino-abstract-transport@3.0.0

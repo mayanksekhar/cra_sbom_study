@@ -59,8 +59,28 @@ for line in ("trivy: Version: 0.69.3",
              "nest_unmodified: components 151, walk errors 1, language specific files 1, truth components found 150 of 188, missing 38",
              "nest_control: components 332, walk errors 0, language specific files 2, truth components found 188 of 188, missing 0"):
     need(line in tc, f"trivy license control record: missing line: {line}")
+st = list(csv.DictReader(open("results_replication/replication_syft_trivy.csv")))
+need(len(st) == 38, f"syft trivy: {len(st)} rows, expected 38")
+need(sum(r["ecosystem"] == "npm" for r in st) == 22 and sum(r["ecosystem"] == "rust" for r in st) == 16, "syft trivy: ecosystem rows")
+need(sum(r["tool"] == "syft" for r in st) == 19 and sum(r["tool"] == "trivy" for r in st) == 19, "syft trivy: tool rows")
+need(sum(r["identical"] == "1" for r in st) == 34, "syft trivy: identical pairs")
+need(all(int(r["n_old"]) > 0 for r in st if (r["project"], r["tool"]) != ("TypeScript", "trivy")), "syft trivy: an old output is empty")
+need(all(r["n_old"] == r["n_new"] == "0" for r in st if (r["project"], r["tool"]) == ("TypeScript", "trivy")), "syft trivy: TypeScript trivy")
+need(all(r["only_old"] == "0" and r["only_new"] == "0" and r["n_old"] == r["n_new"] for r in st if r["identical"] == "1"), "syft trivy: identical rows differ")
+got = {(r["project"], r["tool"]): (r["n_old"], r["n_new"], r["only_old"], r["only_new"]) for r in st if r["identical"] == "0"}
+want = {("nest", "trivy"): ("198", "150", "48", "0"), ("socket.io", "syft"): ("1647", "1626", "21", "0"), ("eza", "syft"): ("216", "219", "0", "3"), ("just", "trivy"): ("150", "157", "0", "7")}
+need(got == want, f"syft trivy: differing pairs {got}")
+sr = open("results_replication/syft_trivy_replication_record.txt").read()
+for line in ("old Syft 1.33.0", "old Trivy 0.66.0", "source commit 7bcb181268893fdd69ef4582588c040bb1036c33", "pinned Syft 1.45.1", "pinned Trivy 0.69.3",
+             "17 /examples/basic-crud-application/vue-client/yarn.lock", "17 /examples/create-react-app-example/yarn.lock", "3 /snap/snapcraft.yaml",
+             "== nest trivy, components only in the old output: 48", "== just trivy, components only in the new output: 7", "== socket.io syft, components only in the old output: 34"):
+    need(line in sr, f"syft trivy record: missing line: {line}")
+for phrase in ("34 of 38 project and tool pairs", "replication_syft_trivy.csv", "cdxgen was not rerun on the eight npm projects added later"):
+    need(phrase in text, f"missing in {DOC}: {phrase}")
+need("the same Rust lists in 7 of 8 projects" not in text, "old Rust sentence still in the draft")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])
 print("grype replication ok: 0.95.0 and 0.100.0 identical to 0.114.0 on 76 sboms; 0.90.0 differs on 15; 0.88.0 shows 6 scanner misses in two uptime-kuma rows")
 print("trivy license control ok: nest, unmodified copy finds 150 of 188 truth components, copy with one license list converted finds 188 of 188")
+print("syft and trivy replication ok: 19 projects, 34 of 38 pairs identical, the 4 differences are the recorded ones")

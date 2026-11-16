@@ -46,3 +46,4 @@ results_npm/*
 !results_replication/*.csv
 !results_replication/grype_group_control_uptime_kuma.txt
 !results_replication/trivy_license_control_nest.txt
+!results_replication/syft_trivy_replication_record.txt

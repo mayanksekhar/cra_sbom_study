@@ -1,0 +1,11 @@
+tools: old Syft 1.33.0 (release tarball, checksum verified); old Trivy 0.66.0 (built from tag v0.66.0, source commit 7bcb181268893fdd69ef4582588c040bb1036c33, with go1.26.10-X:nodwarf5, not the official binary); pinned Syft 1.45.1; pinned Trivy 0.69.3
+scope: 19 projects (11 npm, 8 Rust), fresh copies, arguments of gen_set.sh; origin of the components that differ between the old and the pinned output
+== socket.io syft, components only in the old output: 34
+   17 /examples/basic-crud-application/vue-client/yarn.lock
+   17 /examples/create-react-app-example/yarn.lock
+== eza syft, components only in the new output: 3
+   3 /snap/snapcraft.yaml
+== nest trivy, components only in the old output: 48
+   48 NO PATH PROPERTY
+== just trivy, components only in the new output: 7
+   7 NO PATH PROPERTY

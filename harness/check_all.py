@@ -15,6 +15,7 @@ REPLICATION += ["results_replication/replication_cdxgen_npm2_11.11.0.csv", "resu
 REPLICATION += ["results_replication/replication_syft_trivy_go_mvn_py.csv", "results_replication/replication_syft_go_grype.csv", "results_replication/syft_trivy_go_mvn_py_record.txt"]
 REPLICATION += [f"results_replication/replication_grype_go_mvn_py_{v}.csv" for v in ("0.88.0", "0.90.0", "0.95.0", "0.100.0")] + ["results_replication/grype_go_mvn_py_record.txt"]
 REPLICATION += [f"results_replication/replication_cdxgen_go_mvn_py_{v}.csv" for v in ("12.9.0", "11.11.0", "10.11.0")] + ["results_replication/cdxgen_go_mvn_py_record.txt"]
+REPLICATION += ["results_replication/replication_syft_trivy_pilot.csv", "results_replication/replication_syft_trivy_pilot_old.csv", "results_replication/pilot_record.txt"] + [f"results_replication/replication_cdxgen_pilot_matched_{v}.csv" for v in ("12.9.0", "11.11.0", "10.11.0")] + [f"results_replication/replication_grype_pilot{s}_{v}.csv" for s in ("", "_old") for v in ("0.88.0", "0.90.0", "0.95.0", "0.100.0")]
 CHECKS = [
     ("progress rubric", "harness/progress.py", ["docs/progress.csv"]),
     ("findings table (regenerates docs/table_findings.md)", "harness/make_table_findings.py", CSVS),

@@ -161,6 +161,31 @@ print("cdxgen go maven pypi replication ok: 26 projects, identical 25 of 26 (con
 _dr = open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "docs", "draft.md")).read()
 for _ph in ("434 of cdxgen's 495 findings", "189 of Syft's 262", "103 of Trivy's 157", "234 (54 percent) sit on components without a version", "the same SBOM gives 0 or 234 extra findings", "extra findings on PyPI, see 5.1."):
     need(_ph in _dr, f"missing in docs/draft.md: {_ph}")
+_pc = lambda _n: list(_csv.DictReader(open(_os.path.join(_RR, _n))))
+for _n, _rows_n, _want in (("replication_syft_trivy_pilot.csv", 20, 18), ("replication_syft_trivy_pilot_old.csv", 12, 10)):
+    _r = _pc(_n)
+    need(len(_r) == _rows_n, f"{_n}: expected {_rows_n} rows, got {len(_r)}")
+    need(sum(1 for _x in _r if _x["identical"] == "1") == _want, f"{_n}: identical count is not {_want}")
+    need(all(_x["tool"] == "syft" and _x["ecosystem"] == "go" for _x in _r if _x["identical"] != "1"), f"{_n}: a difference is not Syft on Go")
+for _v, _w in (("0.88.0", (8, 5)), ("0.90.0", (8, 5)), ("0.95.0", (1, 0)), ("0.100.0", (0, 0))):
+    for _pre, _rn, _k in (("replication_grype_pilot_", 43, 0), ("replication_grype_pilot_old_", 24, 1)):
+        _r = _pc(f"{_pre}{_v}.csv")
+        need(len(_r) == _rn, f"grype pilot {_v}: expected {_rn} rows, got {len(_r)}")
+        _d = sum(1 for _x in _r if _x["only_pinned"] != "0" or _x["only_old"] != "0")
+        need(_d == _w[_k], f"grype pilot {_v} set {_k}: {_d} differing sboms, expected {_w[_k]}")
+for _v, _fo, _sf in (("12.9.0", 16, 14), ("11.11.0", 13, 14), ("10.11.0", 13, 14)):
+    _r = _pc(f"replication_cdxgen_pilot_matched_{_v}.csv")
+    need(len(_r) == 16, f"cdxgen pilot {_v}: expected 16 rows, got {len(_r)}")
+    need(sum(1 for _x in _r if _x["fresh_not_old"] == "0" and _x["old_not_fresh"] == "0") == _fo, f"cdxgen pilot {_v}: fresh equals old count is not {_fo}")
+    need(sum(1 for _x in _r if _x["stored_not_fresh"] == "0" and _x["fresh_not_stored"] == "0") == _sf, f"cdxgen pilot {_v}: stored equals fresh count is not {_sf}")
+_r = {(_x["set"], _x["project"]): _x for _x in _pc("replication_cdxgen_pilot_matched_10.11.0.csv")}
+need(_r[("pilot", "axios")]["fresh_not_old"] == "201" and _r[("pilot", "axios")]["names_fresh_not_old"] == "160", "cdxgen pilot 10.11.0 axios cells")
+need(_r[("pilot", "flask")]["fresh_not_old"] == "76" and _r[("pilot", "flask")]["names_fresh_not_old"] == "72", "cdxgen pilot 10.11.0 flask cells")
+_pr = open(_os.path.join(_RR, "pilot_record.txt")).read()
+for _ph in ("identical 18 of 20", "identical 18 of 20 pairs (pilot) and 10 of 12", "22 of 327 names", "42 of 55 names", "13 of 16 (11.11.0)", "13 of 16 (10.11.0)", "Not rerun: the container set."):
+    need(_ph in _pr, f"pilot record: missing {_ph}")
+need("The container set was not rerun with other versions of any tool." in text, "draft: container sentence missing")
+need("not on the pilot sets or the containers" not in text, "draft: old pilot scope sentence still present")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])
@@ -170,3 +195,4 @@ print("syft and trivy replication ok: 19 projects, 34 of 38 pairs identical, the
 print("cdxgen npm2 replication ok: 8 projects x 2 versions, 6 identical, node-red differs by a purl qualifier, socket.io by two yarn.lock files")
 print("go maven pypi replication ok: 26 projects, 41 of 52 pairs identical, 251 go purls differ in form only, pinned Grype findings identical on 10 of 10")
 print("grype go maven pypi replication ok: 4 versions x 104 sboms; 0.100.0 identical, maven identical in all, 0.95.0 differs on 4 pypi cdxgen sboms, 0.88.0 and 0.90.0 on 44")
+print("pilot sets replication ok: syft and trivy 18 of 20 and 10 of 12 identical, grype 0.100.0 identical on 67 sboms, cdxgen identical to a fresh 12.9.0 in 13 of 16 projects for both old versions")

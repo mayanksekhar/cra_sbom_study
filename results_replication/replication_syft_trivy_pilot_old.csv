@@ -1,0 +1,13 @@
+project,ecosystem,tool,n_old,n_new,only_old,only_new,identical
+cobra,go,syft,14,14,2,2,0
+node_exporter,go,syft,71,71,6,6,0
+commons_text,maven,syft,8,8,0,0,1
+axios,npm,syft,25,25,0,0,1
+fd,rust,syft,121,121,0,0,1
+ripgrep,rust,syft,63,63,0,0,1
+cobra,go,trivy,7,7,0,0,1
+node_exporter,go,trivy,53,53,0,0,1
+commons_text,maven,trivy,2,2,0,0,1
+axios,npm,trivy,8,8,0,0,1
+fd,rust,trivy,104,104,0,0,1
+ripgrep,rust,trivy,61,61,0,0,1

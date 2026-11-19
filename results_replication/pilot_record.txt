@@ -1,0 +1,38 @@
+Replication on the pilot sets (dataset/src, ten projects, and dataset/src_old, six projects)
+Pinned: Syft 1.45.1, Trivy 0.69.3, cdxgen 12.9.0 (spec 1.6), Grype 0.114.0 with the frozen database 20261030.
+Old: Syft 1.33.0, Trivy 0.66.0, cdxgen 11.11.0 and 10.11.0 (installed package versions checked, 10.11.0 reports "unknown" with its command line), Grype 0.88.0, 0.90.0, 0.95.0 and 0.100.0.
+Grype runs cover 43 SBOMs for the pilot set and 24 for the older pilot versions (67 per version).
+
+Files:
+  replication_syft_trivy_pilot.csv, replication_syft_trivy_pilot_old.csv      purl sets, old against pinned
+  replication_grype_pilot_V.csv, replication_grype_pilot_old_V.csv            (purl, advisory id) pairs, V in 0.88.0 0.90.0 0.95.0 0.100.0
+  replication_cdxgen_pilot_matched_V.csv                                       stored, fresh 12.9.0 and old purl sets, V in 12.9.0 11.11.0 10.11.0
+  scripts: harness/replicate_syft_trivy.sh, replicate_cdxgen.sh, replicate_grype.sh (cases pilot and pilot_old), replicate_grype_pilot_trace.py, replicate_cdxgen_pilot_matched.py, replicate_cdxgen_pilot_drift.py
+
+Results (verified, recomputed from the CSVs):
+  Syft 1.33.0 and Trivy 0.66.0   identical 18 of 20 pairs (pilot) and 10 of 12 pairs (pilot_old)
+                                 the 4 differences are Syft on cobra and node_exporter in both sets, the Go purl form, mapped one to one
+  Grype 0.100.0                  identical to 0.114.0 on all 67 SBOMs
+  Grype 0.95.0                   differs on 1 of 43 (requests with cdxgen, 2 more pairs, both on pkg:pypi/wheel which has no version), 0 of 24
+  Grype 0.88.0 and 0.90.0        differ on 8 of 43 and 5 of 24 SBOMs
+                                 npm: axios (cdxgen, Trivy), express (cdxgen, nolock cdxgen) report more pairs on scoped packages (@babel, @algolia, @rollup, @types, @jridgewell, all GHSA); axios with cdxgen also loses 2 on @vitest/mocker
+                                 Go: node_exporter loses 1 GO advisory on golang.org/x/crypto in 4 SBOMs of each set
+  cdxgen against a fresh 12.9.0  fresh equals old in 16 of 16 (12.9.0, same run), 13 of 16 (11.11.0), 13 of 16 (10.11.0); all six dataset/src_old projects identical in all versions
+                                 11.11.0: spring_petclinic 1 purl (1 name), axios 6 purls (4 names), requests 5 and 3 purls (2 names only in fresh)
+                                 10.11.0: axios 201 purls (160 names) fewer, flask 76 purls (72 names) fewer and 4 more, requests 7 fewer and 24 more (3 and 20 names)
+
+Control (verified):
+  the stored pinned SBOM equals a fresh 12.9.0 run in 14 of 16 projects
+  express: the same 327 names in both, 22 of 327 names with another version (for example @babel/core 7.29.7 against 7.29.13); package-lock.json exists
+  requests: 55 names stored against 13 fresh, 42 of 55 names only in the stored SBOM, 1 name with another version; no lock file
+  the comparison with the old cdxgen versions therefore uses the fresh 12.9.0 run, not the stored SBOM
+
+Causes:
+  verified   Syft 1.33.0 Go purl form (one to one mapping, findings of the pinned Grype identical)
+  verified   Grype 0.95.0 extra pairs are on a component without a version
+  partial    requests: the stored SBOM saw more packages than a fresh run (environment effect as in ansible-lint, not shown)
+  open       express: why versions differ although a lock file exists
+  open       Grype 0.88.0 and 0.90.0 on scoped npm packages (direction mixed, so not one effect) and on the Go advisory
+  open       why 0.95.0 matches the unversioned wheel and 0.100.0 does not
+  open       cdxgen 11.11.0 and 10.11.0 differences on spring_petclinic, axios, requests and flask
+Not rerun: the container set.

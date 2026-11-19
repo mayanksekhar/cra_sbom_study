@@ -1,7 +1,11 @@
 import sys, json, csv, os, glob
 V, W = sys.argv[1], sys.argv[2]
+otag = ""
 if len(sys.argv) > 3 and sys.argv[3] == "go_mvn_py":
     SETS = (("go", "results_go"), ("maven", "results_mvn"), ("pypi", "results_py")); tag = "go_mvn_py_"
+elif len(sys.argv) > 3 and sys.argv[3] in ("pilot", "pilot_old"):
+    _p = sys.argv[3]; _res = "results" if _p == "pilot" else "results_old"
+    SETS = tuple((e, _res) for e in (("npm", "go", "maven", "pypi", "rust") if _p == "pilot" else ("npm", "go", "maven", "rust"))); tag = _p + "_"; otag = "_" + _p
 else:
     SETS = (("npm", "results_npm"), ("rust", "results_rust")); tag = ""
 def pairs(p):
@@ -19,7 +23,7 @@ for eco, res in SETS:
         stem = os.path.basename(f)[: -len(".cdx.json")]
         kind = "reference" if stem.endswith("_truth") else "generator"
         pin = f"{res}/{'vulns_ref' if kind == 'reference' else 'vulns'}/{eco}/{stem}_grype.json"
-        old = f"{W}/out_grype_{V}/{eco}/{stem}_grype.json"
+        old = f"{W}/out_grype_{V}{otag}/{eco}/{stem}_grype.json"
         try:
             _, a = pairs(pin); v, b = pairs(old); vers.add(v)
         except Exception as e:

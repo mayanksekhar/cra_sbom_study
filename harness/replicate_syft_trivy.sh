@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# usage: replicate_syft_trivy.sh OLDTOOLS OUT [npm_rust|go|maven|pypi]   (default npm_rust)
+# usage: replicate_syft_trivy.sh OLDTOOLS OUT [npm_rust|go|maven|pypi|pilot|pilot_old]   (default npm_rust)
 # Runs Syft 1.33.0 and Trivy 0.66.0 (from fetch_old_syft_trivy.sh) and the pinned Syft and Trivy on the
 # same fresh copies of the npm and Rust projects, with the arguments of gen_set.sh.
 set -u
@@ -38,6 +38,8 @@ case "${3:-npm_rust}" in
   go) run_set dataset/src_go dataset/go_pinned10.csv;;
   maven) run_set dataset/src_mvn dataset/mvn_pinned.csv;;
   pypi) run_set dataset/src_py dataset/py_pinned.csv;;
+  pilot) run_set dataset/src dataset/pilot_pinned.csv;;
+  pilot_old) run_set dataset/src_old dataset/pilot_old_pinned.csv;;
   *) echo "unknown set $3"; exit 1;;
 esac
 echo "== done"

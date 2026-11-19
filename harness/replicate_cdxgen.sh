@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# usage: replicate_cdxgen.sh <cdxgen version> <workdir> [npm2]
+# usage: replicate_cdxgen.sh <cdxgen version> <workdir> [npm2|go_mvn_py]
 # With npm2 only the eight npm projects of dataset/npm_pinned2.csv are run (sources in dataset/src_npm2).
 # Runs an older cdxgen on fresh copies of the npm and Rust sets, as gen_set.sh does.
 set -u
@@ -25,11 +25,15 @@ if cd "$root"; then
     echo "install failed, see $W/install_$V.log"
   else
     echo "cdxgen version reported: $("$BIN" --version 2>&1 | head -1)"
-    if [ "${3:-}" = "npm2" ]; then
-      run_set npm js dataset/npm_pinned2.csv dataset/src_npm2
-    else
-      run_set npm js dataset/npm_set.csv dataset/src_npm
-      run_set rust rust dataset/rust_set.csv dataset/src_rust
-    fi
+    case "${3:-}" in
+      npm2) run_set npm js dataset/npm_pinned2.csv dataset/src_npm2;;
+      go_mvn_py)
+        run_set go golang dataset/go_pinned10.csv dataset/src_go
+        run_set maven java dataset/mvn_pinned.csv dataset/src_mvn
+        run_set pypi py dataset/py_pinned.csv dataset/src_py;;
+      *)
+        run_set npm js dataset/npm_set.csv dataset/src_npm
+        run_set rust rust dataset/rust_set.csv dataset/src_rust;;
+    esac
   fi
 fi

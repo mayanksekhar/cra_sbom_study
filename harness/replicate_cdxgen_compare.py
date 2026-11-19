@@ -2,6 +2,8 @@ import sys, json, csv, os
 V, W = sys.argv[1], sys.argv[2]
 if len(sys.argv) > 3 and sys.argv[3] == "npm2":
     sets = [("npm", "dataset/npm_pinned2.csv", "results_npm/raw/npm")]; tag = "npm2_"
+elif len(sys.argv) > 3 and sys.argv[3] == "go_mvn_py":
+    sets = [("go", "dataset/go_pinned10.csv", "results_go/raw/go"), ("maven", "dataset/mvn_pinned.csv", "results_mvn/raw/maven"), ("pypi", "dataset/py_pinned.csv", "results_py/raw/pypi")]; tag = "go_mvn_py_"
 else:
     sets = [("npm", "dataset/npm_set.csv", "results_npm/raw/npm"),
             ("rust", "dataset/rust_set.csv", "results_rust/raw/rust")]; tag = ""

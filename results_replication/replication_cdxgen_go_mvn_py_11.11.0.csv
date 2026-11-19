@@ -1,0 +1,27 @@
+eco,project,pinned_12.9.0,old_11.11.0,common,only_pinned,only_old,old_spec
+go,alertmanager,82,82,82,0,0,1.6
+go,blackbox_exporter,28,28,28,0,0,1.6
+go,restic,72,72,72,0,0,1.6
+go,fzf,6,6,6,0,0,1.6
+go,k9s,299,299,299,0,0,1.6
+go,helm,151,151,151,0,0,1.6
+go,caddy,130,130,130,0,0,1.6
+go,nats-server,9,9,9,0,0,1.6
+go,cli,147,147,147,0,0,1.6
+go,hugo,155,154,154,1,0,1.6
+maven,swagger-petstore,54,54,54,0,0,1.6
+maven,jpetstore-6,130,130,130,0,0,1.6
+maven,spring-petclinic-rest,127,127,127,0,0,1.6
+maven,spring-framework-petclinic,78,78,78,0,0,1.6
+maven,commons-lang,22,22,22,0,0,1.6
+maven,commons-io,29,29,29,0,0,1.6
+maven,jackson-databind,28,28,28,0,0,1.6
+maven,jedis,39,28,28,11,0,1.6
+pypi,poetry,,,,,,no output
+pypi,ansible-lint,34,35,29,5,6,1.6
+pypi,requests,13,11,8,5,3,1.6
+pypi,httpx,24,23,23,1,0,1.6
+pypi,fastapi,45,44,39,6,5,1.6
+pypi,django,28,28,28,0,0,1.6
+pypi,pip,48,41,26,22,15,1.6
+pypi,pytest,28,28,23,5,5,1.6

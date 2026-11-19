@@ -1,0 +1,44 @@
+cdxgen replication on the Go, Maven and PyPI sets (26 projects)
+Pinned: cdxgen 12.9.0 (spec 1.6). Old: 11.11.0 and 10.11.0 (spec 1.6 in every row with output).
+Database state does not matter here, only SBOM contents are compared (purl sets).
+
+Files:
+  replication_cdxgen_go_mvn_py_12.9.0.csv   control, stored pinned output against a fresh 12.9.0 run
+  replication_cdxgen_go_mvn_py_11.11.0.csv  stored pinned output against 11.11.0
+  replication_cdxgen_go_mvn_py_10.11.0.csv  stored pinned output against 10.11.0
+
+Results (verified, recomputed from the CSVs):
+  12.9.0 control   identical 25 of 26, differ 1 (ansible-lint, resolved versions, environment)
+  11.11.0          identical 17 of 26, differ 9
+                   7 real: hugo 1, jedis 11, and five PyPI projects
+                   ansible-lint (environment, as in the control)
+                   poetry: no output, 11.11.0 stops with a TypeError in parsePyLockData
+  10.11.0          identical 16 of 26, differ 10
+                   8 real: hugo 1, jpetstore-6 2, poetry 17, requests 7 and 24, httpx 1 and 60,
+                   django 25, pip 22 and 27, pytest 10 and 61 (only pinned and only old purls)
+                   ansible-lint (environment, as in the control)
+                   fastapi: no output, the run reached the 900 s limit and counts as failed
+  All Go and Maven projects except hugo (both), jpetstore-6 (10.11.0) and jedis (11.11.0) are identical.
+  10.11.0 and 11.11.0 do not agree with each other on jedis and jpetstore-6.
+
+Environment control (verified):
+  stored pinned output equals a fresh pinned run in 24 of 25 projects with all three outputs;
+  ansible-lint differs (5 only in stored, 6 only in fresh), resolved versions.
+  Versions of Python projects without a lock file come from run time resolution in every cdxgen version.
+
+Name level comparison for PyPI (verified):
+  pinned against 11.11.0: equal in 3 of 7 projects with both outputs.
+  Differences: a component named "." and documentation dependencies (sphinx, furo, towncrier and others)
+  only in 12.9.0, and git against django-git for fastapi.
+  pinned against 10.11.0: equal in 1 of 7 projects with both outputs.
+  The extra names of 10.11.0 are mostly transitive packages (cffi, cryptography, flask, babel, docutils).
+
+Hypotheses tested for the extra PyPI components of 10.11.0 (requests, httpx, pip, pytest: 144 names):
+  local Python environment leak: not supported, 58 of 144 names are installed on the machine.
+  more dependency files read: not supported, 20 of 144 names appear in a dependency file of the source.
+  The 20 sit in pyproject.toml, tox.ini and doc requirement files.
+
+Open (not explained):
+  the mechanism that adds the other 124 names in 10.11.0, and why django has 3 names against 28;
+  why hugo and jedis lose components in 11.11.0 and 10.11.0;
+  the poetry crash and the fastapi time out are recorded, not traced.

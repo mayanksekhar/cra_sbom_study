@@ -143,9 +143,21 @@ for line in ("Grype 0.114.0 with the frozen database snapshot 20261030", "descri
              "pinned 0.114.0: 234 of 994 pairs are on unversioned purls",
              "   cdxgen     495     234     434", "   syft       262       0     189", "   trivy      157       0     103"):
     need(line in gr, f"grype go mvn py record: missing line: {line}")
-for phrase in ("234 of the 434 false positives of cdxgen with Grype on PyPI (54 percent)", "cdxgen was not rerun on the Go, Maven and PyPI sets", "replication_grype_go_mvn_py_*.csv"):
+for phrase in ("234 of the 434 false positives of cdxgen with Grype on PyPI (54 percent)", "cdxgen 10.11.0 and 11.11.0 were rerun on the Go, Maven and PyPI sets (26 projects", "identical purl sets in 25 of 26 projects", "11.11.0 in 17 of 26", "10.11.0 in 16 of 26", "replication_grype_go_mvn_py_*.csv"):
     need(phrase in text, f"missing in {DOC}: {phrase}")
 need("cdxgen and Grype were not rerun on the Go, Maven and PyPI sets" not in text, "old Grype scope sentence still in the draft")
+need("cdxgen was not rerun on the Go, Maven and PyPI sets" not in text, "old cdxgen scope sentence still in the draft")
+import os as _os, csv as _csv
+_RR = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "results_replication")
+for _v, _want in (("12.9.0", 25), ("11.11.0", 17), ("10.11.0", 16)):
+    _rows = list(_csv.DictReader(open(_os.path.join(_RR, f"replication_cdxgen_go_mvn_py_{_v}.csv"))))
+    need(len(_rows) == 26, f"cdxgen go mvn py {_v}: expected 26 rows, got {len(_rows)}")
+    _same = sum(1 for _r in _rows if _r["only_pinned"] == "0" and _r["only_old"] == "0")
+    need(_same == _want, f"cdxgen go mvn py {_v}: identical {_same}, expected {_want}")
+_rec = open(_os.path.join(_RR, "cdxgen_go_mvn_py_record.txt")).read()
+for _ph in ("identical 25 of 26", "identical 17 of 26", "identical 16 of 26", "58 of 144", "20 of 144", "no output"):
+    need(_ph in _rec, f"cdxgen go mvn py record: missing {_ph}")
+print("cdxgen go maven pypi replication ok: 26 projects, identical 25 of 26 (control 12.9.0), 17 of 26 (11.11.0), 16 of 26 (10.11.0), two failed runs recorded")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])

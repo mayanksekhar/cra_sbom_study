@@ -6,8 +6,8 @@ The headline numbers can be recomputed from the summary files in this repository
 ## Steps
 1. Clone the repository. Run: python3 harness/check_all.py
    Expected without the archive: 8 ok, 0 failed, 2 skipped.
-2. Obtain cra_data_20261117.tar.gz (not yet published, it will be attached to a release of this repository). Check it with: echo "c9f166ed2b4509e079db279a5df95bd2364572c155f93a3a5c8ccf30af55108f  cra_data_20261117.tar.gz" | sha256sum -c. The author builds it from the untracked files under results*/ with python3 -I harness/build_archive.py OUTDIR 20261117; the build sanitises the files, refuses to write anything if a trace is left, and gives the same hash on a second run.
-3. Extract at the repository root without overwriting tracked files: tar -xzf cra_data_20261117.tar.gz --skip-old-files
+2. Obtain cra_data_20261119.tar.gz (not yet published, it will be attached to a release of this repository). Check it with: echo "979297259dcfdfe17b625e0c0b73e40d8078de230dc2a4fca78ffff238869a48  cra_data_20261119.tar.gz" | sha256sum -c. The author builds it from the untracked files under results*/ with python3 -I harness/build_archive.py OUTDIR 20261119; the build sanitises the files, refuses to write anything if a trace is left, and gives the same hash on a second run.
+3. Extract at the repository root without overwriting tracked files: tar -xzf cra_data_20261119.tar.gz --skip-old-files
 4. Run again: python3 harness/check_all.py
    Expected with the archive: 10 ok, 0 failed, 0 skipped, and git status shows no changed files.
 

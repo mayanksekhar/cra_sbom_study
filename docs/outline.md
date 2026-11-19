@@ -53,7 +53,7 @@ Single reachability oracle, Go only; one snapshot and one version per tool; popu
 Harness, truth files, pinned project lists, snapshot checksums. M: licences of vulnerability databases, FOSSA terms (FOSSA, dep scan and sbomqs were never run).
 
 ## Decisions for the author (defaults apply if not decided)
-1. Containers: default is out of paper 1, future work.
+1. Containers: decided 2026-11-19, in paper 1 as section 5.6 (operating system packages of eight images only).
 2. FOSSA, dep scan, sbomqs: default is out, mention as not evaluated.
 3. Python: default is pilot only, no set.
 4. Counting unit: alias cluster (decided, count_units.py reconciled 610 vs 608).

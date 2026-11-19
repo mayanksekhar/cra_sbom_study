@@ -158,6 +158,9 @@ _rec = open(_os.path.join(_RR, "cdxgen_go_mvn_py_record.txt")).read()
 for _ph in ("identical 25 of 26", "identical 17 of 26", "identical 16 of 26", "58 of 144", "20 of 144", "no output"):
     need(_ph in _rec, f"cdxgen go mvn py record: missing {_ph}")
 print("cdxgen go maven pypi replication ok: 26 projects, identical 25 of 26 (control 12.9.0), 17 of 26 (11.11.0), 16 of 26 (10.11.0), two failed runs recorded")
+_dr = open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "docs", "draft.md")).read()
+for _ph in ("434 of cdxgen's 495 findings", "189 of Syft's 262", "103 of Trivy's 157", "234 (54 percent) sit on components without a version", "the same SBOM gives 0 or 234 extra findings", "extra findings on PyPI, see 5.1."):
+    need(_ph in _dr, f"missing in docs/draft.md: {_ph}")
 if fails:
     print("FAILED"); [print(" ", f) for f in fails]; sys.exit(1)
 print("replication ok: 2 versions x 11 projects identical to 12.9.0, %d purls compared per version" % tot["11.11.0"])

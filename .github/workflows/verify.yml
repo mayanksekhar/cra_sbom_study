@@ -1,0 +1,19 @@
+name: verify
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Fetch the data archive (pinned SHA-256)
+        run: bash harness/fetch_data.sh
+      - name: Run all checks, none may be skipped
+        run: python3 harness/check_all.py --strict

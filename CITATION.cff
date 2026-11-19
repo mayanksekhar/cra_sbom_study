@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this study, please cite it as below."
+title: "SBOM and VEX quality study for the EU Cyber Resilience Act"
+type: software
+authors:
+  - family-names: Sekhar
+    given-names: Mayank
+repository-code: "https://github.com/mayanksekhar/cra_sbom_study"
+license: Apache-2.0
+abstract: "An empirical study of where correctness is lost between an SBOM and a vulnerability finding."

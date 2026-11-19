@@ -5,6 +5,9 @@ Independent research project. Unreviewed draft. Author: Mayank Sekhar (GitHub: m
 ## What this is
 An empirical study of where correctness is lost between an SBOM and a vulnerability finding. It covers 61 project versions (pilot in five ecosystems, then Go, Maven, PyPI, Rust and npm sets of 8 to 11 projects each), three SBOM generators (Syft, Trivy, cdxgen), scoring with Grype, Trivy and OSV Scanner used in controls, a reachability oracle for Go (govulncheck) and OpenVEX statements. Every missed finding is attributed to a cause. The results are mapped to Regulation (EU) 2024/2847 and to BSI TR-03183-2.
 
+## Labelling protocol
+The output of the reachability oracle (govulncheck) is public in this repository (results_go/reach.json), so the blindness of the manual agreement check cannot rest on secrecy. The labelling therefore follows a protocol. Each labeller receives only the cards file, by a private channel and never the repository or the data archive, works offline with harness/label_cli.py (which shows no tool verdict) and opens no repository file until every card is answered. The verdicts file stays private until all labellers have finished. harness/label_score.py then compares the verdicts with the private answer key; cards that were not blind for a labeller are excluded with its --skip option and counted in the paper. The finish date of each labeller is recorded in docs/pilot_findings.md.
+
 ## Independence
 This project did not run or evaluate any FOSSA product. It is not affiliated with or endorsed by FOSSA or by any tool vendor named here. Tool names are trademarks of their owners.
 

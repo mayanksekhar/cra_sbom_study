@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the repository's number checks. A check whose data is not present is skipped with a message."""
+"""Run the repository's number checks. A check whose data is not present is skipped with a message; with --strict a skipped check is a failure."""
 import subprocess, sys
 from pathlib import Path
 root = Path(__file__).resolve().parent.parent
@@ -46,5 +46,8 @@ for name, script, needs in CHECKS:
         d = subprocess.run(["git", "diff", "--quiet", "--", "docs/table_findings.md"], cwd=root)
         print(f"{'OK     ' if d.returncode == 0 else 'DIFFERS'}  regenerated table {'matches' if d.returncode == 0 else 'differs from'} the tracked docs/table_findings.md")
         failed += d.returncode != 0
+strict = "--strict" in sys.argv
+if strict and skipped:
+    print(f"\nSTRICT: {skipped} check(s) skipped because the data archive is not unpacked (bash harness/fetch_data.sh); this counts as a failure")
 print(f"\n{len(CHECKS) - skipped - failed} ok, {failed} failed, {skipped} skipped")
-sys.exit(1 if failed else 0)
+sys.exit(1 if failed or (strict and skipped) else 0)

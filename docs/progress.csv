@@ -21,7 +21,7 @@ VEX and reachability,reachability rate on Go (govulncheck),4,4
 VEX and reachability,VEX mechanism per scanner and Trivy path rule,4,4
 VEX and reachability,cross project suppression,3,3
 VEX and reachability,oracle agreement on decidable cards (at most 18 of 40): author labels,2,0
-VEX and reachability,oracle agreement on decidable cards: second labeller (19 cards answered blind and 9 agree; one letter awaits confirmation),2,2
+VEX and reachability,oracle agreement on decidable cards: second labeller (19 cards answered blind and 9 agree),2,2
 Write up and CRA mapping,CRA text mapping from the primary source,3,3
 Write up and CRA mapping,BSI mapping from the guideline text (mirror copy),2,2
 Write up and CRA mapping,claims audit and outline,2,2

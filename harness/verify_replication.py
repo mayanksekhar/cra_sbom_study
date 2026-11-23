@@ -173,7 +173,7 @@ for _v, _w in (("0.88.0", (8, 5)), ("0.90.0", (8, 5)), ("0.95.0", (1, 0)), ("0.1
         need(len(_r) == _rn, f"grype pilot {_v}: expected {_rn} rows, got {len(_r)}")
         _d = sum(1 for _x in _r if _x["only_pinned"] != "0" or _x["only_old"] != "0")
         need(_d == _w[_k], f"grype pilot {_v} set {_k}: {_d} differing sboms, expected {_w[_k]}")
-for _v, _fo, _sf in (("12.9.0", 16, 14), ("11.11.0", 13, 14), ("10.11.0", 13, 14)):
+for _v, _fo, _sf in (("12.9.0", 16, 15), ("11.11.0", 13, 15), ("10.11.0", 13, 15)):
     _r = _pc(f"replication_cdxgen_pilot_matched_{_v}.csv")
     need(len(_r) == 16, f"cdxgen pilot {_v}: expected 16 rows, got {len(_r)}")
     need(sum(1 for _x in _r if _x["fresh_not_old"] == "0" and _x["old_not_fresh"] == "0") == _fo, f"cdxgen pilot {_v}: fresh equals old count is not {_fo}")
@@ -181,8 +181,11 @@ for _v, _fo, _sf in (("12.9.0", 16, 14), ("11.11.0", 13, 14), ("10.11.0", 13, 14
 _r = {(_x["set"], _x["project"]): _x for _x in _pc("replication_cdxgen_pilot_matched_10.11.0.csv")}
 need(_r[("pilot", "axios")]["fresh_not_old"] == "201" and _r[("pilot", "axios")]["names_fresh_not_old"] == "160", "cdxgen pilot 10.11.0 axios cells")
 need(_r[("pilot", "flask")]["fresh_not_old"] == "76" and _r[("pilot", "flask")]["names_fresh_not_old"] == "72", "cdxgen pilot 10.11.0 flask cells")
+_r12 = {(_x["set"], _x["project"]): _x for _x in _pc("replication_cdxgen_pilot_matched_12.9.0.csv")}
+need(_r12[("pilot", "requests")]["stored"] == "56" and _r12[("pilot", "requests")]["fresh"] == "13", "cdxgen pilot 12.9.0 requests cells")
+need(_r12[("pilot", "express")]["stored_not_fresh"] == "0" and _r12[("pilot", "express")]["fresh_not_stored"] == "0", "cdxgen pilot 12.9.0 express equals stored")
 _pr = open(_os.path.join(_RR, "pilot_record.txt")).read()
-for _ph in ("identical 18 of 20", "identical 18 of 20 pairs (pilot) and 10 of 12", "22 of 327 names", "42 of 55 names", "13 of 16 (11.11.0)", "13 of 16 (10.11.0)", "Not rerun: the container set."):
+for _ph in ("identical 18 of 20", "identical 18 of 20 pairs (pilot) and 10 of 12", "equals a fresh 12.9.0 run in 15 of 16", "all 42 foreign names", "13 of 16 (11.11.0)", "13 of 16 (10.11.0)", "Not rerun: the container set."):
     need(_ph in _pr, f"pilot record: missing {_ph}")
 need("The container set was not rerun with other versions of any tool." in text, "draft: container sentence missing")
 need("not on the pilot sets or the containers" not in text, "draft: old pilot scope sentence still present")

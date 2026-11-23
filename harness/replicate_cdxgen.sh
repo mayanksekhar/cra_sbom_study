@@ -2,6 +2,7 @@
 # usage: replicate_cdxgen.sh <cdxgen version> <workdir> [npm2|go_mvn_py|pilot|pilot_old]
 # With npm2 only the eight npm projects of dataset/npm_pinned2.csv are run (sources in dataset/src_npm2).
 # Runs an older cdxgen on fresh copies of the npm and Rust sets, as gen_set.sh does.
+# The pilot cases keep ignored files such as lock files, as the original in place runs did.
 set -u
 V="$1"; W="$2"
 root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -14,7 +15,8 @@ run_set() {
   tail -n +2 "$csv" | while IFS=, read -r name rest; do
     echo "== $name ($eco)"
     rm -rf "$W/work/$name"; cp -a "$src/$name" "$W/work/$name"
-    git -C "$W/work/$name" clean -xfdq; git -C "$W/work/$name" checkout -q -- .
+    if [ -z "${KEEP_IGNORED:-}" ]; then git -C "$W/work/$name" clean -xfdq; fi
+    git -C "$W/work/$name" checkout -q -- .
     ( cd "$P" && timeout 900 systemd-run --user --scope -q -p MemoryMax=6G -p MemorySwapMax=0 "$BIN" --spec-version 1.6 -t "$t" -o "$out/${name}_cdxgen.cdx.json" "$W/work/$name" < /dev/null > "$out/${name}_cdxgen.log" 2>&1 ) || echo "cdxgen failed: $name"
   done
 }
@@ -35,8 +37,8 @@ if cd "$root"; then
     echo "cdxgen version reported: $("$BIN" --version 2>&1 | head -1)"
     case "${3:-}" in
       npm2) run_set npm js dataset/npm_pinned2.csv dataset/src_npm2;;
-      pilot) OUTTAG=_pilot; pilot_set dataset/pilot_pinned.csv dataset/src;;
-      pilot_old) OUTTAG=_pilot_old; pilot_set dataset/pilot_old_pinned.csv dataset/src_old;;
+      pilot) OUTTAG=_pilot; KEEP_IGNORED=1; pilot_set dataset/pilot_pinned.csv dataset/src;;
+      pilot_old) OUTTAG=_pilot_old; KEEP_IGNORED=1; pilot_set dataset/pilot_old_pinned.csv dataset/src_old;;
       go_mvn_py)
         run_set go golang dataset/go_pinned10.csv dataset/src_go
         run_set maven java dataset/mvn_pinned.csv dataset/src_mvn

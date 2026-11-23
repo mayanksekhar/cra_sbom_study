@@ -22,16 +22,16 @@ Results (verified, recomputed from the CSVs):
                                  10.11.0: axios 201 purls (160 names) fewer, flask 76 purls (72 names) fewer and 4 more, requests 7 fewer and 24 more (3 and 20 names)
 
 Control (verified):
-  the stored pinned SBOM equals a fresh 12.9.0 run in 14 of 16 projects
-  express: the same 327 names in both, 22 of 327 names with another version (for example @babel/core 7.29.7 against 7.29.13); package-lock.json exists
-  requests: 55 names stored against 13 fresh, 42 of 55 names only in the stored SBOM, 1 name with another version; no lock file
-  the comparison with the old cdxgen versions therefore uses the fresh 12.9.0 run, not the stored SBOM
+  the stored pinned SBOM equals a fresh 12.9.0 run in 15 of 16 projects (all but requests); the pilot cases keep ignored files such as lock files, as the original in place runs did
+  express: identical (368 purls) when package-lock.json is kept; the difference of 22 of 327 names found by the first replication run came from its clean step, which deleted the ignored lock file (correction 2026-11-24)
+  requests: 56 components stored against 13 fresh (45 purls only stored, 2 only fresh); 42 package names are packages of the depscan tool (appthreat-vulnerability-db, ds-analysis-lib and others), not dependencies of requests; a run with depscan installed in the active Python environment lists all 42 foreign names (57 purls); the environment of the stored run (2026-10-26) was not recorded; the other differences are versions resolved at run time; the one pilot Grype match for requests is not on these components
+  the comparison with the old cdxgen versions uses the fresh 12.9.0 run, which equals the stored SBOM except for requests
 
 Causes:
   verified   Syft 1.33.0 Go purl form (one to one mapping, findings of the pinned Grype identical)
   verified   Grype 0.95.0 extra pairs are on a component without a version
-  partial    requests: the stored SBOM saw more packages than a fresh run (environment effect as in ansible-lint, not shown)
-  open       express: why versions differ although a lock file exists
+  verified   requests: the stored SBOM lists 42 packages of the depscan tool, reproduced with depscan installed in the active Python environment (the original environment was not recorded)
+  verified   express: the clean step of the replication script deleted the ignored lock file; with it kept, the SBOM equals the stored one
   open       Grype 0.88.0 and 0.90.0 on scoped npm packages (direction mixed, so not one effect) and on the Go advisory
   open       why 0.95.0 matches the unversioned wheel and 0.100.0 does not
   open       cdxgen 11.11.0 and 10.11.0 differences on spring_petclinic, axios, requests and flask

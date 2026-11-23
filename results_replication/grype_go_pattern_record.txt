@@ -1,0 +1,11 @@
+Grype 0.88.0 against 0.114.0 on the Go set (raw and reference SBOMs), frozen database 20261030
+SBOMs compared: 40; pairs in 0.114.0: 2682; lost in 0.88.0: 271; advisories lost or kept: 281
+ecosystems seen: {'go': 2, 'go-module': 438, 'npm': 21, 'github-action': 3, 'dotnet': 3, 'python': 1, 'java-archive': 2}
+all kept     has range  /vN path    53
+all kept     has range  plain path  124
+fully lost   has range  /vN path    72
+fully lost   has range  plain path  15
+fully lost   no range   /vN path    1
+fully lost   no range   plain path  7
+partly lost  has range  /vN path    6
+partly lost  has range  plain path  3

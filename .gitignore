@@ -52,5 +52,6 @@ results_npm/*
 !results_replication/grype_go_mvn_py_record.txt
 !results_replication/cdxgen_go_mvn_py_record.txt
 !results_replication/pilot_record.txt
+!results_replication/grype_go_pattern_record.txt
 __pycache__/
 *.pyc

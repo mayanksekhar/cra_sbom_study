@@ -201,4 +201,6 @@ print("grype go maven pypi replication ok: 4 versions x 104 sboms; 0.100.0 ident
 _gp = open(_os.path.join(_RR, "grype_go_pattern_record.txt")).read()
 _gn = {" ".join(_l.split()[:-1]): int(_l.split()[-1]) for _l in _gp.splitlines() if _l.startswith(("all kept", "fully lost", "partly lost")) and _l.split()[-1].isdigit()}
 need(_gn == {"all kept has range /vN path": 53, "all kept has range plain path": 124, "fully lost has range /vN path": 72, "fully lost has range plain path": 15, "fully lost no range /vN path": 1, "fully lost no range plain path": 7, "partly lost has range /vN path": 6, "partly lost has range plain path": 3}, f"grype go pattern table: {_gn}")
+_dfb = open(_os.path.join(_RR, "..", "docs", "draft_front_back.md")).read()
+need("10. Environment dependence of cdxgen on PyPI" in _dfb and "42 of the package names belong to the depscan tool" in _dfb, "draft section 8: environment dependence item missing")
 print("pilot sets replication ok: syft and trivy 18 of 20 and 10 of 12 identical, grype 0.100.0 identical on 67 sboms, cdxgen identical to a fresh 12.9.0 in 13 of 16 projects for both old versions")

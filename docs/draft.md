@@ -14,7 +14,7 @@ Reference and error attribution. A reference SBOM is built from the shipped trut
 
 Reachability oracle: govulncheck, Go only. VEX forms: A (product is the application, subcomponent is the vulnerable module) and B (product is the module).
 
-Threats noted here: one version per tool; popular projects with shared dependencies; truth for Maven has up to 3 of 237 components in doubt; for PyPI install truth drifts from the pinned lock (28 of 37 poetry packages, 29 of 33 ansible-lint packages resolve to other versions).
+Threats noted here: one version per tool; popular projects with shared dependencies; truth for Maven has up to 3 of 237 components in doubt; for PyPI install truth drifts from the pinned lock (28 of 37 poetry packages, 29 of 33 ansible-lint packages resolve to other versions). The Python environment of a run also changes cdxgen output (pilot requests: 42 foreign packages among 56 components).
 
 ## 4 SBOM scope and identity
 

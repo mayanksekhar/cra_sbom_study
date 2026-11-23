@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a vulnerability in this repository
+    url: https://github.com/mayanksekhar/cra_sbom_study/security/advisories/new
+    about: Please use private vulnerability reporting, not a public issue.

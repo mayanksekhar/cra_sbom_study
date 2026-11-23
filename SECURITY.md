@@ -13,3 +13,7 @@ Out of scope: vulnerabilities in the open source projects that the study measure
 ## Response
 
 This is a one person research project. I aim to answer within 7 days and to record every confirmed fix in docs/pilot_findings.md.
+
+## Pinned tooling and control projects
+
+The lockfile under `tools/` pins cdxgen 12.9.0, the generator measured in the study, on purpose, so dependency alerts for it are known and are not fixed by upgrading. The tool runs offline on local source folders from the command line and is not exposed as a service. The projects under `dataset/controls` carry known vulnerable dependencies on purpose, as test material for scanners.
